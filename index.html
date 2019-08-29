@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>PHP</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>
+$('body').bind('copy paste',function(e) {
+    e.preventDefault(); return false;    
+});
+</script>
+<h1 id="php">PHP</h1>
+<h2 id="embutindo-php-em-html">Embutindo PHP em HTML</h2>
+<p>Códigos em HTML e PHP podem conviver no mesmo documento. No entanto, o código PHP será processando pelo interpretador do PHP antes de ser enviado para o cliente. Se colocarmos código HTML e PHP em um arquivo só, o resultado que verá o cliente será apenas código HTML.</p>
+<p>Vejamos o exemplo. Dentro de sua pasta no ``C:\xampp\htdocs\seu_nome\php` crie um arquivo chamado <code>exemplo_1.php</code>, com o seguinte conteúdo:</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> <span class="hljs-string">'Isto será interpretado e o resultado traduzido para HTML.'</span>; <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto também será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</div></code></pre>
+<p>O resultado disto será:</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto será interpretado e o resultado traduzido para HTML.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto também será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</div></code></pre>
+<p>Criar um novo arquivo chamado <code>exemplo_2.php</code>, com o seguinte conteúdo:</p>
+<pre><code class="language-html"><div><span class="php"><span class="hljs-meta">&lt;?php</span>
+$titulo = <span class="hljs-string">"Exemplo 2"</span>;
+$nome = <span class="hljs-string">"Carlos Andres Ferrero"</span>;
+<span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>    
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> $titulo <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Bom dia <span class="php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> $nome <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> <span class="hljs-string">'Isto será interpretado e o resultado traduzido para HTML.'</span>; <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto também será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>Utilizamos a palavra <code>echo</code> para mostrar algum conteúdo na página HTML. Estamos indicando para o interpretador que o que segue a <code>echo</code> tem que ser resolvido e o resultado apresentado ao cliente.</p>
+<p>O resultado que será apresentado ao cliente, após a interpretação do código em PHP pelo servidor, será a seguinte:</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>    
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Exemplo 2<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Bom dia Carlos Andres Ferrero<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto será interpretado e o resultado traduzido para HTML.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto também será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>Para mostrar o resultado de uma variável ou uma expressão em PHP embutido em HTML também podemos fazer da seguinte forma:</p>
+<pre><code class="language-html"><div><span class="php"><span class="hljs-meta">&lt;?php</span>
+$titulo = <span class="hljs-string">"Exemplo 2"</span>;
+$nome = <span class="hljs-string">"Carlos Andres Ferrero"</span>;
+<span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>    
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?</span>= $titulo <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Bom dia <span class="php"><span class="hljs-meta">&lt;?</span>= $nome <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?</span>=<span class="hljs-string">'Isto será interpretado e o resultado traduzido para HTML.'</span>; <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto também será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>Essa forma alternativa de implementar a saída de dados, irá apresentar o mesmo resultado final. A principal diferente entre uma forma e outra é que a primeira forma <code>&lt;?php ?&gt;</code> é utilizar para executar várias linhas de código dentro dela, como ocorre nas primeiras 4 linhas do exemplo, enquanto que a segunda form é utilizada apenas para retornar ou mostrar resultados.</p>
+<p>Quando for de interesse fazer comentários serão feitos da seguinte forma:</p>
+<pre><code class="language-html"><div><span class="php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// Este é um comentário de uma linha</span>
+
+<span class="hljs-comment">/*
+* Este é um comentário 
+* de várias linhas
+*/</span>
+$titulo = <span class="hljs-string">"Exemplo 2"</span>;
+$nome = <span class="hljs-string">"Carlos Andres Ferrero"</span>;
+<span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>    
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?</span>= $titulo <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 
+    E este é um comentário em HTML
+--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Bom dia <span class="php"><span class="hljs-meta">&lt;?</span>= $nome <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?</span>=<span class="hljs-string">'Isto será interpretado e o resultado traduzido para HTML.'</span>; <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto também será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>Observe que os comentários em PHP e HTML tem sintaxe diferentes, tem que respeitar cada um deles.</p>
+<h2 id="tipos-de-dados">Tipos de Dados</h2>
+<p>Os princiapsi tipos de dados são <em>escalares</em> e <em>compostos</em>.</p>
+<h3 id="tipos-escalares">Tipos Escalares</h3>
+<p>Os <em>escalares</em> são:</p>
+<ul>
+<li><code>boolean</code></li>
+<li><code>integer</code></li>
+<li><code>float</code> (número de ponto flutuante, ou também double)</li>
+<li><code>string</code></li>
+</ul>
+<p>Podemos explorar esses tipos de dados com o seguinte código PHP (crie um arquivo <code>tipos_escalares.php</code>):</p>
+<pre><code class="language-php"><div><span class="hljs-meta">&lt;?php</span> <span class="hljs-comment">// tipos_escalares.php</span>
+$carrinhoVazio = <span class="hljs-keyword">FALSE</span>;             <span class="hljs-comment">// boolean</span>
+$quantidadeUnidades = <span class="hljs-number">5</span>;            <span class="hljs-comment">// inteiro</span>
+$valorUnidade = <span class="hljs-number">12.50</span>;              <span class="hljs-comment">// float</span>
+$nomeProduto = <span class="hljs-string">'Capa de Celular'</span>;   <span class="hljs-comment">// string</span>
+
+<span class="hljs-keyword">echo</span> gettype($carrinhoVazio) . <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-keyword">echo</span> gettype($quantidadeUnidades) . <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-keyword">echo</span> gettype($valorUnidade) . <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-keyword">echo</span> gettype($nomeProduto) . <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;br&gt;'</span>;
+
+<span class="hljs-keyword">if</span> (is_bool($carrinhoVazio)){
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'$carrinhoVazio é uma variável booleana &lt;br&gt;'</span>;
+} 
+
+<span class="hljs-keyword">if</span> (!is_bool($nomeProduto)) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'$nomeProduto não é uma variável booleana &lt;br&gt;'</span>;
+}
+
+<span class="hljs-keyword">if</span> (is_int($quantidadeUnidades)){
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'$quantidadeUnidades é uma variável int &lt;br&gt;'</span>;
+}
+
+<span class="hljs-keyword">if</span> (is_float($valorUnidade)){
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'$valorUnidade é uma variável float &lt;br&gt;'</span>;
+}
+
+<span class="hljs-keyword">if</span> (is_numeric($valorUnidade) &amp;&amp; is_numeric($quantidadeUnidades)){
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'$valorUnidade e $quantidadeUnidades são variáveis numéricas&lt;br&gt;'</span>;
+}
+
+<span class="hljs-keyword">if</span> (is_string($nomeProduto)){
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'$nomeProduto é uma variável string &lt;br&gt;'</span>;
+}
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<p>A função <code>gettype</code> retorna o tipo da variável e as funções <code>is_bool</code>, <code>is_int</code>, <code>is_float</code> e <code>is_string</code> servem para verificar se as nossas variáveis são de um determinado tipo. Essas funções são importantes para verificar em nossas funções se os argumentos enviados como parâmetro são do tipo que nós esperamos que seja.</p>
+<p>Por exemplo, se criamos uma função <code>function soma($a, $b) { return $a + $b}</code>, apenas irá funcionar para números inteiros ou em ponto flutuante, mas para variáveis do tipo string não vai funcionar. Vejamos:</p>
+<pre><code class="language-php"><div><span class="hljs-meta">&lt;?php</span> <span class="hljs-comment">// tipos_escalares_soma.php</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">soma</span><span class="hljs-params">($a, $b)</span> </span>{ <span class="hljs-keyword">return</span> $a + $b; }
+
+<span class="hljs-keyword">echo</span> <span class="hljs-string">'soma (1,5): '</span> . soma(<span class="hljs-number">1</span>,<span class="hljs-number">5</span>) . <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"soma('Andres','Ferrero'): "</span> .  soma(<span class="hljs-string">"Andres"</span>,<span class="hljs-string">'Ferrero'</span>) . <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<p>O resultado será o seguinte:</p>
+<blockquote>
+<p>soma (1,5): 6<br><br />
+<b>Warning</b>:  A non-numeric value encountered in <b>C:\xampp\htdocs\introducao_php\tipos_escalares_soma.php</b> on line <b>3</b><br />
+<br />
+<b>Warning</b>:  A non-numeric value encountered in <b>C:\xampp\htdocs\introducao_php\tipos_escalares_soma.php</b> on line <b>3</b><br />
+soma('Andres','Ferrero'): 0<br></p>
+</blockquote>
+<p>O primeiro <code>echo</code> é executado normalmente, pois a soma entre dois valores numéricos é o que a nossa função faz corretamente. Para executar o segundo <code>echo</code> o PHP precisa resolver antes a soma entre as duas palavras, no entanto a nossa função gera uma advertencia (um <em>warning</em>) erro no momento de executar a operação de soma. Um <em>warning</em> é um erro chamado de não-fatal, e não interrompe a execução do código PHP. Portanto, após o <em>warning</em> a execução continua e mostra o valor 0, como resultado da operação.</p>
+<p>Para resolver isso, vamos usar as funções de verificação de tipo, da seguinte forma:</p>
+<pre><code class="language-php"><div><span class="hljs-meta">&lt;?php</span> <span class="hljs-comment">// tipos_escalares_soma2.php</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">soma</span><span class="hljs-params">($a, $b)</span> </span>{    
+    <span class="hljs-keyword">if</span> ( !is_numeric($a) || !is_numeric($b) ){
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Erro: um ou mais argumentos não são numéricos"</span>;
+    }
+    <span class="hljs-keyword">return</span> $a + $b; 
+}
+
+<span class="hljs-keyword">echo</span> <span class="hljs-string">'soma (1,5): '</span> . soma(<span class="hljs-number">1</span>,<span class="hljs-number">5</span>) . <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"soma('Andres','Ferrero'): "</span> .  soma(<span class="hljs-string">"Andres"</span>,<span class="hljs-string">'Ferrero'</span>) . <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"soma('Andres',10): "</span> .  soma(<span class="hljs-string">"Andres"</span>,<span class="hljs-number">10</span>) . <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<p>E o resultado será o seguinte:</p>
+<blockquote>
+<p>soma (1,5): 6<br>
+soma('Andres','Ferrero'): Erro: um ou mais argumentos não são numéricos<br>
+soma('Andres',10): Erro: um ou mais argumentos não são numéricos<br></p>
+</blockquote>
+<h3 id="tipos-compostos">Tipos Compostos</h3>
+<p>Os tipos <em>compostos</em> são:</p>
+<ul>
+<li><code>array</code></li>
+<li><code>object</code></li>
+<li><code>callable</code></li>
+</ul>
+<p>Um <code>array</code> permite armazenar dados de diferentes tipos em um coleção. Em PHP um <code>array</code> é tratado como um conjunto de elementos <code>chave =&gt; valor</code>. As chaves podem ser números inteiros ou strings e os valores de qualquer tipo, inclusive podem conter outros arrays.</p>
+<p>Para mostrar o conteúdo de um <code>array</code> temos que usar uma função específica, chamada <code>print_r</code>. Vejamos alguns exemplos do que podemos armazenar neles e algumas operações que podemos fazer com eles.</p>
+<pre><code class="language-php"><div><span class="hljs-meta">&lt;?php</span> <span class="hljs-comment">// tipos_compostos_arrays.php</span>
+
+$arr_animais = <span class="hljs-keyword">array</span>(<span class="hljs-string">'gato'</span>,<span class="hljs-string">'cachorro'</span>,<span class="hljs-string">'pássaro'</span>);
+print_r($arr_animais);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;br&gt;'</span>;
+
+$arr_animais2 = [<span class="hljs-string">'gato'</span>, <span class="hljs-string">'cachorro'</span>, <span class="hljs-string">'pássaro'</span>];
+print_r($arr_animais2);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;br&gt;'</span>;
+
+$arr_animais3 = [ 
+    <span class="hljs-string">'Tomero'</span> =&gt; <span class="hljs-string">'gato'</span>, 
+    <span class="hljs-string">'Rutini'</span> =&gt; <span class="hljs-string">'gato'</span>,
+    <span class="hljs-string">'Toby'</span> =&gt; <span class="hljs-string">'cachorro'</span>,
+    <span class="hljs-string">'Chico'</span> =&gt; <span class="hljs-string">'pássaro'</span>
+];
+print_r($arr_animais3);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;br&gt;'</span>;
+
+<span class="hljs-keyword">echo</span> <span class="hljs-string">'O Tomero é um '</span> . $arr_animais3[<span class="hljs-string">'Tomero'</span>] . <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">'O Chico é um '</span> . $arr_animais3[<span class="hljs-string">'Chico'</span>] . <span class="hljs-string">'&lt;br&gt;'</span>;
+
+<span class="hljs-keyword">echo</span> <span class="hljs-string">'As keys são:   '</span>. implode(<span class="hljs-string">', '</span>, array_keys($arr_animais3)).<span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">'Os values são: '</span>. implode(<span class="hljs-string">', '</span>, array_values($arr_animais3)).<span class="hljs-string">'&lt;br&gt;'</span>;
+
+$keys = array_keys($arr_animais3);
+<span class="hljs-keyword">echo</span>  $keys[<span class="hljs-number">3</span>] . <span class="hljs-string">' é '</span> . $arr_animais3[$keys[<span class="hljs-number">3</span>]] . <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-keyword">echo</span>  $keys[<span class="hljs-number">2</span>] . <span class="hljs-string">' é '</span> . $arr_animais3[$keys[<span class="hljs-number">2</span>]] . <span class="hljs-string">'&lt;br&gt;'</span>;
+
+<span class="hljs-keyword">if</span> (in_array(<span class="hljs-string">'Tomero'</span>, array_keys($arr_animais3))){
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Tomero está no array de animais &lt;br&gt;'</span>;
+}
+
+<span class="hljs-keyword">if</span> (in_array(<span class="hljs-string">'Duda'</span>, array_keys($arr_animais3))){
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Duda está no array de animais &lt;br&gt;'</span>;
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Duda não está no array de animais &lt;br&gt;'</span>;
+}
+
+$arr_animais3[<span class="hljs-string">'Duda'</span>] = <span class="hljs-string">'pássaro'</span>;
+<span class="hljs-keyword">if</span> (in_array(<span class="hljs-string">'Duda'</span>, array_keys($arr_animais3))){
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Duda está no array de animais &lt;br&gt;'</span>;
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Duda não está no array de animais &lt;br&gt;'</span>;
+}
+
+<span class="hljs-keyword">unset</span>($arr_animais3);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">'Apagamos a variável $arr_animais3 &lt;br&gt;'</span>;
+print_r($arr_animais3);
+
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<p>O resultado esperado é:</p>
+<blockquote>
+<p>Array
+(
+[0] =&gt; gato
+[1] =&gt; cachorro
+[2] =&gt; pássaro
+)
+<br>Array
+(
+[0] =&gt; gato
+[1] =&gt; cachorro
+[2] =&gt; pássaro
+)
+<br>Array
+(
+[Tomero] =&gt; gato
+[Rutini] =&gt; gato
+[Toby] =&gt; cachorro
+[Chico] =&gt; pássaro
+)
+<br>
+O Tomero é um gato<br>
+O Chico é um pássaro<br>
+As keys são:   Tomero, Rutini, Toby, Chico<br>
+Os values são: gato, gato, cachorro, pássaro<br>
+Chico é pássaro<br>
+Toby é cachorro<br>
+Tomero está no array de animais <br>
+Duda não está no array de animais <br>
+Duda está no array de animais <br>
+Apagamos a variável erray $arr_animais3 <br><br />
+<b>Notice</b>:  Undefined variable: arr_animais3 in <b>C:\xampp\htdocs\introducao_php\tipos_compostos_arrays.php</b> on line <b>32</b><br /></p>
+</blockquote>
+<p>Os <code>objetos</code> são tipos complexos de dados nos quais podemos armazenar dados, chamado atributos, e executar funções, chamadas métodos.</p>
+<p>Os <code>callables</code> ou <code>callbacks</code> são também tipos de dados complexos que permitem armazenar funções. Em PHP podemos chamar uma função sabendo apenas o nome dela.</p>
+<pre><code class="language-php"><div><span class="hljs-meta">&lt;?php</span> <span class="hljs-comment">// tipos_compostos_callable.php</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bemvindo</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Olá Mundo!'</span> . <span class="hljs-string">'&lt;br&gt;'</span>;
+}
+
+call_user_func(<span class="hljs-string">'bemvindo'</span>);
+
+$bemvindo = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($nome)</span></span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Olá '</span>. $nome . <span class="hljs-string">'!'</span> . <span class="hljs-string">'&lt;br&gt;'</span>;
+};
+
+$bemvindo(<span class="hljs-string">'Andres'</span>);
+
+<span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;br&gt;'</span>;
+array_map($bemvindo, [<span class="hljs-string">'Andres'</span>,<span class="hljs-string">'Tomero'</span>,<span class="hljs-string">'Rutini'</span>]);
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<p>Resultado esperado:</p>
+<blockquote>
+<p>Olá Mundo!<br>
+Olá Andres!<br>
+Olá Andres!<br>
+Olá Tomero!<br>
+Olá Rutini!<br></p>
+</blockquote>
+<h2 id="vari%c3%a1veis">Variáveis</h2>
+<p>As variáveis no PHP são definidas com um cifrão (<code>$</code>) seguido pelo nome da variável. Os nomes de variável são case-sensitive. Isto significa que <code>$nome</code> e <code>$Nome</code> são variáveis diferentes, pois ele diferencia maiúsculas e minúsculas.</p>
+<p>Um ponto importante em PHP é que a mesma variáveis pode assumir diferentes tipos de dados ao longo de seu tempo de vida. Inicialmente pode ser um número inteiro, depois passar para float, ser uma string e depois virar uma objeto. No entanto, recomenda-se não usar a mesma variável para armazenar varios dados ao longo do programa, pois pode confundir o programador no uso da variável.</p>
+<pre><code class="language-php"><div><span class="hljs-meta">&lt;?php</span> <span class="hljs-comment">// variaveis_tipo_dinamico.php</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">msg_tipo_variavel</span><span class="hljs-params">($var_name)</span></span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'O tipo da variável é '</span> . gettype($var_name) . <span class="hljs-string">'&lt;br&gt;'</span>;
+}
+
+$i = <span class="hljs-number">1</span>;
+msg_tipo_variavel($i);
+
+$i = <span class="hljs-number">1.6</span>;
+msg_tipo_variavel($i);
+
+$i = <span class="hljs-string">'Olá Mundo'</span>;
+msg_tipo_variavel($i);
+
+$i = [<span class="hljs-string">'gato'</span>,<span class="hljs-string">'cachorro'</span>,<span class="hljs-string">'pássaro'</span>];
+msg_tipo_variavel($i);
+
+$nome = <span class="hljs-string">'Andrés'</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">'Meu nome é '</span> . $nome . <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"Meu nome é $nome \n"</span>;
+
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<p>Observe as duas formas de mostrar conteúdo de uma variável. Usando aspas simples temos que concatenar as strings com <code>.</code>. Já utilizando aspas duplas podemos colocar o nome da variável dentro e essa variável será resolvida antes e assim será apresentado o resultado ao usuário.</p>
+<p>O resultado será:</p>
+<blockquote>
+<p>O tipo da variável é integer<br>
+O tipo da variável é double<br>
+O tipo da variável é string<br>
+O tipo da variável é array<br>
+Meu nome é Andrés<br>
+Meu nome é Andrés<br></p>
+</blockquote>
+<p>Também existe variáveis de fontes externas. As mais comuns são <code>$_POST</code> e <code>$_GET</code> que provém de formulários em HTML. Para testar cada uma delas vamos construir dois formulários simples em uma página HTML, um que envie os dados via GET e outro via POST para uma página PHP.</p>
+<pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- variaveis_externas_formulario.html --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Get e Post<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"variaveis_externas.php"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"get"</span>&gt;</span>
+    Nome:  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+    Email: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"email"</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Send"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"variaveis_externas.php"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span>&gt;</span>
+    Nome:  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+    Email: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"email"</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Send"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>Resultado:</p>
+<form action="variaveis_externas.php" method="get">
+    Nome:  <input type="text" name="username" /><br />
+    Email: <input type="text" name="email" /><br />
+    <input type="submit" name="submit" value="Send" />
+</form>
+<br>
+<form action="variaveis_externas.php" method="post">
+    Nome:  <input type="text" name="username" /><br />
+    Email: <input type="text" name="email" /><br />
+    <input type="submit" name="submit" value="Send" />
+</form>
+<p>Neste formulário estamos enviando os dados para um arquivo PHP chamado <code>variaveis_externas.php</code>, que irá processar o conteúdo enviado via POST e via GET, da seguinte forma:</p>
+<pre><code class="language-php"><div><span class="hljs-meta">&lt;?php</span> 
+<span class="hljs-comment">// variaveis_externas.php</span>
+<span class="hljs-keyword">if</span> (!<span class="hljs-keyword">empty</span>($_GET)){
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Recebemos dados via GET: "</span>;
+    print_r($_GET);
+}
+
+<span class="hljs-keyword">if</span> (!<span class="hljs-keyword">empty</span>($_POST)){
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Recebemos dados via POST: "</span>;
+    print_r($_POST);
+}
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<p>Outra variável importante é <code>$_SERVER</code>. Esta variável contem informações sobre a requisição HTTP que está sendo feita pelo cliente e também contém informações sobre o servidor em que está ordando Apache e o interpretador PHP. A variável <code>$_SERVER</code> é um array do tipo <code>$key =&gt; $value</code> ou chave =&gt; valor. Vamos ver o conteúdo dessa variável usando a função <code>print_r</code>, como no exemplo abaixo:</p>
+<pre><code class="language-php"><div><span class="hljs-comment">// variavel_server.php</span>
+print_r($_SERVER);
+</div></code></pre>
+<p>Ao acessar esse arquivo pelo browser vamos observar muitas informações, o que torna difícil a compreensão do conteúdo desse array. Com isso, vamos aproveitar a vantagem de poder combinar código HTML e PHP e criar uma tabela com os dados contidos nessa variável. Como o formato do array é do tipo <code>$key =&gt; $value</code> vamos criar uma tela onde a primeira coluna é a <code>$key</code> e a segunda coluna é o <code>$value</code>.</p>
+<pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- variavel_server.php --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">border</span>=<span class="hljs-string">1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Chave<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Valor<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">foreach</span> ($_SERVER <span class="hljs-keyword">as</span> $key =&gt; $value) { <span class="hljs-meta">?&gt;</span></span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span> <span class="php"><span class="hljs-meta">&lt;?</span>= $key <span class="hljs-meta">?&gt;</span></span> <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span> <span class="php"><span class="hljs-meta">&lt;?</span>= $value <span class="hljs-meta">?&gt;</span></span> <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="php"><span class="hljs-meta">&lt;?php</span> } <span class="hljs-meta">?&gt;</span></span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+</div></code></pre>
+<p>Ao acessar essa página no browser ela deverá mostrar os dados da variável <code>$_SERVER</code> no formato de uma tabela. Algumas variáveis contidas em <code>$_SERVER</code> vão variar de acordo com o browser que utilizarmos.</p>
+<p>Vamos colocar o arquivo <code>variavel_server.php</code> no servidor da instituição (<a href="http://acad01.lages.ifsc.edu.br">acad01.lages.ifsc.edu.br</a>). Para isso, vamos copiar o nosso arquivo local e copiá-lo na pasta pessoal de cada um dentro desse servidor. Assim, ficará em um endereço parecido com o seguinte <code>acad01.lages.ifsc.edu.br/aluno1/seu_nome/variavel_server.php</code>. Após isso, acesse esse endereço utilizando os seguintes meios:</p>
+<ul>
+<li>Google Chrome (PC)</li>
+<li>Mozilla Firefox (PC)</li>
+<li>Google Chrome (Mobile): verifique se o seu celular está na rede interna do IFSC.</li>
+</ul>
+<h2 id="estruturas-de-controle">Estruturas de Controle</h2>
+<p>As princiapsi estruturas de controle de fluxo são:</p>
+<ul>
+<li><em>if</em></li>
+<li><em>while</em></li>
+<li><em>for</em></li>
+<li><em>forach</em></li>
+<li><em>switch case</em></li>
+</ul>
+<p>A estrutura de de controle <em>if</em> é uma estrutura condicional que permite desviar o nosso programa para executar um sequência de instruções se uma condição for satisfeita ou não. Essa estrutura é muito comum em qualquer linguagem de programação. Para lembrar a estrutura dela vamos construir uma página de autenticação por palavra-chave. Para isso vamos construir três arquivos:</p>
+<ul>
+<li><code>formulario_autenticacao.php</code>: uma página que contém um formulário para que o usuário escreva a palavra-chave;</li>
+<li><code>area_restrita.php</code>: esta página será apresentada apenas se o usuário digitou a palavra chave corretamente.</li>
+<li><code>autenticacao.php</code>: responsável por verificar se o usuário digitou a palavra-correta e o encaminhará para a area restrita;</li>
+</ul>
+<p>Neste primeiro arquivo apresentamos um formulário simples em HTML que permita ao usuário digitar a palavra-chave.</p>
+<pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- formulario_autenticacao.php --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Formulário Autenticação<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Você está querendo entrar em uma área restrita, por favor digite a palavra-chave<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"autenticacao.php"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span>&gt;</span>
+    Palavra-chave: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"palavra_chave"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>    
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Enviar"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>Observe que o formulário estará enviando a palavra-chave digitada pelo usuário para <code>autenticacao.php</code> via POST. O resultado da nossa página será o seguinte:</p>
+<html>
+<head>
+    <title>Formulário Autenticação</title>
+</head>
+<body>
+<p>Você está querendo entrar em uma área restrita, por favor digite a palavra-chave</p>
+<form action="autenticacao.php" method="post">
+    Palavra-chave: <input type="text" name="palavra_chave" />
+    <br>    
+    <input type="submit" value="Enviar" />
+</form>
+</body>
+</html>
+<p>O segundo arquivo irá receber os dados enviados via POST e verificar se a palavra-chave é a correta e, caso seja, encaminhar o usuário para a área restrita.</p>
+<pre><code class="language-php"><div><span class="hljs-comment">// autenticacao.php</span>
+<span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// Verificar se foi enviada a palavra_chave via POST.</span>
+<span class="hljs-keyword">if</span> ( <span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">'palavra_chave'</span>]) ){    
+    $palavra_chave = $_POST[<span class="hljs-string">'palavra_chave'</span>];    
+    <span class="hljs-comment">// Verificar se a palavra chave é a correta</span>
+    <span class="hljs-keyword">if</span> ( $palavra_chave == <span class="hljs-string">"123mudar"</span>){
+        header(<span class="hljs-string">"Location: area_restrita.php"</span>);
+    }    
+}
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<p>Nesse arquivo primeiro verificamos</p>
+
+    </body>
+    </html>
