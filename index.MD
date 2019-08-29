@@ -463,7 +463,7 @@ Ao acessar esse arquivo pelo browser vamos observar muitas informações, o que 
             <th>Valor</th>
         </tr>
     </thead>
-    </tbody>
+    <tbody>
     <?php foreach ($_SERVER as $key => $value) { ?>
         <tr>
             <td> <?= $key ?> </td>
@@ -551,7 +551,7 @@ if ( isset($_POST['palavra_chave']) ){
 O terceiro arquivo se refere à área de acesso restrito. Neste caso vamos fazer uma página simples.
 
 ```php
-// acesso_restrito.php
+// area_restrita.php
 <html>
     <head>
         <title>Área Restrita</title>
