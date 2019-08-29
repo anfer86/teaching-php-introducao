@@ -443,12 +443,12 @@ print_r($_SERVER);
 <li>Google Chrome (Mobile): verifique se o seu celular está na rede interna do IFSC.</li>
 </ul>
 <h2 id="estruturas-de-controle">Estruturas de Controle</h2>
-<p>As princiapsi estruturas de controle de fluxo são:</p>
+<p>As principais estruturas de controle de fluxo são:</p>
 <ul>
 <li><em>if</em></li>
-<li><em>while</em></li>
+<li><em>foreach</em></li>
 <li><em>for</em></li>
-<li><em>forach</em></li>
+<li><em>while</em></li>
 <li><em>switch case</em></li>
 </ul>
 <p>A estrutura de de controle <em>if</em> é uma estrutura condicional que permite desviar o nosso programa para executar um sequência de instruções se uma condição for satisfeita ou não. Essa estrutura é muito comum em qualquer linguagem de programação. Para lembrar a estrutura dela vamos construir uma página de autenticação por palavra-chave. Para isso vamos construir três arquivos:</p>
@@ -496,11 +496,103 @@ print_r($_SERVER);
     <span class="hljs-comment">// Verificar se a palavra chave é a correta</span>
     <span class="hljs-keyword">if</span> ( $palavra_chave == <span class="hljs-string">"123mudar"</span>){
         header(<span class="hljs-string">"Location: area_restrita.php"</span>);
-    }    
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"Palavra chave incorreta. Você não tem permissão para entrar na área de acesso restrito."</span>;
+    } 
 }
 <span class="hljs-meta">?&gt;</span>
 </div></code></pre>
-<p>Nesse arquivo primeiro verificamos</p>
+<p>O terceiro arquivo se refere à área de acesso restrito. Neste caso vamos fazer uma página simples.</p>
+<pre><code class="language-php"><div><span class="hljs-comment">// acesso_restrito.php</span>
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Área Restrita&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h2 style=<span class="hljs-string">"color: red"</span>&gt;Área de acesso restrito&lt;/h2&gt;
+        &lt;p&gt;Conteú<span class="hljs-keyword">do</span> da área restrita&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</div></code></pre>
+<p>Verifique o funcionamento da nossa aplicação iniciando pela página <code>formulario_autenticacao.php</code> e testando possíveis valores de palavra-chave. Os dados desse formulário são encaminhados via POST para <code>autenticacao.php</code>, quem decide se vai encaminhar o usuário para <code>area_restrita.php</code> ou não, dependendo de ter acertado a palavra-chave.</p>
+<p>De qualquer forma a aplicação tem um problema. Se eu tentar acessar a página <code>area_restrita.php</code> diretamente, sem passar pelo <code>formulario_autenticacao.php</code>, vou conseguir normalmente. Para resolver essa questão precisamos usar uma recurso muito interessante do PHP, que são as sessões. Nas sessões podemos guardar algumas informações importantes, como por exemplo, se o usuário foi autenticado corretamente (<code>autenticado = true</code>).</p>
+<p>Com isso, no arquivo <code>autenticacao.php</code> antes de encaminhar o usuario para a <code>area_restrita.php</code> vamos iniciar uma sessão e salvar o estado de autenticacao do usuário, utilizando a variável <code>$_SESSION</code>, como segue:</p>
+<pre><code class="language-php"><div><span class="hljs-comment">// autenticacao.php</span>
+<span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// Verificar se foi enviada a palavra_chave via POST.</span>
+<span class="hljs-keyword">if</span> ( <span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">'palavra_chave'</span>]) ){    
+    $palavra_chave = $_POST[<span class="hljs-string">'palavra_chave'</span>];    
+    <span class="hljs-comment">// Verificar se a palavra chave é a correta</span>
+    <span class="hljs-keyword">if</span> ( $palavra_chave == <span class="hljs-string">"123mudar"</span>){
+        session_start();
+        $_SESSION[<span class="hljs-string">'autenticado'</span>] = <span class="hljs-keyword">true</span>;
+        header(<span class="hljs-string">"Location: area_restrita.php"</span>);
+    } <span class="hljs-keyword">else</span> {
+        session_start();
+        $_SESSION[<span class="hljs-string">'autenticado'</span>] = <span class="hljs-keyword">false</span>;        
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"Palavra chave incorreta. Você não tem permissão para entrar na área de acesso restrito."</span>;
+    } 
+}
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<p>Seguindo essa idéia, na página <code>area_restrita.php</code> só vamos mostrar o conteúdo da página se o usuário estiver autenticado, o que significa em código PHP a perguntar  <code>if ($_SESSION['autenticado'] == true)</code> ou simplesmente <code>if ($_SESSION['autenticado'])</code>. A nova versão de <code>area_restrita.php</code> é apresentada a seguir:</p>
+<pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- area_restrita.php --&gt;</span>
+<span class="php"><span class="hljs-meta">&lt;?php</span>
+session_start();
+<span class="hljs-keyword">if</span> ( <span class="hljs-keyword">isset</span>($_SESSION[<span class="hljs-string">'autenticado'</span>]) &amp;&amp; $_SESSION[<span class="hljs-string">'autenticado'</span>] ) {
+<span class="hljs-meta">?&gt;</span></span>
+
+<span class="hljs-comment">&lt;!-- Este conteúdo só será mostrado ao usuário
+se o usuário tiver se autenticado --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Área Restrita<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"color: red"</span>&gt;</span>Área de acesso restrito<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Conteúdo da área restrita<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+
+<span class="php"><span class="hljs-meta">&lt;?php</span> } <span class="hljs-keyword">else</span> { <span class="hljs-meta">?&gt;</span></span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Você não tem permissão para acessar esta área<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="php"><span class="hljs-meta">&lt;?php</span> } <span class="hljs-meta">?&gt;</span></span>
+</div></code></pre>
+<p>As estruturas de controle <em>for</em> e <em>foreach</em> permitem repetir o bloco de instruções entre <code>{ ... }</code>. A primeira estrutura <em>for</em> tem o seguinte formato:</p>
+<pre><code class="language-php"><div><span class="hljs-keyword">for</span> (expr1; expr2; expr3){
+    statement
+}
+</div></code></pre>
+<p>A expressão <code>expr1</code> é a condição inicial, por exemplo, <code>$i = 0</code>; a expressão <code>expr2</code> é a condição a ser verificada antes de executar o bloco de comandos, por exemplo, <code>$i &lt; 10</code>; e a expressão <code>expr3</code> é a ação que é executada depois de executar o bloco de comandos, por exemplo, <code>$i++</code>. Assim, para mostrar os números de 0 a 9 definimos o <em>for</em> da seguinte forma:</p>
+<pre><code class="language-php"><div><span class="hljs-keyword">for</span> ($i=<span class="hljs-number">0</span>; $i &lt; <span class="hljs-number">10</span>; $i++){
+    <span class="hljs-keyword">echo</span> $i . <span class="hljs-string">' '</span>;    
+}
+</div></code></pre>
+<p>Em muitas situações queremos fazer efetuar um for para cada elemento de um array. Por exemplo, podemos criar um array de nomes <code>$nomes = ['Andres','Anahi','Tomero', 'Rutini']</code> e posso querer imprimir todos os valores. Embora possa fazer utilizando <em>for</em> convencional, da seguinte forma:</p>
+<pre><code class="language-php"><div><span class="hljs-keyword">for</span> ($i=<span class="hljs-number">0</span>; $i &lt; sizeof($nomes); $i++){
+    <span class="hljs-keyword">echo</span> $nomes[$i] . <span class="hljs-string">' '</span>;    
+}
+</div></code></pre>
+<p>é mais comum utilizar a estrutura de repetição <em>foreach</em>, que tem o seguinte formato:</p>
+<pre><code class="language-php"><div><span class="hljs-keyword">foreach</span> (array_expression <span class="hljs-keyword">as</span> $value){
+    statement
+}
+</div></code></pre>
+<p>e para o nosso exemplo de nomes ficaria da seguinte forma:</p>
+<pre><code class="language-php"><div><span class="hljs-keyword">foreach</span> ($nomes <span class="hljs-keyword">as</span> $nome){
+    <span class="hljs-keyword">echo</span> $nome . <span class="hljs-string">' '</span>;
+}
+</div></code></pre>
+<p>Ainda, podemos utilizar <em>foreach</em> no caso de um array no formato <code>$key =&gt; $value</code>. Utilizamos essa estrutura da seguinte forma:</p>
+<pre><code class="language-php"><div><span class="hljs-keyword">foreach</span> (array_expression <span class="hljs-keyword">as</span> $key =&gt; $value){
+    statement
+}
+</div></code></pre>
+<p>Por exemplo, a nossa variável <code>$_SERVER</code> contém as suas informações no formato <code>$key =&gt; $value</code>. Podemos mostrar esses dados utilizando <em>foreach</em>, como descrito abaixo.</p>
+<pre><code class="language-php"><div><span class="hljs-keyword">foreach</span> ($_SERVER <span class="hljs-keyword">as</span> $key =&gt; $value){
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"&lt;li&gt;&lt;b&gt;$key:&lt;/b&gt; $value &lt;/li&gt;"</span>;
+}
+</div></code></pre>
 
     </body>
     </html>
