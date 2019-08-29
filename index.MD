@@ -483,11 +483,11 @@ Vamos colocar o arquivo `variavel_server.php` no servidor da instituição (acad
 
 ## Estruturas de Controle
 
-As princiapsi estruturas de controle de fluxo são:
+As principais estruturas de controle de fluxo são:
 - *if*
-- *while*
+- *foreach*
 - *for*
-- *forach*
+- *while*
 - *switch case*
 
 A estrutura de de controle *if* é uma estrutura condicional que permite desviar o nosso programa para executar um sequência de instruções se uma condição for satisfeita ou não. Essa estrutura é muito comum em qualquer linguagem de programação. Para lembrar a estrutura dela vamos construir uma página de autenticação por palavra-chave. Para isso vamos construir três arquivos:
@@ -541,9 +541,127 @@ if ( isset($_POST['palavra_chave']) ){
     // Verificar se a palavra chave é a correta
     if ( $palavra_chave == "123mudar"){
         header("Location: area_restrita.php");
-    }    
+    } else {
+        echo "Palavra chave incorreta. Você não tem permissão para entrar na área de acesso restrito.";
+    } 
 }
 ?>
 ```
 
-Nesse arquivo primeiro verificamos
+O terceiro arquivo se refere à área de acesso restrito. Neste caso vamos fazer uma página simples.
+
+```php
+// acesso_restrito.php
+<html>
+    <head>
+        <title>Área Restrita</title>
+    </head>
+    <body>
+        <h2 style="color: red">Área de acesso restrito</h2>
+        <p>Conteúdo da área restrita</p>
+    </body>
+</html>
+```
+
+Verifique o funcionamento da nossa aplicação iniciando pela página `formulario_autenticacao.php` e testando possíveis valores de palavra-chave. Os dados desse formulário são encaminhados via POST para `autenticacao.php`, quem decide se vai encaminhar o usuário para `area_restrita.php` ou não, dependendo de ter acertado a palavra-chave.
+
+De qualquer forma a aplicação tem um problema. Se eu tentar acessar a página `area_restrita.php` diretamente, sem passar pelo `formulario_autenticacao.php`, vou conseguir normalmente. Para resolver essa questão precisamos usar uma recurso muito interessante do PHP, que são as sessões. Nas sessões podemos guardar algumas informações importantes, como por exemplo, se o usuário foi autenticado corretamente (`autenticado = true`).
+
+Com isso, no arquivo `autenticacao.php` antes de encaminhar o usuario para a `area_restrita.php` vamos iniciar uma sessão e salvar o estado de autenticacao do usuário, utilizando a variável `$_SESSION`, como segue:
+
+```php 
+// autenticacao.php
+<?php
+// Verificar se foi enviada a palavra_chave via POST.
+if ( isset($_POST['palavra_chave']) ){    
+    $palavra_chave = $_POST['palavra_chave'];    
+    // Verificar se a palavra chave é a correta
+    if ( $palavra_chave == "123mudar"){
+        session_start();
+        $_SESSION['autenticado'] = true;
+        header("Location: area_restrita.php");
+    } else {
+        session_start();
+        $_SESSION['autenticado'] = false;        
+        echo "Palavra chave incorreta. Você não tem permissão para entrar na área de acesso restrito.";
+    } 
+}
+?>
+```
+
+Seguindo essa idéia, na página `area_restrita.php` só vamos mostrar o conteúdo da página se o usuário estiver autenticado, o que significa em código PHP a perguntar  `if ($_SESSION['autenticado'] == true)` ou simplesmente `if ($_SESSION['autenticado'])`. A nova versão de `area_restrita.php` é apresentada a seguir:
+
+```html
+<!-- area_restrita.php -->
+<?php
+session_start();
+if ( isset($_SESSION['autenticado']) && $_SESSION['autenticado'] ) {
+?>
+
+<!-- Este conteúdo só será mostrado ao usuário
+se o usuário tiver se autenticado -->
+<html>
+    <head>
+        <title>Área Restrita</title>
+    </head>
+    <body>
+        <h2 style="color: red">Área de acesso restrito</h2>
+        <p>Conteúdo da área restrita</p>
+    </body>
+</html>
+
+<?php } else { ?>
+    <p>Você não tem permissão para acessar esta área</p>
+<?php } ?>
+```
+
+As estruturas de controle *for* e *foreach* permitem repetir o bloco de instruções entre `{ ... }`. A primeira estrutura *for* tem o seguinte formato:
+
+```php
+for (expr1; expr2; expr3){
+    statement
+}
+```
+
+A expressão `expr1` é a condição inicial, por exemplo, `$i = 0`; a expressão `expr2` é a condição a ser verificada antes de executar o bloco de comandos, por exemplo, `$i < 10`; e a expressão `expr3` é a ação que é executada depois de executar o bloco de comandos, por exemplo, `$i++`. Assim, para mostrar os números de 0 a 9 definimos o *for* da seguinte forma:
+
+```php
+for ($i=0; $i < 10; $i++){
+    echo $i . ' ';    
+}
+```
+
+Em muitas situações queremos fazer efetuar um for para cada elemento de um array. Por exemplo, podemos criar um array de nomes `$nomes = ['Andres','Anahi','Tomero', 'Rutini']` e posso querer imprimir todos os valores. Embora possa fazer utilizando *for* convencional, da seguinte forma:
+```php
+for ($i=0; $i < sizeof($nomes); $i++){
+    echo $nomes[$i] . ' ';    
+}
+```
+
+é mais comum utilizar a estrutura de repetição *foreach*, que tem o seguinte formato:
+```php
+foreach (array_expression as $value){
+    statement
+}
+```
+
+e para o nosso exemplo de nomes ficaria da seguinte forma:
+```php
+foreach ($nomes as $nome){
+    echo $nome . ' ';
+}
+```
+
+Ainda, podemos utilizar *foreach* no caso de um array no formato `$key => $value`. Utilizamos essa estrutura da seguinte forma:
+```php
+foreach (array_expression as $key => $value){
+    statement
+}
+```
+
+Por exemplo, a nossa variável `$_SERVER` contém as suas informações no formato `$key => $value`. Podemos mostrar esses dados utilizando *foreach*, como descrito abaixo. 
+```php
+foreach ($_SERVER as $key => $value){
+    echo "<li><b>$key:</b> $value </li>";
+}
+```
