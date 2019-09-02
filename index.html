@@ -425,7 +425,7 @@ print_r($_SERVER);
             <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Valor<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
     <span class="php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">foreach</span> ($_SERVER <span class="hljs-keyword">as</span> $key =&gt; $value) { <span class="hljs-meta">?&gt;</span></span>
         <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span> <span class="php"><span class="hljs-meta">&lt;?</span>= $key <span class="hljs-meta">?&gt;</span></span> <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
@@ -451,6 +451,7 @@ print_r($_SERVER);
 <li><em>while</em></li>
 <li><em>switch case</em></li>
 </ul>
+<h3 id="estrutura-de-controle-condicional">Estrutura de Controle Condicional</h3>
 <p>A estrutura de de controle <em>if</em> é uma estrutura condicional que permite desviar o nosso programa para executar um sequência de instruções se uma condição for satisfeita ou não. Essa estrutura é muito comum em qualquer linguagem de programação. Para lembrar a estrutura dela vamos construir uma página de autenticação por palavra-chave. Para isso vamos construir três arquivos:</p>
 <ul>
 <li><code>formulario_autenticacao.php</code>: uma página que contém um formulário para que o usuário escreva a palavra-chave;</li>
@@ -503,7 +504,7 @@ print_r($_SERVER);
 <span class="hljs-meta">?&gt;</span>
 </div></code></pre>
 <p>O terceiro arquivo se refere à área de acesso restrito. Neste caso vamos fazer uma página simples.</p>
-<pre><code class="language-php"><div><span class="hljs-comment">// acesso_restrito.php</span>
+<pre><code class="language-php"><div><span class="hljs-comment">// area_restrita.php</span>
 &lt;html&gt;
     &lt;head&gt;
         &lt;title&gt;Área Restrita&lt;/title&gt;
@@ -558,6 +559,45 @@ se o usuário tiver se autenticado --&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Você não tem permissão para acessar esta área<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="php"><span class="hljs-meta">&lt;?php</span> } <span class="hljs-meta">?&gt;</span></span>
 </div></code></pre>
+<blockquote>
+<p><strong>Exercício 1</strong>: Implemente uma nova versão dos arquivos <code>formulario_autenticacao.php</code> e <code>autenticacao.php</code>, para autenticação de nome de usuário e senha. Para isso, crie um formulário que tenha os campos <code>usuario</code> ou <code>username</code> e <code>senha</code> ou <code>password</code>. Ao enviar o formulário via POST o arquivo <code>autenticacao.php</code> deverá verificar se o nome de usuário e senha estão em um array previamente definido. Um exemplo desse array é:</p>
+<pre><code class="language-php"><div>$usuarios = [
+  <span class="hljs-string">'pedro'</span> =&gt; <span class="hljs-string">'123mudar'</span>,
+  <span class="hljs-string">'maria'</span> =&gt; <span class="hljs-string">'05/07/90'</span>,
+  <span class="hljs-string">'joao'</span>  =&gt; <span class="hljs-string">'toby'</span>,
+  <span class="hljs-string">'julia'</span> =&gt; <span class="hljs-string">'ju11@'</span> 
+];
+</div></code></pre>
+<p>Se o nome de usuário e a senha forem corretos deverá encaminhar a requisição para <code>area_restrita.php</code>. Lembre que apenas usuários logados terão acesso área restrita. Um exemplo da página <code>formulario_autenticacao.php</code> é apresentado a seguir:</p>
+<div style="border: 1px dashed black; padding: 5px;">
+<p>Você está querendo entrar em uma área restrita, por favor digite nome de usuário e senha.</p>
+<form action="autenticacao.php" method="post">
+   Usuário: <input type="text" name="usuario" />
+   <br>    
+   Senha: <input type="text" name="senha" />
+   <br>    
+   <input type="submit" value="Enviar" />
+</form>
+</div>
+</blockquote>
+<blockquote>
+<p><strong>Exercício 2</strong>: Melhorar a identificação de problemas no login. Caso o login não tenha dado certo, você deverá encaminhar o usuário novamente para a página de login e mostrar uma mensagem que indique algum dos problemas a seguir: &quot;Usuário não existe.&quot;; &quot;Senha incorreta.&quot; Um exemplo de como deve ficar o resultado ao voltar para página de login:</p>
+<div style="border: 1px dashed black; padding: 5px;">
+<p>Você está querendo entrar em uma área restrita, por favor digite nome de usuário e senha.</p>
+<span style="color: red">Senha incorreta. </span>
+<form action="autenticacao.php" method="post">
+   Usuário: <input type="text" name="usuario" />
+   <br>    
+   Senha: <input type="text" name="senha" />
+   <br>    
+   <input type="submit" value="Enviar" />
+</form>
+</div>
+</blockquote>
+<blockquote>
+<p><strong>Exercício 3</strong>: A funcionalidade implementada para verificar se o nome de usuário está correto faz diferenciação de maiúsculas e minúsculas, o que chama-se verificação <em>case-sensitve</em>. Por exemplo, se o usuário digitar <code>PeDrO</code> ao invés de <code>pedro</code> o será redirecionado para a página de login como nome de usuário incorreto. Você tem que tornar funcionalidade <em>case-insensitive</em>. Considere que todos os seus nomes de usuário na variável <code>$usuarios</code> foram armazenados em minúsculo. Assim, se o usuário digitar <code>Pedro</code>, <code>PeDrO</code> ou <code>pEDRO</code> o sistema irá reconhecer que trata-se do usuário <code>pedro</code>. Isto apenas pode ser feito para o nome de usuário, mas nunca para a senha.</p>
+</blockquote>
+<h3 id="estruturas-de-repeti%c3%a7%c3%a3o">Estruturas de Repetição</h3>
 <p>As estruturas de controle <em>for</em> e <em>foreach</em> permitem repetir o bloco de instruções entre <code>{ ... }</code>. A primeira estrutura <em>for</em> tem o seguinte formato:</p>
 <pre><code class="language-php"><div><span class="hljs-keyword">for</span> (expr1; expr2; expr3){
     statement
@@ -573,7 +613,7 @@ se o usuário tiver se autenticado --&gt;</span>
     <span class="hljs-keyword">echo</span> $nomes[$i] . <span class="hljs-string">' '</span>;    
 }
 </div></code></pre>
-<p>é mais comum utilizar a estrutura de repetição <em>foreach</em>, que tem o seguinte formato:</p>
+<p>No entanto, quando estamos interessados nos valores do vetor, e não no índice, é mais comum utilizar a estrutura de repetição <em>foreach</em>, que tem o seguinte formato:</p>
 <pre><code class="language-php"><div><span class="hljs-keyword">foreach</span> (array_expression <span class="hljs-keyword">as</span> $value){
     statement
 }
@@ -593,6 +633,144 @@ se o usuário tiver se autenticado --&gt;</span>
     <span class="hljs-keyword">echo</span> <span class="hljs-string">"&lt;li&gt;&lt;b&gt;$key:&lt;/b&gt; $value &lt;/li&gt;"</span>;
 }
 </div></code></pre>
+<blockquote>
+<p><strong>Exercício 1</strong>: Apresente nas seguintes situações qual é a estrutura de repetição mais correta a ser utilizada, <code>for</code> ou <code>foreach</code>:</p>
+<ul>
+<li>Procurar em um vetor numérico qual é o maior elemento e retornar a sua posição</li>
+<li>Procurar em um vetor numérico qual é o maior elemento e retornar o seu velor</li>
+<li>Procurar em um vetor numérico qual é o maior elemento e retornar a sua posição e seu valor</li>
+<li>Somar os elementos de um vetor numérico</li>
+<li>Procurar uma string está dentro de um vetor de strings e retornar o número de vezes que foi encontrada</li>
+<li>Procurar uma string está dentro de um vetor de strings e retornar um vetor com as posições do vetor em que foi encontrada</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>Exercício 2</strong>: Na área restrita você deverá mostrar informações relacionadas ao usuário que fez login corretamente. Por exemplo, se o usuário <code>pedro</code> logou você deverá mostrar os seguinte dados:</p>
+<div style="border: 1px dashed black; padding: 5px;">
+   <h2 style="color: red">Área de acesso restrito</h2>
+   <p>Bem vindo Pedro de Alcântara. Verifique se seus dados estão atualizados:</p>
+   <ul>
+      <li>Nome Completo: Pedro de Alcântara</li>
+      <li>Data de Nascimento: 25/04/2000</li>
+      <li>CEP de Residência: 88509002</li>
+   </ul>
+</div>
+<p>Para fazer isso considere os seguintes dados:</p>
+<pre><code class="language-php"><div>$dados_usuario = [
+  <span class="hljs-string">'pedro'</span> =&gt; [
+      <span class="hljs-string">'Nome Completo'</span> =&gt; <span class="hljs-string">'Pedro de Alcântara'</span>,
+      <span class="hljs-string">'Data de Nascimento'</span> =&gt; <span class="hljs-string">'25/04/2000'</span>,
+      <span class="hljs-string">'CEP de Residência'</span> =&gt; <span class="hljs-string">'88509002'</span>
+      ],
+  <span class="hljs-string">'maria'</span> =&gt; [
+      <span class="hljs-string">'Nome Completo'</span> =&gt; <span class="hljs-string">'Maria de Souza'</span>,
+      <span class="hljs-string">'Data de Nascimento'</span> =&gt; <span class="hljs-string">'20/05/2002'</span>,
+      <span class="hljs-string">'CEP de Residência'</span> =&gt; <span class="hljs-string">'88506400'</span>
+      ],
+  <span class="hljs-string">'joao'</span>  =&gt; [
+      <span class="hljs-string">'Nome Completo'</span> =&gt; <span class="hljs-string">'João Barbosa'</span>,
+      <span class="hljs-string">'Data de Nascimento'</span> =&gt; <span class="hljs-string">'15/01/2003'</span>,
+      <span class="hljs-string">'CEP de Residência'</span> =&gt; <span class="hljs-string">'88502161'</span>
+      ],
+  <span class="hljs-string">'julia'</span> =&gt; [
+      <span class="hljs-string">'Nome Completo'</span> =&gt; <span class="hljs-string">'Julia da Serra'</span>,
+      <span class="hljs-string">'Data de Nascimento'</span> =&gt; <span class="hljs-string">'26/10/1998'</span>,
+      <span class="hljs-string">'CEP de Residência'</span> =&gt; <span class="hljs-string">'88502162'</span>
+      ] 
+];
+</div></code></pre>
+</blockquote>
+<blockquote>
+<p><strong>Exercício 3:</strong> Na área restrita você deverá mostrar informações das últimas solicitações relacionadas ao usuário que fez login corremente. Por exemplo, se o usuário <code>pedro</code> logou você cverá mostrar os seguintes dados:</p>
+<div style="border: 1px dashed black; padding: 5px;">
+   <h2 style="color: red">Área de acesso restrito</h2>
+   <p>Bem vindo Pedro de Alcântara. Verifique se seus dados estão atualizados:</p>
+   <ul>
+      <li>Nome Completo: Pedro de Alcântara</li>
+      <li>Data de Nascimento: 25/04/2000</li>
+      <li>CEP de Residência: 88509002</li>
+   </ul>
+   <br>
+   <table style="width: 100%">
+      <thead>
+          <tr>
+              <th style="width: 20%">Número</th>
+              <th style="width: 30%">Data</th>
+              <th style="width: 50%">Solicitação</th> 
+          </tr>
+      </thead>
+      <tbody>
+         <tr>
+              <td>1001</td>
+              <td>25/08/2019</td>
+              <td>Duas canetas de quadro e um apagador</td> 
+         </tr>
+         <tr>
+              <td>1003</td>
+              <td>29/08/2019</td>
+              <td>Notebook</td> 
+         </tr>
+         <tr>
+              <td>1010</td>
+              <td>01/09/2019</td>
+              <td>Projetor Multimidia</td> 
+         </tr>
+      </tbody>
+   </table>
+</div>
+<p>Para fazer isso considere os seguintes dados:</p>
+<pre><code class="language-php"><div>$solicitacoes_usuario = [
+  <span class="hljs-string">'pedro'</span> =&gt; [
+          [
+          <span class="hljs-string">'Número'</span> =&gt; <span class="hljs-string">'1001'</span>,
+          <span class="hljs-string">'Data'</span> =&gt; <span class="hljs-string">'25/08/2019'</span>,
+          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Duas canetas de quadro e um apagador'</span>
+          ],
+          [
+          <span class="hljs-string">'Número'</span> =&gt; <span class="hljs-string">'1003'</span>,
+          <span class="hljs-string">'Data'</span> =&gt; <span class="hljs-string">'29/08/2019'</span>,
+          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Notebook'</span>
+          ],
+          [
+          <span class="hljs-string">'Número'</span> =&gt; <span class="hljs-string">'1010'</span>,
+          <span class="hljs-string">'Data'</span> =&gt; <span class="hljs-string">'01/09/2019'</span>,
+          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Projetor Multimidia'</span>
+          ],
+      ],
+  <span class="hljs-string">'maria'</span> =&gt; [
+          [
+          <span class="hljs-string">'Número'</span> =&gt; <span class="hljs-string">'1000'</span>,
+          <span class="hljs-string">'Data'</span> =&gt; <span class="hljs-string">'24/08/2019'</span>,
+          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Carregador de Notebook'</span>
+          ],
+          [
+          <span class="hljs-string">'Número'</span> =&gt; <span class="hljs-string">'1006'</span>,
+          <span class="hljs-string">'Data'</span> =&gt; <span class="hljs-string">'28/08/2019'</span>,
+          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Mouse sem fio'</span>
+          ],
+      ],
+  <span class="hljs-string">'joao'</span>  =&gt; [
+          [
+          <span class="hljs-string">'Número'</span> =&gt; <span class="hljs-string">'980'</span>,
+          <span class="hljs-string">'Data'</span> =&gt; <span class="hljs-string">'15/08/2019'</span>,
+          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Livro de HTML e Javascript'</span>
+          ],
+          [
+          <span class="hljs-string">'Número'</span> =&gt; <span class="hljs-string">'1035'</span>,
+          <span class="hljs-string">'Data'</span> =&gt; <span class="hljs-string">'02/09/2019'</span>,
+          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Livro de PHP'</span>
+          ],
+      ],
+  <span class="hljs-string">'julia'</span> =&gt; [
+          [
+          <span class="hljs-string">'Número'</span> =&gt; <span class="hljs-string">'1040'</span>,
+          <span class="hljs-string">'Data'</span> =&gt; <span class="hljs-string">'02/09/2019'</span>,
+          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Grampeador'</span>
+          ]
+      ] 
+];
+</div></code></pre>
+</blockquote>
 
     </body>
     </html>
