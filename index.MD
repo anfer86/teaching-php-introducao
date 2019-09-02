@@ -490,6 +490,8 @@ As principais estruturas de controle de fluxo são:
 - *while*
 - *switch case*
 
+### Estrutura de Controle Condicional
+
 A estrutura de de controle *if* é uma estrutura condicional que permite desviar o nosso programa para executar um sequência de instruções se uma condição for satisfeita ou não. Essa estrutura é muito comum em qualquer linguagem de programação. Para lembrar a estrutura dela vamos construir uma página de autenticação por palavra-chave. Para isso vamos construir três arquivos:
 - `formulario_autenticacao.php`: uma página que contém um formulário para que o usuário escreva a palavra-chave;
 - `area_restrita.php`: esta página será apresentada apenas se o usuário digitou a palavra chave corretamente.
@@ -615,6 +617,44 @@ se o usuário tiver se autenticado -->
 <?php } ?>
 ```
 
+> **Exercício 1**: Implemente uma nova versão dos arquivos `formulario_autenticacao.php` e `autenticacao.php`, para autenticação de nome de usuário e senha. Para isso, crie um formulário que tenha os campos `usuario` ou `username` e `senha` ou `password`. Ao enviar o formulário via POST o arquivo `autenticacao.php` deverá verificar se o nome de usuário e senha estão em um array previamente definido. Um exemplo desse array é:
+> ```php 
+> $usuarios = [
+>   'pedro' => '123mudar',
+>   'maria' => '05/07/90',
+>   'joao'  => 'toby',
+>   'julia' => 'ju11@' 
+> ];
+> ```
+> Se o nome de usuário e a senha forem corretos deverá encaminhar a requisição para `area_restrita.php`. Lembre que apenas usuários logados terão acesso área restrita. Um exemplo da página `formulario_autenticacao.php` é apresentado a seguir:
+> <div style="border: 1px dashed black; padding: 5px;">
+> <p>Você está querendo entrar em uma área restrita, por favor digite nome de usuário e senha.</p>
+> <form action="autenticacao.php" method="post">
+>    Usuário: <input type="text" name="usuario" />
+>    <br>    
+>    Senha: <input type="text" name="senha" />
+>    <br>    
+>    <input type="submit" value="Enviar" />
+></form>
+></div>
+
+> **Exercício 2**: Melhorar a identificação de problemas no login. Caso o login não tenha dado certo, você deverá encaminhar o usuário novamente para a página de login e mostrar uma mensagem que indique algum dos problemas a seguir: "Usuário não existe."; "Senha incorreta." Um exemplo de como deve ficar o resultado ao voltar para página de login:
+> <div style="border: 1px dashed black; padding: 5px;">
+> <p>Você está querendo entrar em uma área restrita, por favor digite nome de usuário e senha.</p>
+> <span style="color: red">Senha incorreta. </span>
+> <form action="autenticacao.php" method="post">
+>    Usuário: <input type="text" name="usuario" />
+>    <br>    
+>    Senha: <input type="text" name="senha" />
+>    <br>    
+>    <input type="submit" value="Enviar" />
+></form>
+></div>
+
+> **Exercício 3**: A funcionalidade implementada para verificar se o nome de usuário está correto faz diferenciação de maiúsculas e minúsculas, o que chama-se verificação *case-sensitve*. Por exemplo, se o usuário digitar `PeDrO` ao invés de `pedro` o será redirecionado para a página de login como nome de usuário incorreto. Você tem que tornar funcionalidade *case-insensitive*. Considere que todos os seus nomes de usuário na variável `$usuarios` foram armazenados em minúsculo. Assim, se o usuário digitar `Pedro`, `PeDrO` ou `pEDRO` o sistema irá reconhecer que trata-se do usuário `pedro`. Isto apenas pode ser feito para o nome de usuário, mas nunca para a senha.
+
+### Estruturas de Repetição
+
 As estruturas de controle *for* e *foreach* permitem repetir o bloco de instruções entre `{ ... }`. A primeira estrutura *for* tem o seguinte formato:
 
 ```php
@@ -638,7 +678,7 @@ for ($i=0; $i < sizeof($nomes); $i++){
 }
 ```
 
-é mais comum utilizar a estrutura de repetição *foreach*, que tem o seguinte formato:
+No entanto, quando estamos interessados nos valores do vetor, e não no índice, é mais comum utilizar a estrutura de repetição *foreach*, que tem o seguinte formato:
 ```php
 foreach (array_expression as $value){
     statement
@@ -665,3 +705,143 @@ foreach ($_SERVER as $key => $value){
     echo "<li><b>$key:</b> $value </li>";
 }
 ```
+
+> **Exercício 1**: Apresente nas seguintes situações qual é a estrutura de repetição mais correta a ser utilizada, `for` ou `foreach`:
+> - Procurar em um vetor numérico qual é o maior elemento e retornar a sua posição
+> - Procurar em um vetor numérico qual é o maior elemento e retornar o seu velor
+> - Procurar em um vetor numérico qual é o maior elemento e retornar a sua posição e seu valor
+> - Somar os elementos de um vetor numérico
+> - Procurar uma string está dentro de um vetor de strings e retornar o número de vezes que foi encontrada
+> - Procurar uma string está dentro de um vetor de strings e retornar um vetor com as posições do vetor em que foi encontrada
+
+> **Exercício 2**: Na área restrita você deverá mostrar informações relacionadas ao usuário que fez login corretamente. Por exemplo, se o usuário `pedro` logou você deverá mostrar os seguinte dados:
+> <div style="border: 1px dashed black; padding: 5px;">
+>    <h2 style="color: red">Área de acesso restrito</h2>
+>    <p>Bem vindo Pedro de Alcântara. Verifique se seus dados estão atualizados:</p>
+>    <ul>
+>       <li>Nome Completo: Pedro de Alcântara</li>
+>       <li>Data de Nascimento: 25/04/2000</li>
+>       <li>CEP de Residência: 88509002</li>
+>    </ul>
+> </div>
+> 
+> Para fazer isso considere os seguintes dados:
+> 
+> ```php 
+> $dados_usuario = [
+>   'pedro' => [
+>       'Nome Completo' => 'Pedro de Alcântara',
+>       'Data de Nascimento' => '25/04/2000',
+>       'CEP de Residência' => '88509002'
+>       ],
+>   'maria' => [
+>       'Nome Completo' => 'Maria de Souza',
+>       'Data de Nascimento' => '20/05/2002',
+>       'CEP de Residência' => '88506400'
+>       ],
+>   'joao'  => [
+>       'Nome Completo' => 'João Barbosa',
+>       'Data de Nascimento' => '15/01/2003',
+>       'CEP de Residência' => '88502161'
+>       ],
+>   'julia' => [
+>       'Nome Completo' => 'Julia da Serra',
+>       'Data de Nascimento' => '26/10/1998',
+>       'CEP de Residência' => '88502162'
+>       ] 
+> ];
+> ```
+
+> **Exercício 3:** Na área restrita você deverá mostrar informações das últimas solicitações relacionadas ao usuário que fez login corremente. Por exemplo, se o usuário `pedro` logou você cverá mostrar os seguintes dados:
+> <div style="border: 1px dashed black; padding: 5px;">
+>    <h2 style="color: red">Área de acesso restrito</h2>
+>    <p>Bem vindo Pedro de Alcântara. Verifique se seus dados estão atualizados:</p>
+>    <ul>
+>       <li>Nome Completo: Pedro de Alcântara</li>
+>       <li>Data de Nascimento: 25/04/2000</li>
+>       <li>CEP de Residência: 88509002</li>
+>    </ul>
+>    <br>
+>    <table style="width: 100%">
+>       <thead>
+>           <tr>
+>               <th style="width: 20%">Número</th>
+>               <th style="width: 30%">Data</th>
+>               <th style="width: 50%">Solicitação</th> 
+>           </tr>
+>       </thead>
+>       <tbody>
+>          <tr>
+>               <td>1001</td>
+>               <td>25/08/2019</td>
+>               <td>Duas canetas de quadro e um apagador</td> 
+>          </tr>
+>          <tr>
+>               <td>1003</td>
+>               <td>29/08/2019</td>
+>               <td>Notebook</td> 
+>          </tr>
+>          <tr>
+>               <td>1010</td>
+>               <td>01/09/2019</td>
+>               <td>Projetor Multimidia</td> 
+>          </tr>
+>       </tbody>
+>    </table>
+> </div>
+>
+> Para fazer isso considere os seguintes dados:
+> 
+> ```php 
+> $solicitacoes_usuario = [
+>   'pedro' => [
+>           [
+>           'Número' => '1001',
+>           'Data' => '25/08/2019',
+>           'Solicitação' => 'Duas canetas de quadro e um apagador'
+>           ],
+>           [
+>           'Número' => '1003',
+>           'Data' => '29/08/2019',
+>           'Solicitação' => 'Notebook'
+>           ],
+>           [
+>           'Número' => '1010',
+>           'Data' => '01/09/2019',
+>           'Solicitação' => 'Projetor Multimidia'
+>           ],
+>       ],
+>   'maria' => [
+>           [
+>           'Número' => '1000',
+>           'Data' => '24/08/2019',
+>           'Solicitação' => 'Carregador de Notebook'
+>           ],
+>           [
+>           'Número' => '1006',
+>           'Data' => '28/08/2019',
+>           'Solicitação' => 'Mouse sem fio'
+>           ],
+>       ],
+>   'joao'  => [
+>           [
+>           'Número' => '980',
+>           'Data' => '15/08/2019',
+>           'Solicitação' => 'Livro de HTML e Javascript'
+>           ],
+>           [
+>           'Número' => '1035',
+>           'Data' => '02/09/2019',
+>           'Solicitação' => 'Livro de PHP'
+>           ],
+>       ],
+>   'julia' => [
+>           [
+>           'Número' => '1040',
+>           'Data' => '02/09/2019',
+>           'Solicitação' => 'Grampeador'
+>           ]
+>       ] 
+> ];
+> ```
+
