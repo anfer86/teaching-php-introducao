@@ -720,6 +720,23 @@ foreach ($arr_animais as $nome => $especie){
 }
 ```
 
+O *foreach* também é utilizado da seguinte forma:
+
+```html
+<?php 
+$arr_animais = [ 
+    'Tomero' => 'gato', 
+    'Rutini' => 'gato',
+    'Toby' => 'cachorro',
+    'Chico' => 'pássaro'
+];
+
+foreach ($arr_animais as $nome => $especie){ ?>
+
+    <li><b><?= $nome ?>:</b> <?= $especie ?></li>
+
+<?php } ?>
+```
 
 > **Exercício 1**: Apresente nas seguintes situações qual é a estrutura de repetição mais correta a ser utilizada, `for` ou `foreach`:
 > - Procurar em um vetor numérico qual é o maior elemento e retornar a sua posição
@@ -767,7 +784,7 @@ foreach ($arr_animais as $nome => $especie){
 > ];
 > ```
 
-> **Exercício 3:** Na área restrita você deverá mostrar informações das últimas solicitações relacionadas ao usuário que fez login corremente. Por exemplo, se o usuário `pedro` logou você cverá mostrar os seguintes dados:
+> **Exercício 3:** Na área restrita você deverá mostrar informações das últimas solicitações relacionadas ao usuário que fez login corremente. Por exemplo, se o usuário `pedro` logou você deverá mostrar os seguintes dados:
 > <div style="border: 1px dashed black; padding: 5px;">
 >    <h2 style="color: red">Área de acesso restrito</h2>
 >    <p>Bem vindo Pedro de Alcântara. Verifique se seus dados estão atualizados:</p>
@@ -823,7 +840,7 @@ foreach ($arr_animais as $nome => $especie){
 >           [
 >           'Número' => '1010',
 >           'Data' => '01/09/2019',
->           'Solicitação' => 'Projetor Multimidia'
+>           'Solicitação' => 'Projetor Multímidia'
 >           ],
 >       ],
 >   'maria' => [
