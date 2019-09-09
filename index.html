@@ -644,6 +644,21 @@ se o usuário tiver se autenticado --&gt;</span>
     <span class="hljs-keyword">echo</span> <span class="hljs-string">"&lt;li&gt;&lt;b&gt;$nome:&lt;/b&gt; $especie &lt;/li&gt;"</span>;
 }
 </div></code></pre>
+<p>O <em>foreach</em> também é utilizado da seguinte forma:</p>
+<pre><code class="language-html"><div><span class="php"><span class="hljs-meta">&lt;?php</span> 
+$arr_animais = [ 
+    <span class="hljs-string">'Tomero'</span> =&gt; <span class="hljs-string">'gato'</span>, 
+    <span class="hljs-string">'Rutini'</span> =&gt; <span class="hljs-string">'gato'</span>,
+    <span class="hljs-string">'Toby'</span> =&gt; <span class="hljs-string">'cachorro'</span>,
+    <span class="hljs-string">'Chico'</span> =&gt; <span class="hljs-string">'pássaro'</span>
+];
+
+<span class="hljs-keyword">foreach</span> ($arr_animais <span class="hljs-keyword">as</span> $nome =&gt; $especie){ <span class="hljs-meta">?&gt;</span></span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?</span>= $nome <span class="hljs-meta">?&gt;</span></span>:<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="php"><span class="hljs-meta">&lt;?</span>= $especie <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+<span class="php"><span class="hljs-meta">&lt;?php</span> } <span class="hljs-meta">?&gt;</span></span>
+</div></code></pre>
 <blockquote>
 <p><strong>Exercício 1</strong>: Apresente nas seguintes situações qual é a estrutura de repetição mais correta a ser utilizada, <code>for</code> ou <code>foreach</code>:</p>
 <ul>
@@ -692,7 +707,7 @@ se o usuário tiver se autenticado --&gt;</span>
 </div></code></pre>
 </blockquote>
 <blockquote>
-<p><strong>Exercício 3:</strong> Na área restrita você deverá mostrar informações das últimas solicitações relacionadas ao usuário que fez login corremente. Por exemplo, se o usuário <code>pedro</code> logou você cverá mostrar os seguintes dados:</p>
+<p><strong>Exercício 3:</strong> Na área restrita você deverá mostrar informações das últimas solicitações relacionadas ao usuário que fez login corremente. Por exemplo, se o usuário <code>pedro</code> logou você deverá mostrar os seguintes dados:</p>
 <div style="border: 1px dashed black; padding: 5px;">
    <h2 style="color: red">Área de acesso restrito</h2>
    <p>Bem vindo Pedro de Alcântara. Verifique se seus dados estão atualizados:</p>
@@ -745,7 +760,7 @@ se o usuário tiver se autenticado --&gt;</span>
           [
           <span class="hljs-string">'Número'</span> =&gt; <span class="hljs-string">'1010'</span>,
           <span class="hljs-string">'Data'</span> =&gt; <span class="hljs-string">'01/09/2019'</span>,
-          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Projetor Multimidia'</span>
+          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Projetor Multímidia'</span>
           ],
       ],
   <span class="hljs-string">'maria'</span> =&gt; [
