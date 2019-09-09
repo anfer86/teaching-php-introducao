@@ -706,6 +706,21 @@ foreach ($_SERVER as $key => $value){
 }
 ```
 
+Um segundo exemplo seria a variável `$arr_animais` que contém também suas informações no formato `$key => $value`. Podemos mostrar esses dados utilizando *foreach* da seuginte forma.
+
+```php
+$arr_animais = [ 
+    'Tomero' => 'gato', 
+    'Rutini' => 'gato',
+    'Toby' => 'cachorro',
+    'Chico' => 'pássaro'
+];
+foreach ($arr_animais as $nome => $especie){
+    echo "<li><b>$nome:</b> $especie </li>";
+}
+```
+
+
 > **Exercício 1**: Apresente nas seguintes situações qual é a estrutura de repetição mais correta a ser utilizada, `for` ou `foreach`:
 > - Procurar em um vetor numérico qual é o maior elemento e retornar a sua posição
 > - Procurar em um vetor numérico qual é o maior elemento e retornar o seu velor
