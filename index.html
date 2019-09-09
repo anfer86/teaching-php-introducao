@@ -633,6 +633,17 @@ se o usuário tiver se autenticado --&gt;</span>
     <span class="hljs-keyword">echo</span> <span class="hljs-string">"&lt;li&gt;&lt;b&gt;$key:&lt;/b&gt; $value &lt;/li&gt;"</span>;
 }
 </div></code></pre>
+<p>Um segundo exemplo seria a variável <code>$arr_animais</code> que contém também suas informações no formato <code>$key =&gt; $value</code>. Podemos mostrar esses dados utilizando <em>foreach</em> da seuginte forma.</p>
+<pre><code class="language-php"><div>$arr_animais = [ 
+    <span class="hljs-string">'Tomero'</span> =&gt; <span class="hljs-string">'gato'</span>, 
+    <span class="hljs-string">'Rutini'</span> =&gt; <span class="hljs-string">'gato'</span>,
+    <span class="hljs-string">'Toby'</span> =&gt; <span class="hljs-string">'cachorro'</span>,
+    <span class="hljs-string">'Chico'</span> =&gt; <span class="hljs-string">'pássaro'</span>
+];
+<span class="hljs-keyword">foreach</span> ($arr_animais <span class="hljs-keyword">as</span> $nome =&gt; $especie){
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"&lt;li&gt;&lt;b&gt;$nome:&lt;/b&gt; $especie &lt;/li&gt;"</span>;
+}
+</div></code></pre>
 <blockquote>
 <p><strong>Exercício 1</strong>: Apresente nas seguintes situações qual é a estrutura de repetição mais correta a ser utilizada, <code>for</code> ou <code>foreach</code>:</p>
 <ul>

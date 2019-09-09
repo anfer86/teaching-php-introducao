@@ -1,4 +1,12 @@
 <?php
+
+$usuarios = [
+    'pedro' => '123mudar',
+    'maria' => '05/07/90',
+    'joao'  => 'toby',
+    'julia' => 'ju11@' 
+];
+
 // Verificar se foi enviada a palavra_chave via POST.
 if ( isset($_POST['palavra_chave']) ){    
     $palavra_chave = $_POST['palavra_chave'];    
