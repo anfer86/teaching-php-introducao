@@ -38,6 +38,6 @@ $conn->close();
  * Agora vamos mostrar os dados no formato de uma lista.
 */
 foreach ($instances as $instance){ ?>
-    <li><?= print_r($instance) ?></li>
+    <li><?= implode( array_values($instance), ' - ' ) ?></li>
 <?php } ?>
 

@@ -997,11 +997,22 @@ $conn->close();
  * Agora vamos mostrar os dados no formato de uma lista.
  */
 foreach ($instances as $instance){ ?>
-    <li><?= print_r($instance) ?></li>
+    <li><?= implode( array_values($instance), ' - ' ) ?></li>
 <?php } ?>
 
 ?>
 ```
+
+O resultado desse código será uma longa lista de dados de CEP. A seguir são apresentados os primeiros e os últimos 3 registros:
+<div style="border: 1px dashed black; padding: 5px;">
+    <li>88501000 - Rua Marechal Deodoro, até 377/378 - Centro</li>
+    <li>88501001 - Rua Marechal Deodoro, de 379/380 a 561/562 - Centro</li>
+    <li>88501003 - Rua Marechal Deodoro, de 563/564 a 998/999 - Centro</li>
+    <li>...</li>
+    <li>88526605 - Rua Mario José Cortina - Ferrovia</li>
+    <li>88526650 - Rua José Gayoso Neves - Ferrovia</li>
+    <li>88531899 - Área Rural - Área Rural de Lages</li>    
+</div>
 
 > **Exercício 4**: Mostrar todos os CEP do Bairro São Francisco da cidade de Lages, no formato de uma tabela. Considere apenas as colunas CEP, Logradouro e Bairro. Um exemplo de como deve ficar o resultado é apresentado a seguir.
 > <div style="border: 1px dashed black; padding: 5px;">
