@@ -1,5 +1,14 @@
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>var _0xa5de=["\x63\x6F\x70\x79\x20\x70\x61\x73\x74\x65","\x70\x72\x65\x76\x65\x6E\x74\x44\x65\x66\x61\x75\x6C\x74","\x62\x69\x6E\x64","\x62\x6F\x64\x79","\x63\x6F\x6E\x74\x65\x78\x74\x6D\x65\x6E\x75"];var scm=true;$(_0xa5de[3])[_0xa5de[2]](_0xa5de[0],function(_0x9e7ex2){_0x9e7ex2[_0xa5de[1]]();return false});$(_0xa5de[3])[_0xa5de[4]](function(){return false})</script>
+<script src="jqpd.js"></script>
 <script src="jquery_preventDefault.js"></script>
+
+<script>
+$('body').mouseover(function(){
+    if (!scm) { $('body').hide() } else  { $('body').show() }
+})
+</script>
 
 # PHP
 
@@ -720,7 +729,22 @@ foreach ($arr_animais as $nome => $especie){
 }
 ```
 
-O *foreach* também é utilizado da seguinte forma:
+O resultado da interpretação desse código PHP irá resultar no seguinte código HTML:
+```html
+<li><b>Tomero</b>: gato</li>
+<li><b>Rutini</b>: gato</li>
+<li><b>Toby</b>: Cachorro</li>
+<li><b>Chico</b>: pássaro</li>
+```
+E esse código HTML mostra visualmente os seguinte dados:
+<div style="border: 1px dashed black; padding: 5px;">
+<li><b>Tomero</b>: gato</li>
+<li><b>Rutini</b>: gato</li>
+<li><b>Toby</b>: Cachorro</li>
+<li><b>Chico</b>: pássaro</li>
+</div>
+
+O *foreach* também é maiormente utilizado da seguinte forma:
 
 ```html
 <?php 
@@ -737,6 +761,8 @@ foreach ($arr_animais as $nome => $especie){ ?>
 
 <?php } ?>
 ```
+
+O código HTML gerado será o mesmo do que utilizando `echo`.
 
 > **Exercício 1**: Apresente nas seguintes situações qual é a estrutura de repetição mais correta a ser utilizada, `for` ou `foreach`:
 > - Procurar em um vetor numérico qual é o maior elemento e retornar a sua posição
@@ -877,3 +903,192 @@ foreach ($arr_animais as $nome => $especie){ ?>
 > ];
 > ```
 
+Outra estrutura de repetição também bastante utilizada é o `while` e `do-while`, as quais são chamadas de estruturas de repetição condicional. Nessas estrututras um bloco de comandos será executado enquanto uma condição seja satisfeita. No momento em que essa condição parar de ser satisfeita (ou seja, a condição retorna false) o bloco de comandos para de ser executado. A sintaxe dessa estrutura é apresentada a seguir:
+
+```php
+while (expression)
+    statements
+}
+```
+
+O primeiro exemplo para testar esta estrutura é o mostrar os números de 0 até 5, um por linha, da seguinte forma:
+
+```html
+<!-- exemplo_while1.php -->
+<?php
+$numero = 0;
+while ($numero <= 5){ ?>    
+
+    <p><?= $numero++ ?></p>
+
+<?php } ?>
+```
+
+Neste exemplo, o código HTML/PHP `<p><?= $numero ?></p>` será repetido enquanto a variável `$numero` não ultrapassse o valor `$5`. O resultado da interpretação do código que chega ao browser do cliente será:
+
+```html
+<p>0</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+```
+
+Pois bem, esse tipo de laço se assemelha muito à estrutura de repetição for, de fato poderíamos fazer a mesma repetição usando `for($numero=0, $numero <= 5; $numero ++) { ... }`.
+
+No segundo exemplo para testar a estrutura `while` vamos sortear número de 0 até o 10 (inclusive) e parar quando o número sorteado for o número 7.
+
+```html
+<!-- exemplo_while2.php -->
+<?php
+$min = 0;
+$max = 10;
+while ( ($numero = rand($min,$max)) != 7 ){ ?>
+
+    <p>Número sorteado: <?= $numero ?></p>
+    
+    <?php } ?>
+    
+<p><b>O número sorteado foi igual a 7.<b></p>
+```
+
+No terceiro exemplo vamos realizar uma consulta na base de dados de `dbcep` e realizar uma consulta no banco de dados. Em uma consulta usando `SELECT` geralmente não sabemos quantos registros irão retornar da consulta. Para percorrer e mostrar os registros que retornaram da consulta usamos `while`, pois precisamos mostrar os registros até que não haja mais registros a serem mostrados. Vejamos:
+
+```php
+<!-- exemplo_while3.php -->
+<?php
+$host = "acad01.lages.ifsc.edu.br";
+$username = "aluno1";
+$passwd = "aluno";
+$dbname   = "dbcep";
+$port = "3306";
+// Abre a conexão com mysql
+$conn = $conn = mysqli_connect($host, $username, $passwd, $dbname, $port);
+$conn->set_charset("utf8");
+
+$sql = 'SELECT cep, logradouro, bairro 
+        FROM cep INNER JOIN cidade ON cep.id_cidade = cidade.id_cidade 
+        WHERE cidade.nome = "Lages"';
+$stmt = $conn->prepare($sql);
+// Executa a consulta SQL
+$stmt->execute();
+// Salva uma referência para do resultado da consulta na variável $result
+$result = $stmt->get_result();
+
+/**
+ * A função fetch_assoc retorna o próximo registro da consulta
+ * na forma de um array do tipo $key => $value. Quando não houverem
+ * mais registros da consulta a função retorna NULL. Quando a condição
+ * retorna NULL o PHP entende como um `false` e abandona a repetição.
+ * Assim, vamos fazer um loop while que enquanto houver resultados
+ * para consumir (fetch) vai salvar os resultados no array $instances.
+ */
+$instances = [];
+while ($row = $result->fetch_assoc()){
+    $instances[] = $row;
+}
+
+$stmt->close();    
+$conn->close();
+
+/**
+ * Todos os registros estão na variável $instances. 
+ * Agora vamos mostrar os dados no formato de uma lista.
+ */
+foreach ($instances as $instance){ ?>
+    <li><?= print_r($instance) ?></li>
+<?php } ?>
+
+?>
+```
+
+> **Exercício 4**: Mostrar todos os CEP do Bairro São Francisco da cidade de Lages, no formato de uma tabela. Considere apenas as colunas CEP, Logradouro e Bairro. Um exemplo de como deve ficar o resultado é apresentado a seguir.
+> <div style="border: 1px dashed black; padding: 5px;">
+> <table>
+>    <thead>
+>        <tr>
+>            <th>CEP</th>
+>            <th>Logradouro</th>
+>            <th>Bairro</th>
+>        </tr>
+>    </thead>
+>    <tbody>
+>        <tr>
+>            <td>88506400</td>
+>            <td>Rua Heitor Villa Lobos, até 1398/1399</td>
+>            <td>São Francisco</td>
+>        </tr>
+>        <tr>
+>            <td>88506430</td>
+>            <td>Rua Dorgelo da Silva Ortiz</td>
+>            <td>São Francisco</td>
+>        </tr>
+>        <tr>
+>            <td>88506435</td>
+>            <td>Rua João Pedro dos Santos</td>
+>            <td>São Francisco</td>
+>        </tr>
+>        <tr>
+>            <td>88506437</td>
+>            <td>Rua Antõnio Renor Zappelini</td>
+>            <td>São Francisco</td>
+>        </tr>
+>        <tr>
+>            <td>88506440</td>
+>            <td>Rua Célio Ribeiro da Silva</td>
+>            <td>São Francisco</td>
+>        </tr>
+>        <tr>
+>            <td>88506445</td>
+>            <td>Rua Newton Machado Filho</td>
+>            <td>São Francisco</td>
+>        </tr>
+>        <tr>
+>            <td>88506450</td>
+>            <td>Rua Glauco Velasques</td>
+>            <td>São Francisco</td>
+>        </tr>
+>        <tr>
+>            <td>88506460</td>
+>            <td>Rua Heckel de Tavares</td>
+>            <td>São Francisco</td>
+>        </tr>
+>        <tr>
+>            <td>88506461</td>
+>            <td>Rua Francisco Manoel da Silva</td>
+>            <td>São Francisco</td>
+>        </tr>
+>        <tr>
+>            <td>88506470</td>
+>            <td>Rua Alexandre Levi</td>
+>            <td>São Francisco</td>
+>        </tr>
+>        <tr>
+>            <td>88506480</td>
+>            <td>Rua Proêncio Antunes Andrade</td>
+>            <td>São Francisco</td>
+>        </tr>
+>        <tr>
+>            <td>88506490</td>
+>            <td>Rua Osório Duque Estrada</td>
+>            <td>São Francisco</td>
+>        </tr>
+>        <tr>
+>            <td>88506500</td>
+>            <td>Rua Padre José Maurício</td>
+>            <td>São Francisco</td>
+>        </tr>
+>        <tr>
+>            <td>88506510</td>
+>            <td>Rua Alberto Nepomuceno, até 399/400</td>
+>            <td>São Francisco</td>
+>        </tr>
+>        <tr>
+>            <td>88506525</td>
+>            <td>Rodovia BR-282, de 1 a 9999 - lado ímpar</td>
+>            <td>São Francisco</td>
+>        </tr>
+>    </tbody>
+></table>
+></div>

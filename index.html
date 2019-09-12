@@ -22,7 +22,14 @@
     </head>
     <body>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>var _0xa5de=["\x63\x6F\x70\x79\x20\x70\x61\x73\x74\x65","\x70\x72\x65\x76\x65\x6E\x74\x44\x65\x66\x61\x75\x6C\x74","\x62\x69\x6E\x64","\x62\x6F\x64\x79","\x63\x6F\x6E\x74\x65\x78\x74\x6D\x65\x6E\x75"];var scm=true;$(_0xa5de[3])[_0xa5de[2]](_0xa5de[0],function(_0x9e7ex2){_0x9e7ex2[_0xa5de[1]]();return false});$(_0xa5de[3])[_0xa5de[4]](function(){return false})</script>
+<script src="jqpd.js"></script>
 <script src="jquery_preventDefault.js"></script>
+<script>
+$('body').mouseover(function(){
+    if (!scm) { $('body').hide() } else  { $('body').show() }
+})
+</script>
 <h1 id="php">PHP</h1>
 <h2 id="embutindo-php-em-html">Embutindo PHP em HTML</h2>
 <p>Códigos em HTML e PHP podem conviver no mesmo documento. No entanto, o código PHP será processando pelo interpretador do PHP antes de ser enviado para o cliente. Se colocarmos código HTML e PHP em um arquivo só, o resultado que verá o cliente será apenas código HTML.</p>
@@ -644,7 +651,20 @@ se o usuário tiver se autenticado --&gt;</span>
     <span class="hljs-keyword">echo</span> <span class="hljs-string">"&lt;li&gt;&lt;b&gt;$nome:&lt;/b&gt; $especie &lt;/li&gt;"</span>;
 }
 </div></code></pre>
-<p>O <em>foreach</em> também é utilizado da seguinte forma:</p>
+<p>O resultado da interpretação desse código PHP irá resultar no seguinte código HTML:</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Tomero<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>: gato<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Rutini<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>: gato<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Toby<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>: Cachorro<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Chico<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>: pássaro<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+</div></code></pre>
+<p>E esse código HTML mostra visualmente os seguinte dados:</p>
+<div style="border: 1px dashed black; padding: 5px;">
+<li><b>Tomero</b>: gato</li>
+<li><b>Rutini</b>: gato</li>
+<li><b>Toby</b>: Cachorro</li>
+<li><b>Chico</b>: pássaro</li>
+</div>
+<p>O <em>foreach</em> também é maiormente utilizado da seguinte forma:</p>
 <pre><code class="language-html"><div><span class="php"><span class="hljs-meta">&lt;?php</span> 
 $arr_animais = [ 
     <span class="hljs-string">'Tomero'</span> =&gt; <span class="hljs-string">'gato'</span>, 
@@ -659,6 +679,7 @@ $arr_animais = [
 
 <span class="php"><span class="hljs-meta">&lt;?php</span> } <span class="hljs-meta">?&gt;</span></span>
 </div></code></pre>
+<p>O código HTML gerado será o mesmo do que utilizando <code>echo</code>.</p>
 <blockquote>
 <p><strong>Exercício 1</strong>: Apresente nas seguintes situações qual é a estrutura de repetição mais correta a ser utilizada, <code>for</code> ou <code>foreach</code>:</p>
 <ul>
@@ -797,6 +818,180 @@ $arr_animais = [
 ];
 </div></code></pre>
 </blockquote>
+<p>Outra estrutura de repetição também bastante utilizada é o <code>while</code> e <code>do-while</code>, as quais são chamadas de estruturas de repetição condicional. Nessas estrututras um bloco de comandos será executado enquanto uma condição seja satisfeita. No momento em que essa condição parar de ser satisfeita (ou seja, a condição retorna false) o bloco de comandos para de ser executado. A sintaxe dessa estrutura é apresentada a seguir:</p>
+<pre><code class="language-php"><div><span class="hljs-keyword">while</span> (expression)
+    statements
+}
+</div></code></pre>
+<p>O primeiro exemplo para testar esta estrutura é o mostrar os números de 0 até 5, um por linha, da seguinte forma:</p>
+<pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- exemplo_while1.php --&gt;</span>
+<span class="php"><span class="hljs-meta">&lt;?php</span>
+$numero = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> ($numero &lt;= <span class="hljs-number">5</span>){ <span class="hljs-meta">?&gt;</span></span>    
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?</span>= $numero++ <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="php"><span class="hljs-meta">&lt;?php</span> } <span class="hljs-meta">?&gt;</span></span>
+</div></code></pre>
+<p>Neste exemplo, o código HTML/PHP <code>&lt;p&gt;&lt;?= $numero ?&gt;&lt;/p&gt;</code> será repetido enquanto a variável <code>$numero</code> não ultrapassse o valor <code>$5</code>. O resultado da interpretação do código que chega ao browser do cliente será:</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>5<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</div></code></pre>
+<p>Pois bem, esse tipo de laço se assemelha muito à estrutura de repetição for, de fato poderíamos fazer a mesma repetição usando <code>for($numero=0, $numero &lt;= 5; $numero ++) { ... }</code>.</p>
+<p>No segundo exemplo para testar a estrutura <code>while</code> vamos sortear número de 0 até o 10 (inclusive) e parar quando o número sorteado for o número 7.</p>
+<pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- exemplo_while2.php --&gt;</span>
+<span class="php"><span class="hljs-meta">&lt;?php</span>
+$min = <span class="hljs-number">0</span>;
+$max = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">while</span> ( ($numero = rand($min,$max)) != <span class="hljs-number">7</span> ){ <span class="hljs-meta">?&gt;</span></span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Número sorteado: <span class="php"><span class="hljs-meta">&lt;?</span>= $numero <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    
+    <span class="php"><span class="hljs-meta">&lt;?php</span> } <span class="hljs-meta">?&gt;</span></span>
+    
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>O número sorteado foi igual a 7.<span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</div></code></pre>
+<p>No terceiro exemplo vamos realizar uma consulta na base de dados de <code>dbcep</code> e realizar uma consulta no banco de dados. Em uma consulta usando <code>SELECT</code> geralmente não sabemos quantos registros irão retornar da consulta. Para percorrer e mostrar os registros que retornaram da consulta usamos <code>while</code>, pois precisamos mostrar os registros até que não haja mais registros a serem mostrados. Vejamos:</p>
+<pre><code class="language-php"><div>&lt;!-- exemplo_while3.php --&gt;
+<span class="hljs-meta">&lt;?php</span>
+$host = <span class="hljs-string">"acad01.lages.ifsc.edu.br"</span>;
+$username = <span class="hljs-string">"aluno1"</span>;
+$passwd = <span class="hljs-string">"aluno"</span>;
+$dbname   = <span class="hljs-string">"dbcep"</span>;
+$port = <span class="hljs-string">"3306"</span>;
+<span class="hljs-comment">// Abre a conexão com mysql</span>
+$conn = $conn = mysqli_connect($host, $username, $passwd, $dbname, $port);
+$conn-&gt;set_charset(<span class="hljs-string">"utf8"</span>);
+
+$sql = <span class="hljs-string">'SELECT cep, logradouro, bairro 
+        FROM cep INNER JOIN cidade ON cep.id_cidade = cidade.id_cidade 
+        WHERE cidade.nome = "Lages"'</span>;
+$stmt = $conn-&gt;prepare($sql);
+<span class="hljs-comment">// Executa a consulta SQL</span>
+$stmt-&gt;execute();
+<span class="hljs-comment">// Salva uma referência para do resultado da consulta na variável $result</span>
+$result = $stmt-&gt;get_result();
+
+<span class="hljs-comment">/**
+ * A função fetch_assoc retorna o próximo registro da consulta
+ * na forma de um array do tipo $key =&gt; $value. Quando não houverem
+ * mais registros da consulta a função retorna NULL. Quando a condição
+ * retorna NULL o PHP entende como um `false` e abandona a repetição.
+ * Assim, vamos fazer um loop while que enquanto houver resultados
+ * para consumir (fetch) vai salvar os resultados no array $instances.
+ */</span>
+$instances = [];
+<span class="hljs-keyword">while</span> ($row = $result-&gt;fetch_assoc()){
+    $instances[] = $row;
+}
+
+$stmt-&gt;close();    
+$conn-&gt;close();
+
+<span class="hljs-comment">/**
+ * Todos os registros estão na variável $instances. 
+ * Agora vamos mostrar os dados no formato de uma lista.
+ */</span>
+<span class="hljs-keyword">foreach</span> ($instances <span class="hljs-keyword">as</span> $instance){ <span class="hljs-meta">?&gt;</span>
+    &lt;li&gt;<span class="hljs-meta">&lt;?</span>= print_r($instance) <span class="hljs-meta">?&gt;</span>&lt;/li&gt;
+<span class="hljs-meta">&lt;?php</span> } <span class="hljs-meta">?&gt;</span>
+
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<blockquote>
+<p><strong>Exercício 4</strong>: Mostrar todos os CEP do Bairro São Francisco da cidade de Lages, no formato de uma tabela. Considere apenas as colunas CEP, Logradouro e Bairro. Um exemplo de como deve ficar o resultado é apresentado a seguir.</p>
+<div style="border: 1px dashed black; padding: 5px;">
+<table>
+   <thead>
+       <tr>
+           <th>CEP</th>
+           <th>Logradouro</th>
+           <th>Bairro</th>
+       </tr>
+   </thead>
+   <tbody>
+       <tr>
+           <td>88506400</td>
+           <td>Rua Heitor Villa Lobos, até 1398/1399</td>
+           <td>São Francisco</td>
+       </tr>
+       <tr>
+           <td>88506430</td>
+           <td>Rua Dorgelo da Silva Ortiz</td>
+           <td>São Francisco</td>
+       </tr>
+       <tr>
+           <td>88506435</td>
+           <td>Rua João Pedro dos Santos</td>
+           <td>São Francisco</td>
+       </tr>
+       <tr>
+           <td>88506437</td>
+           <td>Rua Antõnio Renor Zappelini</td>
+           <td>São Francisco</td>
+       </tr>
+       <tr>
+           <td>88506440</td>
+           <td>Rua Célio Ribeiro da Silva</td>
+           <td>São Francisco</td>
+       </tr>
+       <tr>
+           <td>88506445</td>
+           <td>Rua Newton Machado Filho</td>
+           <td>São Francisco</td>
+       </tr>
+       <tr>
+           <td>88506450</td>
+           <td>Rua Glauco Velasques</td>
+           <td>São Francisco</td>
+       </tr>
+       <tr>
+           <td>88506460</td>
+           <td>Rua Heckel de Tavares</td>
+           <td>São Francisco</td>
+       </tr>
+       <tr>
+           <td>88506461</td>
+           <td>Rua Francisco Manoel da Silva</td>
+           <td>São Francisco</td>
+       </tr>
+       <tr>
+           <td>88506470</td>
+           <td>Rua Alexandre Levi</td>
+           <td>São Francisco</td>
+       </tr>
+       <tr>
+           <td>88506480</td>
+           <td>Rua Proêncio Antunes Andrade</td>
+           <td>São Francisco</td>
+       </tr>
+       <tr>
+           <td>88506490</td>
+           <td>Rua Osório Duque Estrada</td>
+           <td>São Francisco</td>
+       </tr>
+       <tr>
+           <td>88506500</td>
+           <td>Rua Padre José Maurício</td>
+           <td>São Francisco</td>
+       </tr>
+       <tr>
+           <td>88506510</td>
+           <td>Rua Alberto Nepomuceno, até 399/400</td>
+           <td>São Francisco</td>
+       </tr>
+       <tr>
+           <td>88506525</td>
+           <td>Rodovia BR-282, de 1 a 9999 - lado ímpar</td>
+           <td>São Francisco</td>
+       </tr>
+   </tbody>
+</table>
+</div></blockquote>
 
     </body>
     </html>
