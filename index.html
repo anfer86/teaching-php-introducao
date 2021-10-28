@@ -1,26 +1,41 @@
 <!DOCTYPE html>
     <html>
     <head>
-        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-        <title>PHP</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <meta charset="UTF-8">
+        <title>Introdu&ccedil;&atilde;o &agrave; Linguagem PHP</title>
         <style>
-.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+/* From extension vscode.markdown-math */
+@font-face{font-family:KaTeX_AMS;src:url(fonts/KaTeX_AMS-Regular.woff2) format("woff2"),url(fonts/KaTeX_AMS-Regular.woff) format("woff"),url(fonts/KaTeX_AMS-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Caligraphic;src:url(fonts/KaTeX_Caligraphic-Bold.woff2) format("woff2"),url(fonts/KaTeX_Caligraphic-Bold.woff) format("woff"),url(fonts/KaTeX_Caligraphic-Bold.ttf) format("truetype");font-weight:700;font-style:normal}@font-face{font-family:KaTeX_Caligraphic;src:url(fonts/KaTeX_Caligraphic-Regular.woff2) format("woff2"),url(fonts/KaTeX_Caligraphic-Regular.woff) format("woff"),url(fonts/KaTeX_Caligraphic-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Fraktur;src:url(fonts/KaTeX_Fraktur-Bold.woff2) format("woff2"),url(fonts/KaTeX_Fraktur-Bold.woff) format("woff"),url(fonts/KaTeX_Fraktur-Bold.ttf) format("truetype");font-weight:700;font-style:normal}@font-face{font-family:KaTeX_Fraktur;src:url(fonts/KaTeX_Fraktur-Regular.woff2) format("woff2"),url(fonts/KaTeX_Fraktur-Regular.woff) format("woff"),url(fonts/KaTeX_Fraktur-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Main;src:url(fonts/KaTeX_Main-Bold.woff2) format("woff2"),url(fonts/KaTeX_Main-Bold.woff) format("woff"),url(fonts/KaTeX_Main-Bold.ttf) format("truetype");font-weight:700;font-style:normal}@font-face{font-family:KaTeX_Main;src:url(fonts/KaTeX_Main-BoldItalic.woff2) format("woff2"),url(fonts/KaTeX_Main-BoldItalic.woff) format("woff"),url(fonts/KaTeX_Main-BoldItalic.ttf) format("truetype");font-weight:700;font-style:italic}@font-face{font-family:KaTeX_Main;src:url(fonts/KaTeX_Main-Italic.woff2) format("woff2"),url(fonts/KaTeX_Main-Italic.woff) format("woff"),url(fonts/KaTeX_Main-Italic.ttf) format("truetype");font-weight:400;font-style:italic}@font-face{font-family:KaTeX_Main;src:url(fonts/KaTeX_Main-Regular.woff2) format("woff2"),url(fonts/KaTeX_Main-Regular.woff) format("woff"),url(fonts/KaTeX_Main-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Math;src:url(fonts/KaTeX_Math-BoldItalic.woff2) format("woff2"),url(fonts/KaTeX_Math-BoldItalic.woff) format("woff"),url(fonts/KaTeX_Math-BoldItalic.ttf) format("truetype");font-weight:700;font-style:italic}@font-face{font-family:KaTeX_Math;src:url(fonts/KaTeX_Math-Italic.woff2) format("woff2"),url(fonts/KaTeX_Math-Italic.woff) format("woff"),url(fonts/KaTeX_Math-Italic.ttf) format("truetype");font-weight:400;font-style:italic}@font-face{font-family:"KaTeX_SansSerif";src:url(fonts/KaTeX_SansSerif-Bold.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Bold.woff) format("woff"),url(fonts/KaTeX_SansSerif-Bold.ttf) format("truetype");font-weight:700;font-style:normal}@font-face{font-family:"KaTeX_SansSerif";src:url(fonts/KaTeX_SansSerif-Italic.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Italic.woff) format("woff"),url(fonts/KaTeX_SansSerif-Italic.ttf) format("truetype");font-weight:400;font-style:italic}@font-face{font-family:"KaTeX_SansSerif";src:url(fonts/KaTeX_SansSerif-Regular.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Regular.woff) format("woff"),url(fonts/KaTeX_SansSerif-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Script;src:url(fonts/KaTeX_Script-Regular.woff2) format("woff2"),url(fonts/KaTeX_Script-Regular.woff) format("woff"),url(fonts/KaTeX_Script-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Size1;src:url(fonts/KaTeX_Size1-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size1-Regular.woff) format("woff"),url(fonts/KaTeX_Size1-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Size2;src:url(fonts/KaTeX_Size2-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size2-Regular.woff) format("woff"),url(fonts/KaTeX_Size2-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Size3;src:url(fonts/KaTeX_Size3-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size3-Regular.woff) format("woff"),url(fonts/KaTeX_Size3-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Size4;src:url(fonts/KaTeX_Size4-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size4-Regular.woff) format("woff"),url(fonts/KaTeX_Size4-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Typewriter;src:url(fonts/KaTeX_Typewriter-Regular.woff2) format("woff2"),url(fonts/KaTeX_Typewriter-Regular.woff) format("woff"),url(fonts/KaTeX_Typewriter-Regular.ttf) format("truetype");font-weight:400;font-style:normal}.katex{font:normal 1.21em KaTeX_Main,Times New Roman,serif;line-height:1.2;text-indent:0;text-rendering:auto;border-color:currentColor}.katex *{-ms-high-contrast-adjust:none!important}.katex .katex-version:after{content:"0.13.0"}.katex .katex-mathml{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden}.katex .katex-html>.newline{display:block}.katex .base{position:relative;white-space:nowrap;width:-webkit-min-content;width:-moz-min-content;width:min-content}.katex .base,.katex .strut{display:inline-block}.katex .textbf{font-weight:700}.katex .textit{font-style:italic}.katex .textrm{font-family:KaTeX_Main}.katex .textsf{font-family:KaTeX_SansSerif}.katex .texttt{font-family:KaTeX_Typewriter}.katex .mathnormal{font-family:KaTeX_Math;font-style:italic}.katex .mathit{font-family:KaTeX_Main;font-style:italic}.katex .mathrm{font-style:normal}.katex .mathbf{font-family:KaTeX_Main;font-weight:700}.katex .boldsymbol{font-family:KaTeX_Math;font-weight:700;font-style:italic}.katex .amsrm,.katex .mathbb,.katex .textbb{font-family:KaTeX_AMS}.katex .mathcal{font-family:KaTeX_Caligraphic}.katex .mathfrak,.katex .textfrak{font-family:KaTeX_Fraktur}.katex .mathtt{font-family:KaTeX_Typewriter}.katex .mathscr,.katex .textscr{font-family:KaTeX_Script}.katex .mathsf,.katex .textsf{font-family:KaTeX_SansSerif}.katex .mathboldsf,.katex .textboldsf{font-family:KaTeX_SansSerif;font-weight:700}.katex .mathitsf,.katex .textitsf{font-family:KaTeX_SansSerif;font-style:italic}.katex .mainrm{font-family:KaTeX_Main;font-style:normal}.katex .vlist-t{display:inline-table;table-layout:fixed;border-collapse:collapse}.katex .vlist-r{display:table-row}.katex .vlist{display:table-cell;vertical-align:bottom;position:relative}.katex .vlist>span{display:block;height:0;position:relative}.katex .vlist>span>span{display:inline-block}.katex .vlist>span>.pstrut{overflow:hidden;width:0}.katex .vlist-t2{margin-right:-2px}.katex .vlist-s{display:table-cell;vertical-align:bottom;font-size:1px;width:2px;min-width:2px}.katex .vbox{display:inline-flex;flex-direction:column;align-items:baseline}.katex .hbox{width:100%}.katex .hbox,.katex .thinbox{display:inline-flex;flex-direction:row}.katex .thinbox{width:0;max-width:0}.katex .msupsub{text-align:left}.katex .mfrac>span>span{text-align:center}.katex .mfrac .frac-line{display:inline-block;width:100%;border-bottom-style:solid}.katex .hdashline,.katex .hline,.katex .mfrac .frac-line,.katex .overline .overline-line,.katex .rule,.katex .underline .underline-line{min-height:1px}.katex .mspace{display:inline-block}.katex .clap,.katex .llap,.katex .rlap{width:0;position:relative}.katex .clap>.inner,.katex .llap>.inner,.katex .rlap>.inner{position:absolute}.katex .clap>.fix,.katex .llap>.fix,.katex .rlap>.fix{display:inline-block}.katex .llap>.inner{right:0}.katex .clap>.inner,.katex .rlap>.inner{left:0}.katex .clap>.inner>span{margin-left:-50%;margin-right:50%}.katex .rule{display:inline-block;border:0 solid;position:relative}.katex .hline,.katex .overline .overline-line,.katex .underline .underline-line{display:inline-block;width:100%;border-bottom-style:solid}.katex .hdashline{display:inline-block;width:100%;border-bottom-style:dashed}.katex .sqrt>.root{margin-left:.27777778em;margin-right:-.55555556em}.katex .fontsize-ensurer.reset-size1.size1,.katex .sizing.reset-size1.size1{font-size:1em}.katex .fontsize-ensurer.reset-size1.size2,.katex .sizing.reset-size1.size2{font-size:1.2em}.katex .fontsize-ensurer.reset-size1.size3,.katex .sizing.reset-size1.size3{font-size:1.4em}.katex .fontsize-ensurer.reset-size1.size4,.katex .sizing.reset-size1.size4{font-size:1.6em}.katex .fontsize-ensurer.reset-size1.size5,.katex .sizing.reset-size1.size5{font-size:1.8em}.katex .fontsize-ensurer.reset-size1.size6,.katex .sizing.reset-size1.size6{font-size:2em}.katex .fontsize-ensurer.reset-size1.size7,.katex .sizing.reset-size1.size7{font-size:2.4em}.katex .fontsize-ensurer.reset-size1.size8,.katex .sizing.reset-size1.size8{font-size:2.88em}.katex .fontsize-ensurer.reset-size1.size9,.katex .sizing.reset-size1.size9{font-size:3.456em}.katex .fontsize-ensurer.reset-size1.size10,.katex .sizing.reset-size1.size10{font-size:4.148em}.katex .fontsize-ensurer.reset-size1.size11,.katex .sizing.reset-size1.size11{font-size:4.976em}.katex .fontsize-ensurer.reset-size2.size1,.katex .sizing.reset-size2.size1{font-size:.83333333em}.katex .fontsize-ensurer.reset-size2.size2,.katex .sizing.reset-size2.size2{font-size:1em}.katex .fontsize-ensurer.reset-size2.size3,.katex .sizing.reset-size2.size3{font-size:1.16666667em}.katex .fontsize-ensurer.reset-size2.size4,.katex .sizing.reset-size2.size4{font-size:1.33333333em}.katex .fontsize-ensurer.reset-size2.size5,.katex .sizing.reset-size2.size5{font-size:1.5em}.katex .fontsize-ensurer.reset-size2.size6,.katex .sizing.reset-size2.size6{font-size:1.66666667em}.katex .fontsize-ensurer.reset-size2.size7,.katex .sizing.reset-size2.size7{font-size:2em}.katex .fontsize-ensurer.reset-size2.size8,.katex .sizing.reset-size2.size8{font-size:2.4em}.katex .fontsize-ensurer.reset-size2.size9,.katex .sizing.reset-size2.size9{font-size:2.88em}.katex .fontsize-ensurer.reset-size2.size10,.katex .sizing.reset-size2.size10{font-size:3.45666667em}.katex .fontsize-ensurer.reset-size2.size11,.katex .sizing.reset-size2.size11{font-size:4.14666667em}.katex .fontsize-ensurer.reset-size3.size1,.katex .sizing.reset-size3.size1{font-size:.71428571em}.katex .fontsize-ensurer.reset-size3.size2,.katex .sizing.reset-size3.size2{font-size:.85714286em}.katex .fontsize-ensurer.reset-size3.size3,.katex .sizing.reset-size3.size3{font-size:1em}.katex .fontsize-ensurer.reset-size3.size4,.katex .sizing.reset-size3.size4{font-size:1.14285714em}.katex .fontsize-ensurer.reset-size3.size5,.katex .sizing.reset-size3.size5{font-size:1.28571429em}.katex .fontsize-ensurer.reset-size3.size6,.katex .sizing.reset-size3.size6{font-size:1.42857143em}.katex .fontsize-ensurer.reset-size3.size7,.katex .sizing.reset-size3.size7{font-size:1.71428571em}.katex .fontsize-ensurer.reset-size3.size8,.katex .sizing.reset-size3.size8{font-size:2.05714286em}.katex .fontsize-ensurer.reset-size3.size9,.katex .sizing.reset-size3.size9{font-size:2.46857143em}.katex .fontsize-ensurer.reset-size3.size10,.katex .sizing.reset-size3.size10{font-size:2.96285714em}.katex .fontsize-ensurer.reset-size3.size11,.katex .sizing.reset-size3.size11{font-size:3.55428571em}.katex .fontsize-ensurer.reset-size4.size1,.katex .sizing.reset-size4.size1{font-size:.625em}.katex .fontsize-ensurer.reset-size4.size2,.katex .sizing.reset-size4.size2{font-size:.75em}.katex .fontsize-ensurer.reset-size4.size3,.katex .sizing.reset-size4.size3{font-size:.875em}.katex .fontsize-ensurer.reset-size4.size4,.katex .sizing.reset-size4.size4{font-size:1em}.katex .fontsize-ensurer.reset-size4.size5,.katex .sizing.reset-size4.size5{font-size:1.125em}.katex .fontsize-ensurer.reset-size4.size6,.katex .sizing.reset-size4.size6{font-size:1.25em}.katex .fontsize-ensurer.reset-size4.size7,.katex .sizing.reset-size4.size7{font-size:1.5em}.katex .fontsize-ensurer.reset-size4.size8,.katex .sizing.reset-size4.size8{font-size:1.8em}.katex .fontsize-ensurer.reset-size4.size9,.katex .sizing.reset-size4.size9{font-size:2.16em}.katex .fontsize-ensurer.reset-size4.size10,.katex .sizing.reset-size4.size10{font-size:2.5925em}.katex .fontsize-ensurer.reset-size4.size11,.katex .sizing.reset-size4.size11{font-size:3.11em}.katex .fontsize-ensurer.reset-size5.size1,.katex .sizing.reset-size5.size1{font-size:.55555556em}.katex .fontsize-ensurer.reset-size5.size2,.katex .sizing.reset-size5.size2{font-size:.66666667em}.katex .fontsize-ensurer.reset-size5.size3,.katex .sizing.reset-size5.size3{font-size:.77777778em}.katex .fontsize-ensurer.reset-size5.size4,.katex .sizing.reset-size5.size4{font-size:.88888889em}.katex .fontsize-ensurer.reset-size5.size5,.katex .sizing.reset-size5.size5{font-size:1em}.katex .fontsize-ensurer.reset-size5.size6,.katex .sizing.reset-size5.size6{font-size:1.11111111em}.katex .fontsize-ensurer.reset-size5.size7,.katex .sizing.reset-size5.size7{font-size:1.33333333em}.katex .fontsize-ensurer.reset-size5.size8,.katex .sizing.reset-size5.size8{font-size:1.6em}.katex .fontsize-ensurer.reset-size5.size9,.katex .sizing.reset-size5.size9{font-size:1.92em}.katex .fontsize-ensurer.reset-size5.size10,.katex .sizing.reset-size5.size10{font-size:2.30444444em}.katex .fontsize-ensurer.reset-size5.size11,.katex .sizing.reset-size5.size11{font-size:2.76444444em}.katex .fontsize-ensurer.reset-size6.size1,.katex .sizing.reset-size6.size1{font-size:.5em}.katex .fontsize-ensurer.reset-size6.size2,.katex .sizing.reset-size6.size2{font-size:.6em}.katex .fontsize-ensurer.reset-size6.size3,.katex .sizing.reset-size6.size3{font-size:.7em}.katex .fontsize-ensurer.reset-size6.size4,.katex .sizing.reset-size6.size4{font-size:.8em}.katex .fontsize-ensurer.reset-size6.size5,.katex .sizing.reset-size6.size5{font-size:.9em}.katex .fontsize-ensurer.reset-size6.size6,.katex .sizing.reset-size6.size6{font-size:1em}.katex .fontsize-ensurer.reset-size6.size7,.katex .sizing.reset-size6.size7{font-size:1.2em}.katex .fontsize-ensurer.reset-size6.size8,.katex .sizing.reset-size6.size8{font-size:1.44em}.katex .fontsize-ensurer.reset-size6.size9,.katex .sizing.reset-size6.size9{font-size:1.728em}.katex .fontsize-ensurer.reset-size6.size10,.katex .sizing.reset-size6.size10{font-size:2.074em}.katex .fontsize-ensurer.reset-size6.size11,.katex .sizing.reset-size6.size11{font-size:2.488em}.katex .fontsize-ensurer.reset-size7.size1,.katex .sizing.reset-size7.size1{font-size:.41666667em}.katex .fontsize-ensurer.reset-size7.size2,.katex .sizing.reset-size7.size2{font-size:.5em}.katex .fontsize-ensurer.reset-size7.size3,.katex .sizing.reset-size7.size3{font-size:.58333333em}.katex .fontsize-ensurer.reset-size7.size4,.katex .sizing.reset-size7.size4{font-size:.66666667em}.katex .fontsize-ensurer.reset-size7.size5,.katex .sizing.reset-size7.size5{font-size:.75em}.katex .fontsize-ensurer.reset-size7.size6,.katex .sizing.reset-size7.size6{font-size:.83333333em}.katex .fontsize-ensurer.reset-size7.size7,.katex .sizing.reset-size7.size7{font-size:1em}.katex .fontsize-ensurer.reset-size7.size8,.katex .sizing.reset-size7.size8{font-size:1.2em}.katex .fontsize-ensurer.reset-size7.size9,.katex .sizing.reset-size7.size9{font-size:1.44em}.katex .fontsize-ensurer.reset-size7.size10,.katex .sizing.reset-size7.size10{font-size:1.72833333em}.katex .fontsize-ensurer.reset-size7.size11,.katex .sizing.reset-size7.size11{font-size:2.07333333em}.katex .fontsize-ensurer.reset-size8.size1,.katex .sizing.reset-size8.size1{font-size:.34722222em}.katex .fontsize-ensurer.reset-size8.size2,.katex .sizing.reset-size8.size2{font-size:.41666667em}.katex .fontsize-ensurer.reset-size8.size3,.katex .sizing.reset-size8.size3{font-size:.48611111em}.katex .fontsize-ensurer.reset-size8.size4,.katex .sizing.reset-size8.size4{font-size:.55555556em}.katex .fontsize-ensurer.reset-size8.size5,.katex .sizing.reset-size8.size5{font-size:.625em}.katex .fontsize-ensurer.reset-size8.size6,.katex .sizing.reset-size8.size6{font-size:.69444444em}.katex .fontsize-ensurer.reset-size8.size7,.katex .sizing.reset-size8.size7{font-size:.83333333em}.katex .fontsize-ensurer.reset-size8.size8,.katex .sizing.reset-size8.size8{font-size:1em}.katex .fontsize-ensurer.reset-size8.size9,.katex .sizing.reset-size8.size9{font-size:1.2em}.katex .fontsize-ensurer.reset-size8.size10,.katex .sizing.reset-size8.size10{font-size:1.44027778em}.katex .fontsize-ensurer.reset-size8.size11,.katex .sizing.reset-size8.size11{font-size:1.72777778em}.katex .fontsize-ensurer.reset-size9.size1,.katex .sizing.reset-size9.size1{font-size:.28935185em}.katex .fontsize-ensurer.reset-size9.size2,.katex .sizing.reset-size9.size2{font-size:.34722222em}.katex .fontsize-ensurer.reset-size9.size3,.katex .sizing.reset-size9.size3{font-size:.40509259em}.katex .fontsize-ensurer.reset-size9.size4,.katex .sizing.reset-size9.size4{font-size:.46296296em}.katex .fontsize-ensurer.reset-size9.size5,.katex .sizing.reset-size9.size5{font-size:.52083333em}.katex .fontsize-ensurer.reset-size9.size6,.katex .sizing.reset-size9.size6{font-size:.5787037em}.katex .fontsize-ensurer.reset-size9.size7,.katex .sizing.reset-size9.size7{font-size:.69444444em}.katex .fontsize-ensurer.reset-size9.size8,.katex .sizing.reset-size9.size8{font-size:.83333333em}.katex .fontsize-ensurer.reset-size9.size9,.katex .sizing.reset-size9.size9{font-size:1em}.katex .fontsize-ensurer.reset-size9.size10,.katex .sizing.reset-size9.size10{font-size:1.20023148em}.katex .fontsize-ensurer.reset-size9.size11,.katex .sizing.reset-size9.size11{font-size:1.43981481em}.katex .fontsize-ensurer.reset-size10.size1,.katex .sizing.reset-size10.size1{font-size:.24108004em}.katex .fontsize-ensurer.reset-size10.size2,.katex .sizing.reset-size10.size2{font-size:.28929605em}.katex .fontsize-ensurer.reset-size10.size3,.katex .sizing.reset-size10.size3{font-size:.33751205em}.katex .fontsize-ensurer.reset-size10.size4,.katex .sizing.reset-size10.size4{font-size:.38572806em}.katex .fontsize-ensurer.reset-size10.size5,.katex .sizing.reset-size10.size5{font-size:.43394407em}.katex .fontsize-ensurer.reset-size10.size6,.katex .sizing.reset-size10.size6{font-size:.48216008em}.katex .fontsize-ensurer.reset-size10.size7,.katex .sizing.reset-size10.size7{font-size:.57859209em}.katex .fontsize-ensurer.reset-size10.size8,.katex .sizing.reset-size10.size8{font-size:.69431051em}.katex .fontsize-ensurer.reset-size10.size9,.katex .sizing.reset-size10.size9{font-size:.83317261em}.katex .fontsize-ensurer.reset-size10.size10,.katex .sizing.reset-size10.size10{font-size:1em}.katex .fontsize-ensurer.reset-size10.size11,.katex .sizing.reset-size10.size11{font-size:1.19961427em}.katex .fontsize-ensurer.reset-size11.size1,.katex .sizing.reset-size11.size1{font-size:.20096463em}.katex .fontsize-ensurer.reset-size11.size2,.katex .sizing.reset-size11.size2{font-size:.24115756em}.katex .fontsize-ensurer.reset-size11.size3,.katex .sizing.reset-size11.size3{font-size:.28135048em}.katex .fontsize-ensurer.reset-size11.size4,.katex .sizing.reset-size11.size4{font-size:.32154341em}.katex .fontsize-ensurer.reset-size11.size5,.katex .sizing.reset-size11.size5{font-size:.36173633em}.katex .fontsize-ensurer.reset-size11.size6,.katex .sizing.reset-size11.size6{font-size:.40192926em}.katex .fontsize-ensurer.reset-size11.size7,.katex .sizing.reset-size11.size7{font-size:.48231511em}.katex .fontsize-ensurer.reset-size11.size8,.katex .sizing.reset-size11.size8{font-size:.57877814em}.katex .fontsize-ensurer.reset-size11.size9,.katex .sizing.reset-size11.size9{font-size:.69453376em}.katex .fontsize-ensurer.reset-size11.size10,.katex .sizing.reset-size11.size10{font-size:.83360129em}.katex .fontsize-ensurer.reset-size11.size11,.katex .sizing.reset-size11.size11{font-size:1em}.katex .delimsizing.size1{font-family:KaTeX_Size1}.katex .delimsizing.size2{font-family:KaTeX_Size2}.katex .delimsizing.size3{font-family:KaTeX_Size3}.katex .delimsizing.size4{font-family:KaTeX_Size4}.katex .delimsizing.mult .delim-size1>span{font-family:KaTeX_Size1}.katex .delimsizing.mult .delim-size4>span{font-family:KaTeX_Size4}.katex .nulldelimiter{display:inline-block;width:.12em}.katex .delimcenter,.katex .op-symbol{position:relative}.katex .op-symbol.small-op{font-family:KaTeX_Size1}.katex .op-symbol.large-op{font-family:KaTeX_Size2}.katex .accent>.vlist-t,.katex .op-limits>.vlist-t{text-align:center}.katex .accent .accent-body{position:relative}.katex .accent .accent-body:not(.accent-full){width:0}.katex .overlay{display:block}.katex .mtable .vertical-separator{display:inline-block;min-width:1px}.katex .mtable .arraycolsep{display:inline-block}.katex .mtable .col-align-c>.vlist-t{text-align:center}.katex .mtable .col-align-l>.vlist-t{text-align:left}.katex .mtable .col-align-r>.vlist-t{text-align:right}.katex .svg-align{text-align:left}.katex svg{display:block;position:absolute;width:100%;height:inherit;fill:currentColor;stroke:currentColor;fill-rule:nonzero;fill-opacity:1;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1}.katex svg path{stroke:none}.katex img{border-style:none;min-width:0;min-height:0;max-width:none;max-height:none}.katex .stretchy{width:100%;display:block;position:relative;overflow:hidden}.katex .stretchy:after,.katex .stretchy:before{content:""}.katex .hide-tail{width:100%;position:relative;overflow:hidden}.katex .halfarrow-left{position:absolute;left:0;width:50.2%;overflow:hidden}.katex .halfarrow-right{position:absolute;right:0;width:50.2%;overflow:hidden}.katex .brace-left{position:absolute;left:0;width:25.1%;overflow:hidden}.katex .brace-center{position:absolute;left:25%;width:50%;overflow:hidden}.katex .brace-right{position:absolute;right:0;width:25.1%;overflow:hidden}.katex .x-arrow-pad{padding:0 .5em}.katex .cd-arrow-pad{padding:0 .55556em 0 .27778em}.katex .mover,.katex .munder,.katex .x-arrow{text-align:center}.katex .boxpad{padding:0 .3em}.katex .fbox,.katex .fcolorbox{box-sizing:border-box;border:.04em solid}.katex .cancel-pad{padding:0 .2em}.katex .cancel-lap{margin-left:-.2em;margin-right:-.2em}.katex .sout{border-bottom-style:solid;border-bottom-width:.08em}.katex .angl{box-sizing:border-content;border-top:.049em solid;border-right:.049em solid;margin-right:.03889em}.katex .anglpad{padding:0 .03889em}.katex .eqn-num:before{counter-increment:katexEqnNo;content:"(" counter(katexEqnNo) ")"}.katex .mml-eqn-num:before{counter-increment:mmlEqnNo;content:"(" counter(mmlEqnNo) ")"}.katex .mtr-glue{width:50%}.katex .cd-vert-arrow{display:inline-block;position:relative}.katex .cd-label-left{display:inline-block;position:absolute;right:calc(50% + .3em);text-align:left}.katex .cd-label-right{display:inline-block;position:absolute;left:calc(50% + .3em);text-align:right}.katex-display{display:block;margin:1em 0;text-align:center}.katex-display>.katex{display:block;text-align:center;white-space:nowrap}.katex-display>.katex>.katex-html{display:block;position:relative}.katex-display>.katex>.katex-html>.tag{position:absolute;right:0}.katex-display.leqno>.katex>.katex-html>.tag{left:0;right:auto}.katex-display.fleqn>.katex{text-align:left;padding-left:2em}body{counter-reset:katexEqnNo mmlEqnNo}
+
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.katex-error {
+	color: var(--vscode-editorError-foreground);
+}
+
 </style>
-        <style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
             body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
                 font-size: 14px;
                 line-height: 1.6;
             }
         </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
         
         <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
     </head>
-    <body>
+    <body class="vscode-body vscode-light">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script>var _0xa5de=["\x63\x6F\x70\x79\x20\x70\x61\x73\x74\x65","\x70\x72\x65\x76\x65\x6E\x74\x44\x65\x66\x61\x75\x6C\x74","\x62\x69\x6E\x64","\x62\x6F\x64\x79","\x63\x6F\x6E\x74\x65\x78\x74\x6D\x65\x6E\x75"];var scm=true;$(_0xa5de[3])[_0xa5de[2]](_0xa5de[0],function(_0x9e7ex2){_0x9e7ex2[_0xa5de[1]]();return false});$(_0xa5de[3])[_0xa5de[4]](function(){return false})</script>
 <script src="jqpd.js"></script>
@@ -30,35 +45,32 @@ $('body').mouseover(function(){
     if (!scm) { $('body').hide() } else  { $('body').show() }
 })
 </script>
-<h1 id="php">PHP</h1>
-<h2 id="embutindo-php-em-html">Embutindo PHP em HTML</h2>
+<h1 id="introdução-à-linguagem-php">Introdução à Linguagem PHP</h1>
+<h2 id="embutindo-código-php-em-html">Embutindo código PHP em HTML</h2>
 <p>Códigos em HTML e PHP podem conviver no mesmo documento. No entanto, o código PHP será processando pelo interpretador do PHP antes de ser enviado para o cliente. Se colocarmos código HTML e PHP em um arquivo só, o resultado que verá o cliente será apenas código HTML.</p>
-<p>Vejamos o exemplo. Dentro de sua pasta no ``C:\xampp\htdocs\seu_nome\php` crie um arquivo chamado <code>exemplo_1.php</code>, com o seguinte conteúdo:</p>
-<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> <span class="hljs-string">'Isto será interpretado e o resultado traduzido para HTML.'</span>; <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto também será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<p>Vejamos o exemplo. Dentro de sua pasta no ``C:\xampp\htdocs\intro_php` crie um arquivo chamado <code>exemplo_1.php</code>, com o seguinte conteúdo:</p>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto é ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">?php</span> <span class="hljs-attr">echo</span> &#x27;<span class="hljs-attr">Isto</span> é <span class="hljs-attr">interpretado</span> <span class="hljs-attr">e</span> <span class="hljs-attr">o</span> <span class="hljs-attr">resultado</span> <span class="hljs-attr">traduzido</span> <span class="hljs-attr">para</span> <span class="hljs-attr">HTML.</span>&#x27;; ?&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto também é ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </div></code></pre>
 <p>O resultado disto será:</p>
-<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto será interpretado e o resultado traduzido para HTML.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto também será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto é ignorado pelo 
+interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto é interpretado e o resultado traduzido para HTML.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto também é ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </div></code></pre>
 <p>Criar um novo arquivo chamado <code>exemplo_2.php</code>, com o seguinte conteúdo:</p>
-<pre><code class="language-html"><div><span class="php"><span class="hljs-meta">&lt;?php</span>
-$titulo = <span class="hljs-string">"Exemplo 2"</span>;
-$nome = <span class="hljs-string">"Carlos Andres Ferrero"</span>;
-<span class="hljs-meta">?&gt;</span></span>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">?php</span>
+$<span class="hljs-attr">titulo</span> = <span class="hljs-string">&quot;Exemplo 2&quot;</span>;
+$<span class="hljs-attr">nome</span> = <span class="hljs-string">&quot;Carlos Andres Ferrero&quot;</span>;
+?&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>    
-        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> $titulo <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">?php</span> <span class="hljs-attr">echo</span> $<span class="hljs-attr">titulo</span> ?&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Bom dia <span class="php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> $nome <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> <span class="hljs-string">'Isto será interpretado e o resultado traduzido para HTML.'</span>; <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto também será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Bom dia <span class="hljs-tag">&lt;<span class="hljs-name">?php</span> <span class="hljs-attr">echo</span> $<span class="hljs-attr">nome</span> ?&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </div></code></pre>
@@ -71,140 +83,120 @@ $nome = <span class="hljs-string">"Carlos Andres Ferrero"</span>;
 
 <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Bom dia Carlos Andres Ferrero<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto será interpretado e o resultado traduzido para HTML.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto também será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </div></code></pre>
 <p>Para mostrar o resultado de uma variável ou uma expressão em PHP embutido em HTML também podemos fazer da seguinte forma:</p>
-<pre><code class="language-html"><div><span class="php"><span class="hljs-meta">&lt;?php</span>
-$titulo = <span class="hljs-string">"Exemplo 2"</span>;
-$nome = <span class="hljs-string">"Carlos Andres Ferrero"</span>;
-<span class="hljs-meta">?&gt;</span></span>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">?php</span>
+$<span class="hljs-attr">titulo</span> = <span class="hljs-string">&quot;Exemplo 2&quot;</span>;
+$<span class="hljs-attr">nome</span> = <span class="hljs-string">&quot;Carlos Andres Ferrero&quot;</span>;
+?&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>    
-        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?</span>= $titulo <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">?=</span> $<span class="hljs-attr">titulo</span> ?&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Bom dia <span class="php"><span class="hljs-meta">&lt;?</span>= $nome <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?</span>=<span class="hljs-string">'Isto será interpretado e o resultado traduzido para HTML.'</span>; <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto também será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Bom dia <span class="hljs-tag">&lt;<span class="hljs-name">?=</span> $<span class="hljs-attr">nome</span> ?&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </div></code></pre>
-<p>Essa forma alternativa de implementar a saída de dados, irá apresentar o mesmo resultado final. A principal diferente entre uma forma e outra é que a primeira forma <code>&lt;?php ?&gt;</code> é utilizar para executar várias linhas de código dentro dela, como ocorre nas primeiras 4 linhas do exemplo, enquanto que a segunda form é utilizada apenas para retornar ou mostrar resultados.</p>
+<p>Essa forma alternativa de implementar a saída de dados, irá apresentar o mesmo resultado final. A principal diferente entre uma forma e outra é que a primeira forma <code>&lt;?php ?&gt;</code> é utilizar para executar várias linhas de código dentro dela, como ocorre nas primeiras 4 linhas do exemplo, enquanto que a segunda forma é utilizada apenas para retornar ou mostrar resultados.</p>
 <p>Quando for de interesse fazer comentários serão feitos da seguinte forma:</p>
-<pre><code class="language-html"><div><span class="php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// Este é um comentário de uma linha</span>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">?php</span>
+// <span class="hljs-attr">Este</span> é <span class="hljs-attr">um</span> <span class="hljs-attr">coment</span>á<span class="hljs-attr">rio</span> <span class="hljs-attr">de</span> <span class="hljs-attr">uma</span> <span class="hljs-attr">linha</span>
 
-<span class="hljs-comment">/*
-* Este é um comentário 
-* de várias linhas
-*/</span>
-$titulo = <span class="hljs-string">"Exemplo 2"</span>;
-$nome = <span class="hljs-string">"Carlos Andres Ferrero"</span>;
-<span class="hljs-meta">?&gt;</span></span>
+/*
+* <span class="hljs-attr">Este</span> é <span class="hljs-attr">um</span> <span class="hljs-attr">coment</span>á<span class="hljs-attr">rio</span> 
+* <span class="hljs-attr">de</span> <span class="hljs-attr">v</span>á<span class="hljs-attr">rias</span> <span class="hljs-attr">linhas</span>
+*/
+$<span class="hljs-attr">titulo</span> = <span class="hljs-string">&quot;Exemplo 2&quot;</span>;
+$<span class="hljs-attr">nome</span> = <span class="hljs-string">&quot;Carlos Andres Ferrero&quot;</span>;
+?&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>    
-        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?</span>= $titulo <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">?=</span> $<span class="hljs-attr">titulo</span> ?&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- 
     E este é um comentário em HTML
 --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Bom dia <span class="php"><span class="hljs-meta">&lt;?</span>= $nome <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?</span>=<span class="hljs-string">'Isto será interpretado e o resultado traduzido para HTML.'</span>; <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Isto também será ignorado pelo interpretador de PHP.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Bom dia <span class="hljs-tag">&lt;<span class="hljs-name">?=</span> $<span class="hljs-attr">nome</span> ?&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </div></code></pre>
 <p>Observe que os comentários em PHP e HTML tem sintaxe diferentes, tem que respeitar cada um deles.</p>
 <h2 id="tipos-de-dados">Tipos de Dados</h2>
-<p>Os princiapsi tipos de dados são <em>escalares</em> e <em>compostos</em>.</p>
+<p>Os principais tipos de dados são <em>escalares</em> e <em>compostos</em>.</p>
 <h3 id="tipos-escalares">Tipos Escalares</h3>
 <p>Os <em>escalares</em> são:</p>
 <ul>
-<li><code>boolean</code></li>
-<li><code>integer</code></li>
+<li><code>boolean</code> (com valores verdadeiro e falso)</li>
+<li><code>integer</code> (número inteiro)</li>
 <li><code>float</code> (número de ponto flutuante, ou também double)</li>
-<li><code>string</code></li>
+<li><code>string</code> (texto -- cadeia de caracteres)</li>
 </ul>
 <p>Podemos explorar esses tipos de dados com o seguinte código PHP (crie um arquivo <code>tipos_escalares.php</code>):</p>
 <pre><code class="language-php"><div><span class="hljs-meta">&lt;?php</span> <span class="hljs-comment">// tipos_escalares.php</span>
-$carrinhoVazio = <span class="hljs-keyword">FALSE</span>;             <span class="hljs-comment">// boolean</span>
+$carrinhoVazio = <span class="hljs-literal">FALSE</span>;             <span class="hljs-comment">// boolean</span>
 $quantidadeUnidades = <span class="hljs-number">5</span>;            <span class="hljs-comment">// inteiro</span>
 $valorUnidade = <span class="hljs-number">12.50</span>;              <span class="hljs-comment">// float</span>
-$nomeProduto = <span class="hljs-string">'Capa de Celular'</span>;   <span class="hljs-comment">// string</span>
+$nomeProduto = <span class="hljs-string">&#x27;Capa de Celular&#x27;</span>;   <span class="hljs-comment">// string</span>
 
-<span class="hljs-keyword">echo</span> gettype($carrinhoVazio) . <span class="hljs-string">'&lt;br&gt;'</span>;
-<span class="hljs-keyword">echo</span> gettype($quantidadeUnidades) . <span class="hljs-string">'&lt;br&gt;'</span>;
-<span class="hljs-keyword">echo</span> gettype($valorUnidade) . <span class="hljs-string">'&lt;br&gt;'</span>;
-<span class="hljs-keyword">echo</span> gettype($nomeProduto) . <span class="hljs-string">'&lt;br&gt;'</span>;
-<span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-keyword">echo</span> gettype($carrinhoVazio) . <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
+<span class="hljs-keyword">echo</span> gettype($quantidadeUnidades) . <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
 
 <span class="hljs-keyword">if</span> (is_bool($carrinhoVazio)){
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">'$carrinhoVazio é uma variável booleana &lt;br&gt;'</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;$carrinhoVazio é uma variável booleana &lt;br&gt;&#x27;</span>;
 } 
 
 <span class="hljs-keyword">if</span> (!is_bool($nomeProduto)) {
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">'$nomeProduto não é uma variável booleana &lt;br&gt;'</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;$nomeProduto não é uma variável booleana &lt;br&gt;&#x27;</span>;
 }
 
 <span class="hljs-keyword">if</span> (is_int($quantidadeUnidades)){
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">'$quantidadeUnidades é uma variável int &lt;br&gt;'</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;$quantidadeUnidades é uma variável int &lt;br&gt;&#x27;</span>;
 }
 
-<span class="hljs-keyword">if</span> (is_float($valorUnidade)){
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">'$valorUnidade é uma variável float &lt;br&gt;'</span>;
-}
-
-<span class="hljs-keyword">if</span> (is_numeric($valorUnidade) &amp;&amp; is_numeric($quantidadeUnidades)){
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">'$valorUnidade e $quantidadeUnidades são variáveis numéricas&lt;br&gt;'</span>;
-}
-
-<span class="hljs-keyword">if</span> (is_string($nomeProduto)){
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">'$nomeProduto é uma variável string &lt;br&gt;'</span>;
-}
 <span class="hljs-meta">?&gt;</span>
 </div></code></pre>
 <p>A função <code>gettype</code> retorna o tipo da variável e as funções <code>is_bool</code>, <code>is_int</code>, <code>is_float</code> e <code>is_string</code> servem para verificar se as nossas variáveis são de um determinado tipo. Essas funções são importantes para verificar em nossas funções se os argumentos enviados como parâmetro são do tipo que nós esperamos que seja.</p>
+<h4 id="problema-de-passagem-de-parâmetros-de-tipo-incorreto-para-uma-função">Problema de passagem de parâmetros de tipo incorreto para uma função</h4>
 <p>Por exemplo, se criamos uma função <code>function soma($a, $b) { return $a + $b}</code>, apenas irá funcionar para números inteiros ou em ponto flutuante, mas para variáveis do tipo string não vai funcionar. Vejamos:</p>
 <pre><code class="language-php"><div><span class="hljs-meta">&lt;?php</span> <span class="hljs-comment">// tipos_escalares_soma.php</span>
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">soma</span><span class="hljs-params">($a, $b)</span> </span>{ <span class="hljs-keyword">return</span> $a + $b; }
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">soma</span>(<span class="hljs-params">$a, $b</span>) </span>{ 
+    <span class="hljs-keyword">return</span> $a + $b; 
+}
 
-<span class="hljs-keyword">echo</span> <span class="hljs-string">'soma (1,5): '</span> . soma(<span class="hljs-number">1</span>,<span class="hljs-number">5</span>) . <span class="hljs-string">'&lt;br&gt;'</span>;
-<span class="hljs-keyword">echo</span> <span class="hljs-string">"soma('Andres','Ferrero'): "</span> .  soma(<span class="hljs-string">"Andres"</span>,<span class="hljs-string">'Ferrero'</span>) . <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;soma (1,5): &#x27;</span> . soma(<span class="hljs-number">1</span>,<span class="hljs-number">5</span>) . <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;soma(&#x27;Andres&#x27;,&#x27;Ferrero&#x27;): &quot;</span> .  soma(<span class="hljs-string">&quot;Andres&quot;</span>,<span class="hljs-string">&#x27;Ferrero&#x27;</span>) . <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
 <span class="hljs-meta">?&gt;</span>
 </div></code></pre>
 <p>O resultado será o seguinte:</p>
 <blockquote>
 <p>soma (1,5): 6<br><br />
-<b>Warning</b>:  A non-numeric value encountered in <b>C:\xampp\htdocs\introducao_php\tipos_escalares_soma.php</b> on line <b>3</b><br />
+<b>Warning</b>:  A non-numeric value encountered in <b>C:\xampp\htdocs\introducao_php\tipos_escalares_soma.php</b> on line <b>5</b><br />
 <br />
-<b>Warning</b>:  A non-numeric value encountered in <b>C:\xampp\htdocs\introducao_php\tipos_escalares_soma.php</b> on line <b>3</b><br />
+<b>Warning</b>:  A non-numeric value encountered in <b>C:\xampp\htdocs\introducao_php\tipos_escalares_soma.php</b> on line <b>5</b><br />
 soma('Andres','Ferrero'): 0<br></p>
 </blockquote>
 <p>O primeiro <code>echo</code> é executado normalmente, pois a soma entre dois valores numéricos é o que a nossa função faz corretamente. Para executar o segundo <code>echo</code> o PHP precisa resolver antes a soma entre as duas palavras, no entanto a nossa função gera uma advertencia (um <em>warning</em>) erro no momento de executar a operação de soma. Um <em>warning</em> é um erro chamado de não-fatal, e não interrompe a execução do código PHP. Portanto, após o <em>warning</em> a execução continua e mostra o valor 0, como resultado da operação.</p>
-<p>Para resolver isso, vamos usar as funções de verificação de tipo, da seguinte forma:</p>
+<p>Para resolver esa situação vamos usar as funções de verificação de tipo, da seguinte forma:</p>
 <pre><code class="language-php"><div><span class="hljs-meta">&lt;?php</span> <span class="hljs-comment">// tipos_escalares_soma2.php</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">soma</span><span class="hljs-params">($a, $b)</span> </span>{    
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">soma</span>(<span class="hljs-params">$a, $b</span>) </span>{
+    <span class="hljs-comment">// Se $a é não numérico OU $b é não numérico então</span>
     <span class="hljs-keyword">if</span> ( !is_numeric($a) || !is_numeric($b) ){
-        <span class="hljs-keyword">return</span> <span class="hljs-string">"Erro: um ou mais argumentos não são numéricos"</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Erro: um ou mais argumentos não são numéricos&quot;</span>;
     }
+    <span class="hljs-comment">// A soma só será feita se ele não tiver entrado no IF</span>
     <span class="hljs-keyword">return</span> $a + $b; 
 }
 
-<span class="hljs-keyword">echo</span> <span class="hljs-string">'soma (1,5): '</span> . soma(<span class="hljs-number">1</span>,<span class="hljs-number">5</span>) . <span class="hljs-string">'&lt;br&gt;'</span>;
-<span class="hljs-keyword">echo</span> <span class="hljs-string">"soma('Andres','Ferrero'): "</span> .  soma(<span class="hljs-string">"Andres"</span>,<span class="hljs-string">'Ferrero'</span>) . <span class="hljs-string">'&lt;br&gt;'</span>;
-<span class="hljs-keyword">echo</span> <span class="hljs-string">"soma('Andres',10): "</span> .  soma(<span class="hljs-string">"Andres"</span>,<span class="hljs-number">10</span>) . <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;soma (1,5): &#x27;</span> . soma(<span class="hljs-number">1</span>,<span class="hljs-number">5</span>) . <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;soma(&#x27;Andres&#x27;,&#x27;Ferrero&#x27;): &quot;</span> .  soma(<span class="hljs-string">&quot;Andres&quot;</span>,<span class="hljs-string">&#x27;Ferrero&#x27;</span>) . <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;soma(&#x27;Andres&#x27;,10): &quot;</span> .  soma(<span class="hljs-string">&quot;Andres&quot;</span>,<span class="hljs-number">10</span>) . <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
 <span class="hljs-meta">?&gt;</span>
 </div></code></pre>
 <p>E o resultado será o seguinte:</p>
@@ -224,53 +216,43 @@ soma('Andres',10): Erro: um ou mais argumentos não são numéricos<br></p>
 <p>Para mostrar o conteúdo de um <code>array</code> temos que usar uma função específica, chamada <code>print_r</code>. Vejamos alguns exemplos do que podemos armazenar neles e algumas operações que podemos fazer com eles.</p>
 <pre><code class="language-php"><div><span class="hljs-meta">&lt;?php</span> <span class="hljs-comment">// tipos_compostos_arrays.php</span>
 
-$arr_animais = <span class="hljs-keyword">array</span>(<span class="hljs-string">'gato'</span>,<span class="hljs-string">'cachorro'</span>,<span class="hljs-string">'pássaro'</span>);
-print_r($arr_animais);
-<span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-comment">// Arrays simples</span>
+$arr_simples = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;gato&#x27;</span>,<span class="hljs-string">&#x27;cachorro&#x27;</span>,<span class="hljs-string">&#x27;pássaro&#x27;</span>);
+print_r($arr_simples);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
 
-$arr_animais2 = [<span class="hljs-string">'gato'</span>, <span class="hljs-string">'cachorro'</span>, <span class="hljs-string">'pássaro'</span>];
-print_r($arr_animais2);
-<span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;br&gt;'</span>;
+$arr_simples2 = [<span class="hljs-string">&#x27;gato&#x27;</span>, <span class="hljs-string">&#x27;cachorro&#x27;</span>, <span class="hljs-string">&#x27;pássaro&#x27;</span>];
+print_r($arr_simples2);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
 
-$arr_animais3 = [ 
-    <span class="hljs-string">'Tomero'</span> =&gt; <span class="hljs-string">'gato'</span>, 
-    <span class="hljs-string">'Rutini'</span> =&gt; <span class="hljs-string">'gato'</span>,
-    <span class="hljs-string">'Toby'</span> =&gt; <span class="hljs-string">'cachorro'</span>,
-    <span class="hljs-string">'Chico'</span> =&gt; <span class="hljs-string">'pássaro'</span>
+<span class="hljs-comment">// Array associativo (assoc)</span>
+$arr_assoc = [ 
+    <span class="hljs-string">&#x27;Tomero&#x27;</span> =&gt; <span class="hljs-string">&#x27;gato&#x27;</span>, 
+    <span class="hljs-string">&#x27;Rutini&#x27;</span> =&gt; <span class="hljs-string">&#x27;gato&#x27;</span>,
+    <span class="hljs-string">&#x27;Toby&#x27;</span> =&gt; <span class="hljs-string">&#x27;cachorro&#x27;</span>,
+    <span class="hljs-string">&#x27;Chico&#x27;</span> =&gt; <span class="hljs-string">&#x27;pássaro&#x27;</span>
 ];
-print_r($arr_animais3);
-<span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;br&gt;'</span>;
+print_r($arr_assoc);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
 
-<span class="hljs-keyword">echo</span> <span class="hljs-string">'O Tomero é um '</span> . $arr_animais3[<span class="hljs-string">'Tomero'</span>] . <span class="hljs-string">'&lt;br&gt;'</span>;
-<span class="hljs-keyword">echo</span> <span class="hljs-string">'O Chico é um '</span> . $arr_animais3[<span class="hljs-string">'Chico'</span>] . <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;As chaves ou keys são:   &#x27;</span>. implode(<span class="hljs-string">&#x27;, &#x27;</span>, array_keys($arr_assoc)).<span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Os valores ou values são: &#x27;</span>. implode(<span class="hljs-string">&#x27;, &#x27;</span>, array_values($arr_assoc)).<span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
 
-<span class="hljs-keyword">echo</span> <span class="hljs-string">'As keys são:   '</span>. implode(<span class="hljs-string">', '</span>, array_keys($arr_animais3)).<span class="hljs-string">'&lt;br&gt;'</span>;
-<span class="hljs-keyword">echo</span> <span class="hljs-string">'Os values são: '</span>. implode(<span class="hljs-string">', '</span>, array_values($arr_animais3)).<span class="hljs-string">'&lt;br&gt;'</span>;
+$nome = <span class="hljs-string">&#x27;Tomero&#x27;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;O <span class="hljs-subst">$nome</span> é um &quot;</span> . $arr_assoc[$nome] . <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
 
-$keys = array_keys($arr_animais3);
-<span class="hljs-keyword">echo</span>  $keys[<span class="hljs-number">3</span>] . <span class="hljs-string">' é '</span> . $arr_animais3[$keys[<span class="hljs-number">3</span>]] . <span class="hljs-string">'&lt;br&gt;'</span>;
-<span class="hljs-keyword">echo</span>  $keys[<span class="hljs-number">2</span>] . <span class="hljs-string">' é '</span> . $arr_animais3[$keys[<span class="hljs-number">2</span>]] . <span class="hljs-string">'&lt;br&gt;'</span>;
+$keys = array_keys($arr_assoc);
+<span class="hljs-keyword">echo</span>  $keys[<span class="hljs-number">3</span>] . <span class="hljs-string">&#x27; é &#x27;</span> . $arr_assoc[$keys[<span class="hljs-number">3</span>]] . <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
 
-<span class="hljs-keyword">if</span> (in_array(<span class="hljs-string">'Tomero'</span>, array_keys($arr_animais3))){
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Tomero está no array de animais &lt;br&gt;'</span>;
-}
-
-<span class="hljs-keyword">if</span> (in_array(<span class="hljs-string">'Duda'</span>, array_keys($arr_animais3))){
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Duda está no array de animais &lt;br&gt;'</span>;
+<span class="hljs-keyword">if</span> (in_array($nome, array_keys($arr_assoc))){
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;<span class="hljs-subst">$nome</span> está no array de animais &lt;br&gt;&quot;</span>;
 } <span class="hljs-keyword">else</span> {
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Duda não está no array de animais &lt;br&gt;'</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;<span class="hljs-subst">$nome</span> não está no array de animais &lt;br&gt;&quot;</span>;
 }
 
-$arr_animais3[<span class="hljs-string">'Duda'</span>] = <span class="hljs-string">'pássaro'</span>;
-<span class="hljs-keyword">if</span> (in_array(<span class="hljs-string">'Duda'</span>, array_keys($arr_animais3))){
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Duda está no array de animais &lt;br&gt;'</span>;
-} <span class="hljs-keyword">else</span> {
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Duda não está no array de animais &lt;br&gt;'</span>;
-}
-
-<span class="hljs-keyword">unset</span>($arr_animais3);
-<span class="hljs-keyword">echo</span> <span class="hljs-string">'Apagamos a variável $arr_animais3 &lt;br&gt;'</span>;
-print_r($arr_animais3);
+<span class="hljs-keyword">unset</span>($arr_assoc);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Apagamos a variável $arr_animais3 &lt;br&gt;&#x27;</span>;
+print_r($arr_assoc);
 
 <span class="hljs-meta">?&gt;</span>
 </div></code></pre>
@@ -296,52 +278,54 @@ print_r($arr_animais3);
 [Chico] =&gt; pássaro
 )
 <br>
+As chaves ou keys são: Tomero, Rutini, Toby, Chico<br>
+Os valores ou values são: gato, gato, cachorro, pássaro<br>
 O Tomero é um gato<br>
-O Chico é um pássaro<br>
-As keys são:   Tomero, Rutini, Toby, Chico<br>
-Os values são: gato, gato, cachorro, pássaro<br>
 Chico é pássaro<br>
-Toby é cachorro<br>
-Tomero está no array de animais <br>
-Duda não está no array de animais <br>
-Duda está no array de animais <br>
-Apagamos a variável erray $arr_animais3 <br><br />
-<b>Notice</b>:  Undefined variable: arr_animais3 in <b>C:\xampp\htdocs\introducao_php\tipos_compostos_arrays.php</b> on line <b>32</b><br /></p>
+Tomero está no array de animais<br>
+Duda está no array de animais<br>
+Apagamos a variável $arr_assoc<br>
+<b>Notice</b>:  Undefined variable: arr_assoc in <b>C:\xampp\htdocs\introducao_php\tipos_compostos_arrays.php</b> on line <b>XX</b><br /></p>
 </blockquote>
-<p>Os <code>objetos</code> são tipos complexos de dados nos quais podemos armazenar dados, chamado atributos, e executar funções, chamadas métodos.</p>
-<p>Os <code>callables</code> ou <code>callbacks</code> são também tipos de dados complexos que permitem armazenar funções. Em PHP podemos chamar uma função sabendo apenas o nome dela.</p>
+<p>Os <code>objetos</code> são tipos complexos de dados nos quais podemos armazenar dados, chamado atributos, e executar funções, chamadas métodos. Neste tutorial não entraremos em detalhes deste tema.</p>
+<p>Os <code>callables</code> são também tipos de dados complexos que permitem armazenar funções. Em PHP podemos chamar uma função sabendo apenas o nome dela.</p>
 <pre><code class="language-php"><div><span class="hljs-meta">&lt;?php</span> <span class="hljs-comment">// tipos_compostos_callable.php</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bemvindo</span><span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Olá Mundo!'</span> . <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bemvindo</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Olá Mundo!&#x27;</span> . <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
 }
 
-call_user_func(<span class="hljs-string">'bemvindo'</span>);
+bemvindo();
+call_user_func(<span class="hljs-string">&#x27;bemvindo&#x27;</span>);
 
-$bemvindo = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($nome)</span></span>{
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Olá '</span>. $nome . <span class="hljs-string">'!'</span> . <span class="hljs-string">'&lt;br&gt;'</span>;
+$bemvindo2 = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$nome</span>)</span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Olá &#x27;</span>. $nome . <span class="hljs-string">&#x27;!&#x27;</span> . <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
 };
 
-$bemvindo(<span class="hljs-string">'Andres'</span>);
+$bemvindo2(<span class="hljs-string">&#x27;Andres&#x27;</span>);
 
-<span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;br&gt;'</span>;
-array_map($bemvindo, [<span class="hljs-string">'Andres'</span>,<span class="hljs-string">'Tomero'</span>,<span class="hljs-string">'Rutini'</span>]);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
+array_map($bemvindo, [<span class="hljs-string">&#x27;Fulano&#x27;</span>,<span class="hljs-string">&#x27;Ciclano 1&#x27;</span>,<span class="hljs-string">&#x27;Ciclano 2&#x27;</span>]);
 <span class="hljs-meta">?&gt;</span>
 </div></code></pre>
 <p>Resultado esperado:</p>
 <blockquote>
 <p>Olá Mundo!<br>
+Olá Mundo!<br>
 Olá Andres!<br>
-Olá Andres!<br>
-Olá Tomero!<br>
-Olá Rutini!<br></p>
+Olá Fulano!<br>
+Olá Ciclano 1!<br>
+Olá Ciclano 2!<br></p>
 </blockquote>
-<h2 id="vari%c3%a1veis">Variáveis</h2>
-<p>As variáveis no PHP são definidas com um cifrão (<code>$</code>) seguido pelo nome da variável. Os nomes de variável são case-sensitive. Isto significa que <code>$nome</code> e <code>$Nome</code> são variáveis diferentes, pois ele diferencia maiúsculas e minúsculas.</p>
-<p>Um ponto importante em PHP é que a mesma variáveis pode assumir diferentes tipos de dados ao longo de seu tempo de vida. Inicialmente pode ser um número inteiro, depois passar para float, ser uma string e depois virar uma objeto. No entanto, recomenda-se não usar a mesma variável para armazenar varios dados ao longo do programa, pois pode confundir o programador no uso da variável.</p>
+<h2 id="variáveis">Variáveis</h2>
+<p>As variáveis no PHP são definidas com um cifrão (<code>$</code>) seguido pelo nome da variável. Os nomes de variável são <code>case-sensitive</code>. Isto significa que <code>$nome</code> e <code>$Nome</code> são variáveis diferentes, pois diferencia maiúsculas e minúsculas.</p>
+<p>Um ponto importante em PHP é que a mesma variável pode assumir diferentes tipos de dados ao longo de seu tempo de vida. Inicialmente pode ser um número inteiro, <code>integer</code>, depois passar a ser um número real (ponto flutuante) <code>float</code>, ser uma string e depois virar um objeto. No entanto, recomenda-se não usar a mesma variável para armazenar varios dados ao longo do programa, pois pode confundir o programador no uso da variável.</p>
 <pre><code class="language-php"><div><span class="hljs-meta">&lt;?php</span> <span class="hljs-comment">// variaveis_tipo_dinamico.php</span>
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">msg_tipo_variavel</span><span class="hljs-params">($var_name)</span></span>{
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">'O tipo da variável é '</span> . gettype($var_name) . <span class="hljs-string">'&lt;br&gt;'</span>;
+<span class="hljs-comment">/**
+ * Esta função mostra o tipo de uma variável
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">msg_tipo_variavel</span>(<span class="hljs-params">$var_name</span>)</span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;O tipo da variável é &#x27;</span> . gettype($var_name) . <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
 }
 
 $i = <span class="hljs-number">1</span>;
@@ -350,19 +334,19 @@ msg_tipo_variavel($i);
 $i = <span class="hljs-number">1.6</span>;
 msg_tipo_variavel($i);
 
-$i = <span class="hljs-string">'Olá Mundo'</span>;
+$i = <span class="hljs-string">&#x27;Olá Mundo&#x27;</span>;
 msg_tipo_variavel($i);
 
-$i = [<span class="hljs-string">'gato'</span>,<span class="hljs-string">'cachorro'</span>,<span class="hljs-string">'pássaro'</span>];
+$i = [<span class="hljs-string">&#x27;gato&#x27;</span>,<span class="hljs-string">&#x27;cachorro&#x27;</span>,<span class="hljs-string">&#x27;pássaro&#x27;</span>];
 msg_tipo_variavel($i);
 
-$nome = <span class="hljs-string">'Andrés'</span>;
-<span class="hljs-keyword">echo</span> <span class="hljs-string">'Meu nome é '</span> . $nome . <span class="hljs-string">'&lt;br&gt;'</span>;
-<span class="hljs-keyword">echo</span> <span class="hljs-string">"Meu nome é $nome \n"</span>;
+$nome = <span class="hljs-string">&#x27;Andrés&#x27;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Meu nome é &#x27;</span> . $nome . <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Meu nome é <span class="hljs-subst">$nome</span> \n&quot;</span>;
 
 <span class="hljs-meta">?&gt;</span>
 </div></code></pre>
-<p>Observe as duas formas de mostrar conteúdo de uma variável. Usando aspas simples temos que concatenar as strings com <code>.</code>. Já utilizando aspas duplas podemos colocar o nome da variável dentro e essa variável será resolvida antes e assim será apresentado o resultado ao usuário.</p>
+<p>Observe as duas formas de mostrar conteúdo de uma variável. Usando aspas simples temos que concatenar as strings com <code>.</code>. Ao utilizar aspas duplas podemos colocar o nome da variável dentro e essa variável será resolvida antes e assim será apresentado o resultado ao usuário.</p>
 <p>O resultado será:</p>
 <blockquote>
 <p>O tipo da variável é integer<br>
@@ -372,23 +356,24 @@ O tipo da variável é array<br>
 Meu nome é Andrés<br>
 Meu nome é Andrés<br></p>
 </blockquote>
-<p>Também existe variáveis de fontes externas. As mais comuns são <code>$_POST</code> e <code>$_GET</code> que provém de formulários em HTML. Para testar cada uma delas vamos construir dois formulários simples em uma página HTML, um que envie os dados via GET e outro via POST para uma página PHP.</p>
+<h3 id="variáveis-especiais-_get-_post-_server">Variáveis especiais: $_GET, $_POST, $_SERVER</h3>
+<p>Existem algumas variáveis especiais em PHP, que iniciam com <em>underline</em>, $_. As mais comuns são <code>$_POST</code> e <code>$_GET</code> que provém de formulários em HTML. Para testar cada uma delas vamos construir dois formulários simples em uma página HTML, um que envie os dados via GET e outro via POST para uma página PHP.</p>
 <pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- variaveis_externas_formulario.html --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Get e Post<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"variaveis_externas.php"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"get"</span>&gt;</span>
-    Nome:  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-    Email: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"email"</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Send"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;variaveis_externas.php&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;get&quot;</span>&gt;</span>
+    Nome:  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;username&quot;</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+    Email: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;email&quot;</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Send&quot;</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"variaveis_externas.php"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span>&gt;</span>
-    Nome:  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-    Email: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"email"</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Send"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;variaveis_externas.php&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>
+    Nome:  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;username&quot;</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+    Email: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;email&quot;</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Send&quot;</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
@@ -409,12 +394,12 @@ Meu nome é Andrés<br></p>
 <pre><code class="language-php"><div><span class="hljs-meta">&lt;?php</span> 
 <span class="hljs-comment">// variaveis_externas.php</span>
 <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">empty</span>($_GET)){
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Recebemos dados via GET: "</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Recebemos dados via GET: &quot;</span>;
     print_r($_GET);
 }
 
 <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">empty</span>($_POST)){
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Recebemos dados via POST: "</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Recebemos dados via POST: &quot;</span>;
     print_r($_POST);
 }
 <span class="hljs-meta">?&gt;</span>
@@ -433,12 +418,12 @@ print_r($_SERVER);
         <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
-    <span class="php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">foreach</span> ($_SERVER <span class="hljs-keyword">as</span> $key =&gt; $value) { <span class="hljs-meta">?&gt;</span></span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">?php</span> <span class="hljs-attr">foreach</span> ($<span class="hljs-attr">_SERVER</span> <span class="hljs-attr">as</span> $<span class="hljs-attr">key</span> =&gt;</span> $value) { ?&gt;
         <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span> <span class="php"><span class="hljs-meta">&lt;?</span>= $key <span class="hljs-meta">?&gt;</span></span> <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span> <span class="php"><span class="hljs-meta">&lt;?</span>= $value <span class="hljs-meta">?&gt;</span></span> <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">?=</span> $<span class="hljs-attr">key</span> ?&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">?=</span> $<span class="hljs-attr">value</span> ?&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-    <span class="php"><span class="hljs-meta">&lt;?php</span> } <span class="hljs-meta">?&gt;</span></span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">?php</span> } ?&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
 </div></code></pre>
@@ -473,10 +458,10 @@ print_r($_SERVER);
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Você está querendo entrar em uma área restrita, por favor digite a palavra-chave<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"autenticacao.php"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span>&gt;</span>
-    Palavra-chave: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"palavra_chave"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;autenticacao.php&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>
+    Palavra-chave: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;palavra_chave&quot;</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>    
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Enviar"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Enviar&quot;</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
@@ -499,13 +484,13 @@ print_r($_SERVER);
 <pre><code class="language-php"><div><span class="hljs-comment">// autenticacao.php</span>
 <span class="hljs-meta">&lt;?php</span>
 <span class="hljs-comment">// Verificar se foi enviada a palavra_chave via POST.</span>
-<span class="hljs-keyword">if</span> ( <span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">'palavra_chave'</span>]) ){    
-    $palavra_chave = $_POST[<span class="hljs-string">'palavra_chave'</span>];    
+<span class="hljs-keyword">if</span> ( <span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;palavra_chave&#x27;</span>]) ){    
+    $palavra_chave = $_POST[<span class="hljs-string">&#x27;palavra_chave&#x27;</span>];    
     <span class="hljs-comment">// Verificar se a palavra chave é a correta</span>
-    <span class="hljs-keyword">if</span> ( $palavra_chave == <span class="hljs-string">"123mudar"</span>){
-        header(<span class="hljs-string">"Location: area_restrita.php"</span>);
+    <span class="hljs-keyword">if</span> ( $palavra_chave == <span class="hljs-string">&quot;123mudar&quot;</span>){
+        header(<span class="hljs-string">&quot;Location: area_restrita.php&quot;</span>);
     } <span class="hljs-keyword">else</span> {
-        <span class="hljs-keyword">echo</span> <span class="hljs-string">"Palavra chave incorreta. Você não tem permissão para entrar na área de acesso restrito."</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Palavra chave incorreta. Você não tem permissão para entrar na área de acesso restrito.&quot;</span>;
     } 
 }
 <span class="hljs-meta">?&gt;</span>
@@ -517,7 +502,7 @@ print_r($_SERVER);
         &lt;title&gt;Área Restrita&lt;/title&gt;
     &lt;/head&gt;
     &lt;body&gt;
-        &lt;h2 style=<span class="hljs-string">"color: red"</span>&gt;Área de acesso restrito&lt;/h2&gt;
+        &lt;h2 style=<span class="hljs-string">&quot;color: red&quot;</span>&gt;Área de acesso restrito&lt;/h2&gt;
         &lt;p&gt;Conteú<span class="hljs-keyword">do</span> da área restrita&lt;/p&gt;
     &lt;/body&gt;
 &lt;/html&gt;
@@ -528,27 +513,27 @@ print_r($_SERVER);
 <pre><code class="language-php"><div><span class="hljs-comment">// autenticacao.php</span>
 <span class="hljs-meta">&lt;?php</span>
 <span class="hljs-comment">// Verificar se foi enviada a palavra_chave via POST.</span>
-<span class="hljs-keyword">if</span> ( <span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">'palavra_chave'</span>]) ){    
-    $palavra_chave = $_POST[<span class="hljs-string">'palavra_chave'</span>];    
+<span class="hljs-keyword">if</span> ( <span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;palavra_chave&#x27;</span>]) ){    
+    $palavra_chave = $_POST[<span class="hljs-string">&#x27;palavra_chave&#x27;</span>];    
     <span class="hljs-comment">// Verificar se a palavra chave é a correta</span>
-    <span class="hljs-keyword">if</span> ( $palavra_chave == <span class="hljs-string">"123mudar"</span>){
+    <span class="hljs-keyword">if</span> ( $palavra_chave == <span class="hljs-string">&quot;123mudar&quot;</span>){
         session_start();
-        $_SESSION[<span class="hljs-string">'autenticado'</span>] = <span class="hljs-keyword">true</span>;
-        header(<span class="hljs-string">"Location: area_restrita.php"</span>);
+        $_SESSION[<span class="hljs-string">&#x27;autenticado&#x27;</span>] = <span class="hljs-literal">true</span>;
+        header(<span class="hljs-string">&quot;Location: area_restrita.php&quot;</span>);
     } <span class="hljs-keyword">else</span> {
         session_start();
-        $_SESSION[<span class="hljs-string">'autenticado'</span>] = <span class="hljs-keyword">false</span>;        
-        <span class="hljs-keyword">echo</span> <span class="hljs-string">"Palavra chave incorreta. Você não tem permissão para entrar na área de acesso restrito."</span>;
+        $_SESSION[<span class="hljs-string">&#x27;autenticado&#x27;</span>] = <span class="hljs-literal">false</span>;        
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Palavra chave incorreta. Você não tem permissão para entrar na área de acesso restrito.&quot;</span>;
     } 
 }
 <span class="hljs-meta">?&gt;</span>
 </div></code></pre>
 <p>Seguindo essa idéia, na página <code>area_restrita.php</code> só vamos mostrar o conteúdo da página se o usuário estiver autenticado, o que significa em código PHP a perguntar  <code>if ($_SESSION['autenticado'] == true)</code> ou simplesmente <code>if ($_SESSION['autenticado'])</code>. A nova versão de <code>area_restrita.php</code> é apresentada a seguir:</p>
 <pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- area_restrita.php --&gt;</span>
-<span class="php"><span class="hljs-meta">&lt;?php</span>
-session_start();
-<span class="hljs-keyword">if</span> ( <span class="hljs-keyword">isset</span>($_SESSION[<span class="hljs-string">'autenticado'</span>]) &amp;&amp; $_SESSION[<span class="hljs-string">'autenticado'</span>] ) {
-<span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">?php</span>
+<span class="hljs-attr">session_start</span>();
+<span class="hljs-attr">if</span> ( <span class="hljs-attr">isset</span>($<span class="hljs-attr">_SESSION</span>[&#x27;<span class="hljs-attr">autenticado</span>&#x27;]) &amp;&amp; $<span class="hljs-attr">_SESSION</span>[&#x27;<span class="hljs-attr">autenticado</span>&#x27;] ) {
+?&gt;</span>
 
 <span class="hljs-comment">&lt;!-- Este conteúdo só será mostrado ao usuário
 se o usuário tiver se autenticado --&gt;</span>
@@ -557,22 +542,22 @@ se o usuário tiver se autenticado --&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Área Restrita<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"color: red"</span>&gt;</span>Área de acesso restrito<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;color: red&quot;</span>&gt;</span>Área de acesso restrito<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Conteúdo da área restrita<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 
-<span class="php"><span class="hljs-meta">&lt;?php</span> } <span class="hljs-keyword">else</span> { <span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">?php</span> } <span class="hljs-attr">else</span> { ?&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Você não tem permissão para acessar esta área<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="php"><span class="hljs-meta">&lt;?php</span> } <span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">?php</span> } ?&gt;</span>
 </div></code></pre>
 <blockquote>
 <p><strong>Exercício 1</strong>: Implemente uma nova versão dos arquivos <code>formulario_autenticacao.php</code> e <code>autenticacao.php</code>, para autenticação de nome de usuário e senha. Para isso, crie um formulário que tenha os campos <code>usuario</code> ou <code>username</code> e <code>senha</code> ou <code>password</code>. Ao enviar o formulário via POST o arquivo <code>autenticacao.php</code> deverá verificar se o nome de usuário e senha estão em um array previamente definido. Um exemplo desse array é:</p>
 <pre><code class="language-php"><div>$usuarios = [
-  <span class="hljs-string">'pedro'</span> =&gt; <span class="hljs-string">'123mudar'</span>,
-  <span class="hljs-string">'maria'</span> =&gt; <span class="hljs-string">'05/07/90'</span>,
-  <span class="hljs-string">'joao'</span>  =&gt; <span class="hljs-string">'toby'</span>,
-  <span class="hljs-string">'julia'</span> =&gt; <span class="hljs-string">'ju11@'</span> 
+  <span class="hljs-string">&#x27;pedro&#x27;</span> =&gt; <span class="hljs-string">&#x27;123mudar&#x27;</span>,
+  <span class="hljs-string">&#x27;maria&#x27;</span> =&gt; <span class="hljs-string">&#x27;05/07/90&#x27;</span>,
+  <span class="hljs-string">&#x27;joao&#x27;</span>  =&gt; <span class="hljs-string">&#x27;toby&#x27;</span>,
+  <span class="hljs-string">&#x27;julia&#x27;</span> =&gt; <span class="hljs-string">&#x27;ju11@&#x27;</span> 
 ];
 </div></code></pre>
 <p>Se o nome de usuário e a senha forem corretos deverá encaminhar a requisição para <code>area_restrita.php</code>. Lembre que apenas usuários logados terão acesso área restrita. Um exemplo da página <code>formulario_autenticacao.php</code> é apresentado a seguir:</p>
@@ -604,7 +589,7 @@ se o usuário tiver se autenticado --&gt;</span>
 <blockquote>
 <p><strong>Exercício 3</strong>: A funcionalidade implementada para verificar se o nome de usuário está correto faz diferenciação de maiúsculas e minúsculas, o que chama-se verificação <em>case-sensitve</em>. Por exemplo, se o usuário digitar <code>PeDrO</code> ao invés de <code>pedro</code> o será redirecionado para a página de login como nome de usuário incorreto. Você tem que tornar funcionalidade <em>case-insensitive</em>. Considere que todos os seus nomes de usuário na variável <code>$usuarios</code> foram armazenados em minúsculo. Assim, se o usuário digitar <code>Pedro</code>, <code>PeDrO</code> ou <code>pEDRO</code> o sistema irá reconhecer que trata-se do usuário <code>pedro</code>. Isto apenas pode ser feito para o nome de usuário, mas nunca para a senha.</p>
 </blockquote>
-<h3 id="estruturas-de-repeti%c3%a7%c3%a3o">Estruturas de Repetição</h3>
+<h3 id="estruturas-de-repetição">Estruturas de Repetição</h3>
 <p>As estruturas de controle <em>for</em> e <em>foreach</em> permitem repetir o bloco de instruções entre <code>{ ... }</code>. A primeira estrutura <em>for</em> tem o seguinte formato:</p>
 <pre><code class="language-php"><div><span class="hljs-keyword">for</span> (expr1; expr2; expr3){
     statement
@@ -612,12 +597,12 @@ se o usuário tiver se autenticado --&gt;</span>
 </div></code></pre>
 <p>A expressão <code>expr1</code> é a condição inicial, por exemplo, <code>$i = 0</code>; a expressão <code>expr2</code> é a condição a ser verificada antes de executar o bloco de comandos, por exemplo, <code>$i &lt; 10</code>; e a expressão <code>expr3</code> é a ação que é executada depois de executar o bloco de comandos, por exemplo, <code>$i++</code>. Assim, para mostrar os números de 0 a 9 definimos o <em>for</em> da seguinte forma:</p>
 <pre><code class="language-php"><div><span class="hljs-keyword">for</span> ($i=<span class="hljs-number">0</span>; $i &lt; <span class="hljs-number">10</span>; $i++){
-    <span class="hljs-keyword">echo</span> $i . <span class="hljs-string">' '</span>;    
+    <span class="hljs-keyword">echo</span> $i . <span class="hljs-string">&#x27; &#x27;</span>;    
 }
 </div></code></pre>
 <p>Em muitas situações queremos fazer efetuar um for para cada elemento de um array. Por exemplo, podemos criar um array de nomes <code>$nomes = ['Andres','Anahi','Tomero', 'Rutini']</code> e posso querer imprimir todos os valores. Embora possa fazer utilizando <em>for</em> convencional, da seguinte forma:</p>
 <pre><code class="language-php"><div><span class="hljs-keyword">for</span> ($i=<span class="hljs-number">0</span>; $i &lt; sizeof($nomes); $i++){
-    <span class="hljs-keyword">echo</span> $nomes[$i] . <span class="hljs-string">' '</span>;    
+    <span class="hljs-keyword">echo</span> $nomes[$i] . <span class="hljs-string">&#x27; &#x27;</span>;    
 }
 </div></code></pre>
 <p>No entanto, quando estamos interessados nos valores do vetor, e não no índice, é mais comum utilizar a estrutura de repetição <em>foreach</em>, que tem o seguinte formato:</p>
@@ -627,7 +612,7 @@ se o usuário tiver se autenticado --&gt;</span>
 </div></code></pre>
 <p>e para o nosso exemplo de nomes ficaria da seguinte forma:</p>
 <pre><code class="language-php"><div><span class="hljs-keyword">foreach</span> ($nomes <span class="hljs-keyword">as</span> $nome){
-    <span class="hljs-keyword">echo</span> $nome . <span class="hljs-string">' '</span>;
+    <span class="hljs-keyword">echo</span> $nome . <span class="hljs-string">&#x27; &#x27;</span>;
 }
 </div></code></pre>
 <p>Ainda, podemos utilizar <em>foreach</em> no caso de um array no formato <code>$key =&gt; $value</code>. Utilizamos essa estrutura da seguinte forma:</p>
@@ -637,18 +622,18 @@ se o usuário tiver se autenticado --&gt;</span>
 </div></code></pre>
 <p>Por exemplo, a nossa variável <code>$_SERVER</code> contém as suas informações no formato <code>$key =&gt; $value</code>. Podemos mostrar esses dados utilizando <em>foreach</em>, como descrito abaixo.</p>
 <pre><code class="language-php"><div><span class="hljs-keyword">foreach</span> ($_SERVER <span class="hljs-keyword">as</span> $key =&gt; $value){
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">"&lt;li&gt;&lt;b&gt;$key:&lt;/b&gt; $value &lt;/li&gt;"</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;li&gt;&lt;b&gt;<span class="hljs-subst">$key</span>:&lt;/b&gt; <span class="hljs-subst">$value</span> &lt;/li&gt;&quot;</span>;
 }
 </div></code></pre>
 <p>Um segundo exemplo seria a variável <code>$arr_animais</code> que contém também suas informações no formato <code>$key =&gt; $value</code>. Podemos mostrar esses dados utilizando <em>foreach</em> da seuginte forma.</p>
 <pre><code class="language-php"><div>$arr_animais = [ 
-    <span class="hljs-string">'Tomero'</span> =&gt; <span class="hljs-string">'gato'</span>, 
-    <span class="hljs-string">'Rutini'</span> =&gt; <span class="hljs-string">'gato'</span>,
-    <span class="hljs-string">'Toby'</span> =&gt; <span class="hljs-string">'cachorro'</span>,
-    <span class="hljs-string">'Chico'</span> =&gt; <span class="hljs-string">'pássaro'</span>
+    <span class="hljs-string">&#x27;Tomero&#x27;</span> =&gt; <span class="hljs-string">&#x27;gato&#x27;</span>, 
+    <span class="hljs-string">&#x27;Rutini&#x27;</span> =&gt; <span class="hljs-string">&#x27;gato&#x27;</span>,
+    <span class="hljs-string">&#x27;Toby&#x27;</span> =&gt; <span class="hljs-string">&#x27;cachorro&#x27;</span>,
+    <span class="hljs-string">&#x27;Chico&#x27;</span> =&gt; <span class="hljs-string">&#x27;pássaro&#x27;</span>
 ];
 <span class="hljs-keyword">foreach</span> ($arr_animais <span class="hljs-keyword">as</span> $nome =&gt; $especie){
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">"&lt;li&gt;&lt;b&gt;$nome:&lt;/b&gt; $especie &lt;/li&gt;"</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;li&gt;&lt;b&gt;<span class="hljs-subst">$nome</span>:&lt;/b&gt; <span class="hljs-subst">$especie</span> &lt;/li&gt;&quot;</span>;
 }
 </div></code></pre>
 <p>O resultado da interpretação desse código PHP irá resultar no seguinte código HTML:</p>
@@ -665,19 +650,19 @@ se o usuário tiver se autenticado --&gt;</span>
 <li><b>Chico</b>: pássaro</li>
 </div>
 <p>O <em>foreach</em> também é maiormente utilizado da seguinte forma:</p>
-<pre><code class="language-html"><div><span class="php"><span class="hljs-meta">&lt;?php</span> 
-$arr_animais = [ 
-    <span class="hljs-string">'Tomero'</span> =&gt; <span class="hljs-string">'gato'</span>, 
-    <span class="hljs-string">'Rutini'</span> =&gt; <span class="hljs-string">'gato'</span>,
-    <span class="hljs-string">'Toby'</span> =&gt; <span class="hljs-string">'cachorro'</span>,
-    <span class="hljs-string">'Chico'</span> =&gt; <span class="hljs-string">'pássaro'</span>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">?php</span> 
+$<span class="hljs-attr">arr_animais</span> = <span class="hljs-string">[</span> 
+    &#x27;<span class="hljs-attr">Tomero</span>&#x27; =&gt;</span> &#x27;gato&#x27;, 
+    &#x27;Rutini&#x27; =&gt; &#x27;gato&#x27;,
+    &#x27;Toby&#x27; =&gt; &#x27;cachorro&#x27;,
+    &#x27;Chico&#x27; =&gt; &#x27;pássaro&#x27;
 ];
 
-<span class="hljs-keyword">foreach</span> ($arr_animais <span class="hljs-keyword">as</span> $nome =&gt; $especie){ <span class="hljs-meta">?&gt;</span></span>
+foreach ($arr_animais as $nome =&gt; $especie){ ?&gt;
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?</span>= $nome <span class="hljs-meta">?&gt;</span></span>:<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="php"><span class="hljs-meta">&lt;?</span>= $especie <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">?=</span> $<span class="hljs-attr">nome</span> ?&gt;</span>:<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">?=</span> $<span class="hljs-attr">especie</span> ?&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
 
-<span class="php"><span class="hljs-meta">&lt;?php</span> } <span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">?php</span> } ?&gt;</span>
 </div></code></pre>
 <p>O código HTML gerado será o mesmo do que utilizando <code>echo</code>.</p>
 <blockquote>
@@ -704,25 +689,25 @@ $arr_animais = [
 </div>
 <p>Para fazer isso considere os seguintes dados:</p>
 <pre><code class="language-php"><div>$dados_usuario = [
-  <span class="hljs-string">'pedro'</span> =&gt; [
-      <span class="hljs-string">'Nome Completo'</span> =&gt; <span class="hljs-string">'Pedro de Alcântara'</span>,
-      <span class="hljs-string">'Data de Nascimento'</span> =&gt; <span class="hljs-string">'25/04/2000'</span>,
-      <span class="hljs-string">'CEP de Residência'</span> =&gt; <span class="hljs-string">'88509002'</span>
+  <span class="hljs-string">&#x27;pedro&#x27;</span> =&gt; [
+      <span class="hljs-string">&#x27;Nome Completo&#x27;</span> =&gt; <span class="hljs-string">&#x27;Pedro de Alcântara&#x27;</span>,
+      <span class="hljs-string">&#x27;Data de Nascimento&#x27;</span> =&gt; <span class="hljs-string">&#x27;25/04/2000&#x27;</span>,
+      <span class="hljs-string">&#x27;CEP de Residência&#x27;</span> =&gt; <span class="hljs-string">&#x27;88509002&#x27;</span>
       ],
-  <span class="hljs-string">'maria'</span> =&gt; [
-      <span class="hljs-string">'Nome Completo'</span> =&gt; <span class="hljs-string">'Maria de Souza'</span>,
-      <span class="hljs-string">'Data de Nascimento'</span> =&gt; <span class="hljs-string">'20/05/2002'</span>,
-      <span class="hljs-string">'CEP de Residência'</span> =&gt; <span class="hljs-string">'88506400'</span>
+  <span class="hljs-string">&#x27;maria&#x27;</span> =&gt; [
+      <span class="hljs-string">&#x27;Nome Completo&#x27;</span> =&gt; <span class="hljs-string">&#x27;Maria de Souza&#x27;</span>,
+      <span class="hljs-string">&#x27;Data de Nascimento&#x27;</span> =&gt; <span class="hljs-string">&#x27;20/05/2002&#x27;</span>,
+      <span class="hljs-string">&#x27;CEP de Residência&#x27;</span> =&gt; <span class="hljs-string">&#x27;88506400&#x27;</span>
       ],
-  <span class="hljs-string">'joao'</span>  =&gt; [
-      <span class="hljs-string">'Nome Completo'</span> =&gt; <span class="hljs-string">'João Barbosa'</span>,
-      <span class="hljs-string">'Data de Nascimento'</span> =&gt; <span class="hljs-string">'15/01/2003'</span>,
-      <span class="hljs-string">'CEP de Residência'</span> =&gt; <span class="hljs-string">'88502161'</span>
+  <span class="hljs-string">&#x27;joao&#x27;</span>  =&gt; [
+      <span class="hljs-string">&#x27;Nome Completo&#x27;</span> =&gt; <span class="hljs-string">&#x27;João Barbosa&#x27;</span>,
+      <span class="hljs-string">&#x27;Data de Nascimento&#x27;</span> =&gt; <span class="hljs-string">&#x27;15/01/2003&#x27;</span>,
+      <span class="hljs-string">&#x27;CEP de Residência&#x27;</span> =&gt; <span class="hljs-string">&#x27;88502161&#x27;</span>
       ],
-  <span class="hljs-string">'julia'</span> =&gt; [
-      <span class="hljs-string">'Nome Completo'</span> =&gt; <span class="hljs-string">'Julia da Serra'</span>,
-      <span class="hljs-string">'Data de Nascimento'</span> =&gt; <span class="hljs-string">'26/10/1998'</span>,
-      <span class="hljs-string">'CEP de Residência'</span> =&gt; <span class="hljs-string">'88502162'</span>
+  <span class="hljs-string">&#x27;julia&#x27;</span> =&gt; [
+      <span class="hljs-string">&#x27;Nome Completo&#x27;</span> =&gt; <span class="hljs-string">&#x27;Julia da Serra&#x27;</span>,
+      <span class="hljs-string">&#x27;Data de Nascimento&#x27;</span> =&gt; <span class="hljs-string">&#x27;26/10/1998&#x27;</span>,
+      <span class="hljs-string">&#x27;CEP de Residência&#x27;</span> =&gt; <span class="hljs-string">&#x27;88502162&#x27;</span>
       ] 
 ];
 </div></code></pre>
@@ -767,71 +752,71 @@ $arr_animais = [
 </div>
 <p>Para fazer isso considere os seguintes dados:</p>
 <pre><code class="language-php"><div>$solicitacoes_usuario = [
-  <span class="hljs-string">'pedro'</span> =&gt; [
+  <span class="hljs-string">&#x27;pedro&#x27;</span> =&gt; [
           [
-          <span class="hljs-string">'Número'</span> =&gt; <span class="hljs-string">'1001'</span>,
-          <span class="hljs-string">'Data'</span> =&gt; <span class="hljs-string">'25/08/2019'</span>,
-          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Duas canetas de quadro e um apagador'</span>
+          <span class="hljs-string">&#x27;Número&#x27;</span> =&gt; <span class="hljs-string">&#x27;1001&#x27;</span>,
+          <span class="hljs-string">&#x27;Data&#x27;</span> =&gt; <span class="hljs-string">&#x27;25/08/2019&#x27;</span>,
+          <span class="hljs-string">&#x27;Solicitação&#x27;</span> =&gt; <span class="hljs-string">&#x27;Duas canetas de quadro e um apagador&#x27;</span>
           ],
           [
-          <span class="hljs-string">'Número'</span> =&gt; <span class="hljs-string">'1003'</span>,
-          <span class="hljs-string">'Data'</span> =&gt; <span class="hljs-string">'29/08/2019'</span>,
-          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Notebook'</span>
+          <span class="hljs-string">&#x27;Número&#x27;</span> =&gt; <span class="hljs-string">&#x27;1003&#x27;</span>,
+          <span class="hljs-string">&#x27;Data&#x27;</span> =&gt; <span class="hljs-string">&#x27;29/08/2019&#x27;</span>,
+          <span class="hljs-string">&#x27;Solicitação&#x27;</span> =&gt; <span class="hljs-string">&#x27;Notebook&#x27;</span>
           ],
           [
-          <span class="hljs-string">'Número'</span> =&gt; <span class="hljs-string">'1010'</span>,
-          <span class="hljs-string">'Data'</span> =&gt; <span class="hljs-string">'01/09/2019'</span>,
-          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Projetor Multímidia'</span>
-          ],
-      ],
-  <span class="hljs-string">'maria'</span> =&gt; [
-          [
-          <span class="hljs-string">'Número'</span> =&gt; <span class="hljs-string">'1000'</span>,
-          <span class="hljs-string">'Data'</span> =&gt; <span class="hljs-string">'24/08/2019'</span>,
-          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Carregador de Notebook'</span>
-          ],
-          [
-          <span class="hljs-string">'Número'</span> =&gt; <span class="hljs-string">'1006'</span>,
-          <span class="hljs-string">'Data'</span> =&gt; <span class="hljs-string">'28/08/2019'</span>,
-          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Mouse sem fio'</span>
+          <span class="hljs-string">&#x27;Número&#x27;</span> =&gt; <span class="hljs-string">&#x27;1010&#x27;</span>,
+          <span class="hljs-string">&#x27;Data&#x27;</span> =&gt; <span class="hljs-string">&#x27;01/09/2019&#x27;</span>,
+          <span class="hljs-string">&#x27;Solicitação&#x27;</span> =&gt; <span class="hljs-string">&#x27;Projetor Multímidia&#x27;</span>
           ],
       ],
-  <span class="hljs-string">'joao'</span>  =&gt; [
+  <span class="hljs-string">&#x27;maria&#x27;</span> =&gt; [
           [
-          <span class="hljs-string">'Número'</span> =&gt; <span class="hljs-string">'980'</span>,
-          <span class="hljs-string">'Data'</span> =&gt; <span class="hljs-string">'15/08/2019'</span>,
-          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Livro de HTML e Javascript'</span>
+          <span class="hljs-string">&#x27;Número&#x27;</span> =&gt; <span class="hljs-string">&#x27;1000&#x27;</span>,
+          <span class="hljs-string">&#x27;Data&#x27;</span> =&gt; <span class="hljs-string">&#x27;24/08/2019&#x27;</span>,
+          <span class="hljs-string">&#x27;Solicitação&#x27;</span> =&gt; <span class="hljs-string">&#x27;Carregador de Notebook&#x27;</span>
           ],
           [
-          <span class="hljs-string">'Número'</span> =&gt; <span class="hljs-string">'1035'</span>,
-          <span class="hljs-string">'Data'</span> =&gt; <span class="hljs-string">'02/09/2019'</span>,
-          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Livro de PHP'</span>
+          <span class="hljs-string">&#x27;Número&#x27;</span> =&gt; <span class="hljs-string">&#x27;1006&#x27;</span>,
+          <span class="hljs-string">&#x27;Data&#x27;</span> =&gt; <span class="hljs-string">&#x27;28/08/2019&#x27;</span>,
+          <span class="hljs-string">&#x27;Solicitação&#x27;</span> =&gt; <span class="hljs-string">&#x27;Mouse sem fio&#x27;</span>
           ],
       ],
-  <span class="hljs-string">'julia'</span> =&gt; [
+  <span class="hljs-string">&#x27;joao&#x27;</span>  =&gt; [
           [
-          <span class="hljs-string">'Número'</span> =&gt; <span class="hljs-string">'1040'</span>,
-          <span class="hljs-string">'Data'</span> =&gt; <span class="hljs-string">'02/09/2019'</span>,
-          <span class="hljs-string">'Solicitação'</span> =&gt; <span class="hljs-string">'Grampeador'</span>
+          <span class="hljs-string">&#x27;Número&#x27;</span> =&gt; <span class="hljs-string">&#x27;980&#x27;</span>,
+          <span class="hljs-string">&#x27;Data&#x27;</span> =&gt; <span class="hljs-string">&#x27;15/08/2019&#x27;</span>,
+          <span class="hljs-string">&#x27;Solicitação&#x27;</span> =&gt; <span class="hljs-string">&#x27;Livro de HTML e Javascript&#x27;</span>
+          ],
+          [
+          <span class="hljs-string">&#x27;Número&#x27;</span> =&gt; <span class="hljs-string">&#x27;1035&#x27;</span>,
+          <span class="hljs-string">&#x27;Data&#x27;</span> =&gt; <span class="hljs-string">&#x27;02/09/2019&#x27;</span>,
+          <span class="hljs-string">&#x27;Solicitação&#x27;</span> =&gt; <span class="hljs-string">&#x27;Livro de PHP&#x27;</span>
+          ],
+      ],
+  <span class="hljs-string">&#x27;julia&#x27;</span> =&gt; [
+          [
+          <span class="hljs-string">&#x27;Número&#x27;</span> =&gt; <span class="hljs-string">&#x27;1040&#x27;</span>,
+          <span class="hljs-string">&#x27;Data&#x27;</span> =&gt; <span class="hljs-string">&#x27;02/09/2019&#x27;</span>,
+          <span class="hljs-string">&#x27;Solicitação&#x27;</span> =&gt; <span class="hljs-string">&#x27;Grampeador&#x27;</span>
           ]
       ] 
 ];
 </div></code></pre>
 </blockquote>
 <p>Outra estrutura de repetição também bastante utilizada é o <code>while</code> e <code>do-while</code>, as quais são chamadas de estruturas de repetição condicional. Nessas estrututras um bloco de comandos será executado enquanto uma condição seja satisfeita. No momento em que essa condição parar de ser satisfeita (ou seja, a condição retorna false) o bloco de comandos para de ser executado. A sintaxe dessa estrutura é apresentada a seguir:</p>
-<pre><code class="language-php"><div><span class="hljs-keyword">while</span> (expression)
+<pre><code class="language-php"><div><span class="hljs-keyword">while</span> (expression){
     statements
 }
 </div></code></pre>
 <p>O primeiro exemplo para testar esta estrutura é o mostrar os números de 0 até 5, um por linha, da seguinte forma:</p>
 <pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- exemplo_while1.php --&gt;</span>
-<span class="php"><span class="hljs-meta">&lt;?php</span>
-$numero = <span class="hljs-number">0</span>;
-<span class="hljs-keyword">while</span> ($numero &lt;= <span class="hljs-number">5</span>){ <span class="hljs-meta">?&gt;</span></span>    
+<span class="hljs-tag">&lt;<span class="hljs-name">?php</span>
+$<span class="hljs-attr">numero</span> = <span class="hljs-string">0;</span>
+<span class="hljs-attr">while</span> ($<span class="hljs-attr">numero</span> &lt;= <span class="hljs-string">5){</span> ?&gt;</span>    
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="php"><span class="hljs-meta">&lt;?</span>= $numero++ <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">?=</span> $<span class="hljs-attr">numero</span>++ ?&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
-<span class="php"><span class="hljs-meta">&lt;?php</span> } <span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">?php</span> } ?&gt;</span>
 </div></code></pre>
 <p>Neste exemplo, o código HTML/PHP <code>&lt;p&gt;&lt;?= $numero ?&gt;&lt;/p&gt;</code> será repetido enquanto a variável <code>$numero</code> não ultrapassse o valor <code>$5</code>. O resultado da interpretação do código que chega ao browser do cliente será:</p>
 <pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
@@ -844,32 +829,32 @@ $numero = <span class="hljs-number">0</span>;
 <p>Pois bem, esse tipo de laço se assemelha muito à estrutura de repetição for, de fato poderíamos fazer a mesma repetição usando <code>for($numero=0, $numero &lt;= 5; $numero ++) { ... }</code>.</p>
 <p>No segundo exemplo para testar a estrutura <code>while</code> vamos sortear número de 0 até o 10 (inclusive) e parar quando o número sorteado for o número 7.</p>
 <pre><code class="language-html"><div><span class="hljs-comment">&lt;!-- exemplo_while2.php --&gt;</span>
-<span class="php"><span class="hljs-meta">&lt;?php</span>
-$min = <span class="hljs-number">0</span>;
-$max = <span class="hljs-number">10</span>;
-<span class="hljs-keyword">while</span> ( ($numero = rand($min,$max)) != <span class="hljs-number">7</span> ){ <span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">?php</span>
+$<span class="hljs-attr">min</span> = <span class="hljs-string">0;</span>
+$<span class="hljs-attr">max</span> = <span class="hljs-string">10;</span>
+<span class="hljs-attr">while</span> ( ($<span class="hljs-attr">numero</span> = <span class="hljs-string">rand($min,$max))</span> != <span class="hljs-string">7</span> ){ ?&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Número sorteado: <span class="php"><span class="hljs-meta">&lt;?</span>= $numero <span class="hljs-meta">?&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Número sorteado: <span class="hljs-tag">&lt;<span class="hljs-name">?=</span> $<span class="hljs-attr">numero</span> ?&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     
-    <span class="php"><span class="hljs-meta">&lt;?php</span> } <span class="hljs-meta">?&gt;</span></span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">?php</span> } ?&gt;</span>
     
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>O número sorteado foi igual a 7.<span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </div></code></pre>
 <p>No terceiro exemplo vamos realizar uma consulta na base de dados de <code>dbcep</code> e realizar uma consulta no banco de dados. Em uma consulta usando <code>SELECT</code> geralmente não sabemos quantos registros irão retornar da consulta. Para percorrer e mostrar os registros que retornaram da consulta usamos <code>while</code>, pois precisamos mostrar os registros até que não haja mais registros a serem mostrados. Vejamos:</p>
 <pre><code class="language-php"><div>&lt;!-- exemplo_while3.php --&gt;
 <span class="hljs-meta">&lt;?php</span>
-$host = <span class="hljs-string">"acad01.lages.ifsc.edu.br"</span>;
-$username = <span class="hljs-string">"aluno1"</span>;
-$passwd = <span class="hljs-string">"aluno"</span>;
-$dbname   = <span class="hljs-string">"dbcep"</span>;
-$port = <span class="hljs-string">"3306"</span>;
+$host = <span class="hljs-string">&quot;acad01.lages.ifsc.edu.br&quot;</span>;
+$username = <span class="hljs-string">&quot;aluno1&quot;</span>;
+$passwd = <span class="hljs-string">&quot;aluno&quot;</span>;
+$dbname   = <span class="hljs-string">&quot;dbcep&quot;</span>;
+$port = <span class="hljs-string">&quot;3306&quot;</span>;
 <span class="hljs-comment">// Abre a conexão com mysql</span>
-$conn = $conn = mysqli_connect($host, $username, $passwd, $dbname, $port);
-$conn-&gt;set_charset(<span class="hljs-string">"utf8"</span>);
+$conn = mysqli_connect($host, $username, $passwd, $dbname, $port);
+$conn-&gt;set_charset(<span class="hljs-string">&quot;utf8&quot;</span>);
 
-$sql = <span class="hljs-string">'SELECT cep, logradouro, bairro 
+$sql = <span class="hljs-string">&#x27;SELECT cep, logradouro, bairro 
         FROM cep INNER JOIN cidade ON cep.id_cidade = cidade.id_cidade 
-        WHERE cidade.nome = "Lages"'</span>;
+        WHERE cidade.nome = &quot;Lages&quot;&#x27;</span>;
 $stmt = $conn-&gt;prepare($sql);
 <span class="hljs-comment">// Executa a consulta SQL</span>
 $stmt-&gt;execute();
@@ -897,7 +882,7 @@ $conn-&gt;close();
  * Agora vamos mostrar os dados no formato de uma lista.
  */</span>
 <span class="hljs-keyword">foreach</span> ($instances <span class="hljs-keyword">as</span> $instance){ <span class="hljs-meta">?&gt;</span>
-    &lt;li&gt;<span class="hljs-meta">&lt;?</span>= implode( array_values($instance), <span class="hljs-string">' - '</span> ) <span class="hljs-meta">?&gt;</span>&lt;/li&gt;
+    &lt;li&gt;<span class="hljs-meta">&lt;?=</span> implode( array_values($instance), <span class="hljs-string">&#x27; - &#x27;</span> ) <span class="hljs-meta">?&gt;</span>&lt;/li&gt;
 <span class="hljs-meta">&lt;?php</span> } <span class="hljs-meta">?&gt;</span>
 
 <span class="hljs-meta">?&gt;</span>

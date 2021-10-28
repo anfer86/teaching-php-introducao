@@ -10,25 +10,26 @@ $('body').mouseover(function(){
 })
 </script>
 
-# PHP
+# Introdução à Linguagem PHP
 
-## Embutindo PHP em HTML
+## Embutindo código PHP em HTML
 
 Códigos em HTML e PHP podem conviver no mesmo documento. No entanto, o código PHP será processando pelo interpretador do PHP antes de ser enviado para o cliente. Se colocarmos código HTML e PHP em um arquivo só, o resultado que verá o cliente será apenas código HTML.
 
-Vejamos o exemplo. Dentro de sua pasta no ``C:\xampp\htdocs\seu_nome\php\` crie um arquivo chamado `exemplo_1.php`, com o seguinte conteúdo: 
+Vejamos o exemplo. Dentro de sua pasta no ``C:\xampp\htdocs\intro_php\` crie um arquivo chamado `exemplo_1.php`, com o seguinte conteúdo: 
 
 ```html
-<p>Isto será ignorado pelo interpretador de PHP.</p>
-<p><?php echo 'Isto será interpretado e o resultado traduzido para HTML.'; ?></p>
-<p>Isto também será ignorado pelo interpretador de PHP.</p>
+<p>Isto é ignorado pelo interpretador de PHP.</p>
+<p><?php echo 'Isto é interpretado e o resultado traduzido para HTML.'; ?></p>
+<p>Isto também é ignorado pelo interpretador de PHP.</p>
 ```
 
 O resultado disto será:
 ```html
-<p>Isto será ignorado pelo interpretador de PHP.</p>
-<p>Isto será interpretado e o resultado traduzido para HTML.</p>
-<p>Isto também será ignorado pelo interpretador de PHP.</p>
+<p>Isto é ignorado pelo 
+interpretador de PHP.</p>
+<p>Isto é interpretado e o resultado traduzido para HTML.</p>
+<p>Isto também é ignorado pelo interpretador de PHP.</p>
 ```
 
 Criar um novo arquivo chamado `exemplo_2.php`, com o seguinte conteúdo:
@@ -45,10 +46,6 @@ $nome = "Carlos Andres Ferrero";
 
 <body>
     <h2>Bom dia <?php echo $nome ?></h2>
-
-    <p>Isto será ignorado pelo interpretador de PHP.</p>
-    <p><?php echo 'Isto será interpretado e o resultado traduzido para HTML.'; ?></p>
-    <p>Isto também será ignorado pelo interpretador de PHP.</p>
 </body>
 </html>
 ```
@@ -65,10 +62,6 @@ O resultado que será apresentado ao cliente, após a interpretação do código
 
 <body>
     <h2>Bom dia Carlos Andres Ferrero</h2>
-
-    <p>Isto será ignorado pelo interpretador de PHP.</p>
-    <p>Isto será interpretado e o resultado traduzido para HTML.</p>
-    <p>Isto também será ignorado pelo interpretador de PHP.</p>
 </body>
 </html>
 ```
@@ -87,15 +80,11 @@ $nome = "Carlos Andres Ferrero";
 
 <body>
     <h2>Bom dia <?= $nome ?></h2>
-
-    <p>Isto será ignorado pelo interpretador de PHP.</p>
-    <p><?='Isto será interpretado e o resultado traduzido para HTML.'; ?></p>
-    <p>Isto também será ignorado pelo interpretador de PHP.</p>
 </body>
 </html>
 ```
 
-Essa forma alternativa de implementar a saída de dados, irá apresentar o mesmo resultado final. A principal diferente entre uma forma e outra é que a primeira forma `<?php ?>` é utilizar para executar várias linhas de código dentro dela, como ocorre nas primeiras 4 linhas do exemplo, enquanto que a segunda form é utilizada apenas para retornar ou mostrar resultados.
+Essa forma alternativa de implementar a saída de dados, irá apresentar o mesmo resultado final. A principal diferente entre uma forma e outra é que a primeira forma `<?php ?>` é utilizar para executar várias linhas de código dentro dela, como ocorre nas primeiras 4 linhas do exemplo, enquanto que a segunda forma é utilizada apenas para retornar ou mostrar resultados.
 
 Quando for de interesse fazer comentários serão feitos da seguinte forma:
 
@@ -119,10 +108,6 @@ $nome = "Carlos Andres Ferrero";
 -->
 <body>
     <h2>Bom dia <?= $nome ?></h2>
-
-    <p>Isto será ignorado pelo interpretador de PHP.</p>
-    <p><?='Isto será interpretado e o resultado traduzido para HTML.'; ?></p>
-    <p>Isto também será ignorado pelo interpretador de PHP.</p>
 </body>
 </html>
 ```
@@ -131,15 +116,15 @@ Observe que os comentários em PHP e HTML tem sintaxe diferentes, tem que respei
 
 ## Tipos de Dados
 
-Os princiapsi tipos de dados são *escalares* e *compostos*.
+Os principais tipos de dados são *escalares* e *compostos*.
 
 ### Tipos Escalares
 
 Os *escalares* são:
-- `boolean`
-- `integer`
+- `boolean` (com valores verdadeiro e falso)
+- `integer` (número inteiro)
 - `float` (número de ponto flutuante, ou também double)
-- `string`
+- `string` (texto -- cadeia de caracteres)
 
 Podemos explorar esses tipos de dados com o seguinte código PHP (crie um arquivo `tipos_escalares.php`):
 
@@ -152,8 +137,6 @@ $nomeProduto = 'Capa de Celular';   // string
 
 echo gettype($carrinhoVazio) . '<br>';
 echo gettype($quantidadeUnidades) . '<br>';
-echo gettype($valorUnidade) . '<br>';
-echo gettype($nomeProduto) . '<br>';
 echo '<br>';
 
 if (is_bool($carrinhoVazio)){
@@ -168,28 +151,21 @@ if (is_int($quantidadeUnidades)){
     echo '$quantidadeUnidades é uma variável int <br>';
 }
 
-if (is_float($valorUnidade)){
-    echo '$valorUnidade é uma variável float <br>';
-}
-
-if (is_numeric($valorUnidade) && is_numeric($quantidadeUnidades)){
-    echo '$valorUnidade e $quantidadeUnidades são variáveis numéricas<br>';
-}
-
-if (is_string($nomeProduto)){
-    echo '$nomeProduto é uma variável string <br>';
-}
 ?>
 ```
 
 A função `gettype` retorna o tipo da variável e as funções `is_bool`, `is_int`, `is_float` e `is_string` servem para verificar se as nossas variáveis são de um determinado tipo. Essas funções são importantes para verificar em nossas funções se os argumentos enviados como parâmetro são do tipo que nós esperamos que seja. 
+
+#### Problema de passagem de parâmetros de tipo incorreto para uma função
 
 Por exemplo, se criamos uma função `function soma($a, $b) { return $a + $b}`, apenas irá funcionar para números inteiros ou em ponto flutuante, mas para variáveis do tipo string não vai funcionar. Vejamos:
 
 ```php
 <?php // tipos_escalares_soma.php
 
-function soma($a, $b) { return $a + $b; }
+function soma($a, $b) { 
+    return $a + $b; 
+}
 
 echo 'soma (1,5): ' . soma(1,5) . '<br>';
 echo "soma('Andres','Ferrero'): " .  soma("Andres",'Ferrero') . '<br>';
@@ -198,21 +174,23 @@ echo "soma('Andres','Ferrero'): " .  soma("Andres",'Ferrero') . '<br>';
 
 O resultado será o seguinte:
 > soma (1,5): 6<br><br />
-<b>Warning</b>:  A non-numeric value encountered in <b>C:\xampp\htdocs\introducao_php\tipos_escalares_soma.php</b> on line <b>3</b><br />
+<b>Warning</b>:  A non-numeric value encountered in <b>C:\xampp\htdocs\introducao_php\tipos_escalares_soma.php</b> on line <b>5</b><br />
 <br />
-<b>Warning</b>:  A non-numeric value encountered in <b>C:\xampp\htdocs\introducao_php\tipos_escalares_soma.php</b> on line <b>3</b><br />
+<b>Warning</b>:  A non-numeric value encountered in <b>C:\xampp\htdocs\introducao_php\tipos_escalares_soma.php</b> on line <b>5</b><br />
 soma('Andres','Ferrero'): 0<br>
 
 O primeiro `echo` é executado normalmente, pois a soma entre dois valores numéricos é o que a nossa função faz corretamente. Para executar o segundo `echo` o PHP precisa resolver antes a soma entre as duas palavras, no entanto a nossa função gera uma advertencia (um *warning*) erro no momento de executar a operação de soma. Um *warning* é um erro chamado de não-fatal, e não interrompe a execução do código PHP. Portanto, após o *warning* a execução continua e mostra o valor 0, como resultado da operação.
 
-Para resolver isso, vamos usar as funções de verificação de tipo, da seguinte forma:
+Para resolver esa situação vamos usar as funções de verificação de tipo, da seguinte forma:
 
 ```php
 <?php // tipos_escalares_soma2.php
-function soma($a, $b) {    
+function soma($a, $b) {
+    // Se $a é não numérico OU $b é não numérico então
     if ( !is_numeric($a) || !is_numeric($b) ){
         return "Erro: um ou mais argumentos não são numéricos";
     }
+    // A soma só será feita se ele não tiver entrado no IF
     return $a + $b; 
 }
 
@@ -226,7 +204,6 @@ E o resultado será o seguinte:
 > soma (1,5): 6<br>
 soma('Andres','Ferrero'): Erro: um ou mais argumentos não são numéricos<br>
 soma('Andres',10): Erro: um ou mais argumentos não são numéricos<br>
-
 
 ### Tipos Compostos
 
@@ -242,53 +219,43 @@ Para mostrar o conteúdo de um `array` temos que usar uma função específica, 
 ```php
 <?php // tipos_compostos_arrays.php
 
-$arr_animais = array('gato','cachorro','pássaro');
-print_r($arr_animais);
+// Arrays simples
+$arr_simples = array('gato','cachorro','pássaro');
+print_r($arr_simples);
 echo '<br>';
 
-$arr_animais2 = ['gato', 'cachorro', 'pássaro'];
-print_r($arr_animais2);
+$arr_simples2 = ['gato', 'cachorro', 'pássaro'];
+print_r($arr_simples2);
 echo '<br>';
 
-$arr_animais3 = [ 
+// Array associativo (assoc)
+$arr_assoc = [ 
     'Tomero' => 'gato', 
     'Rutini' => 'gato',
     'Toby' => 'cachorro',
     'Chico' => 'pássaro'
 ];
-print_r($arr_animais3);
+print_r($arr_assoc);
 echo '<br>';
 
-echo 'O Tomero é um ' . $arr_animais3['Tomero'] . '<br>';
-echo 'O Chico é um ' . $arr_animais3['Chico'] . '<br>';
+echo 'As chaves ou keys são:   '. implode(', ', array_keys($arr_assoc)).'<br>';
+echo 'Os valores ou values são: '. implode(', ', array_values($arr_assoc)).'<br>';
 
-echo 'As keys são:   '. implode(', ', array_keys($arr_animais3)).'<br>';
-echo 'Os values são: '. implode(', ', array_values($arr_animais3)).'<br>';
+$nome = 'Tomero';
+echo "O $nome é um " . $arr_assoc[$nome] . '<br>';
 
-$keys = array_keys($arr_animais3);
-echo  $keys[3] . ' é ' . $arr_animais3[$keys[3]] . '<br>';
-echo  $keys[2] . ' é ' . $arr_animais3[$keys[2]] . '<br>';
+$keys = array_keys($arr_assoc);
+echo  $keys[3] . ' é ' . $arr_assoc[$keys[3]] . '<br>';
 
-if (in_array('Tomero', array_keys($arr_animais3))){
-    echo 'Tomero está no array de animais <br>';
-}
-
-if (in_array('Duda', array_keys($arr_animais3))){
-    echo 'Duda está no array de animais <br>';
+if (in_array($nome, array_keys($arr_assoc))){
+    echo "$nome está no array de animais <br>";
 } else {
-    echo 'Duda não está no array de animais <br>';
+    echo "$nome não está no array de animais <br>";
 }
 
-$arr_animais3['Duda'] = 'pássaro';
-if (in_array('Duda', array_keys($arr_animais3))){
-    echo 'Duda está no array de animais <br>';
-} else {
-    echo 'Duda não está no array de animais <br>';
-}
-
-unset($arr_animais3);
+unset($arr_assoc);
 echo 'Apagamos a variável $arr_animais3 <br>';
-print_r($arr_animais3);
+print_r($arr_assoc);
 
 ?>
 ```
@@ -315,21 +282,18 @@ O resultado esperado é:
     [Chico] => pássaro
 )
 <br>
+As chaves ou keys são: Tomero, Rutini, Toby, Chico<br>
+Os valores ou values são: gato, gato, cachorro, pássaro<br>
 O Tomero é um gato<br>
-O Chico é um pássaro<br>
-As keys são:   Tomero, Rutini, Toby, Chico<br>
-Os values são: gato, gato, cachorro, pássaro<br>
 Chico é pássaro<br>
-Toby é cachorro<br>
-Tomero está no array de animais <br>
-Duda não está no array de animais <br>
-Duda está no array de animais <br>
-Apagamos a variável erray $arr_animais3 <br><br />
-<b>Notice</b>:  Undefined variable: arr_animais3 in <b>C:\xampp\htdocs\introducao_php\tipos_compostos_arrays.php</b> on line <b>32</b><br />
+Tomero está no array de animais<br>
+Duda está no array de animais<br>
+Apagamos a variável $arr_assoc<br>
+<b>Notice</b>:  Undefined variable: arr_assoc in <b>C:\xampp\htdocs\introducao_php\tipos_compostos_arrays.php</b> on line <b>XX</b><br />
 
-Os `objetos` são tipos complexos de dados nos quais podemos armazenar dados, chamado atributos, e executar funções, chamadas métodos.
+Os `objetos` são tipos complexos de dados nos quais podemos armazenar dados, chamado atributos, e executar funções, chamadas métodos. Neste tutorial não entraremos em detalhes deste tema.
 
-Os `callables` ou `callbacks` são também tipos de dados complexos que permitem armazenar funções. Em PHP podemos chamar uma função sabendo apenas o nome dela.
+Os `callables` são também tipos de dados complexos que permitem armazenar funções. Em PHP podemos chamar uma função sabendo apenas o nome dela.
 
 ```php
 <?php // tipos_compostos_callable.php
@@ -337,36 +301,41 @@ function bemvindo() {
     echo 'Olá Mundo!' . '<br>';
 }
 
+bemvindo();
 call_user_func('bemvindo');
 
-$bemvindo = function($nome){
+$bemvindo2 = function($nome){
     echo 'Olá '. $nome . '!' . '<br>';
 };
 
-$bemvindo('Andres');
+$bemvindo2('Andres');
 
 echo '<br>';
-array_map($bemvindo, ['Andres','Tomero','Rutini']);
+array_map($bemvindo, ['Fulano','Ciclano 1','Ciclano 2']);
 ?>
 ```
 
 Resultado esperado:
 
 >Olá Mundo!<br>
+Olá Mundo!<br>
 Olá Andres!<br>
-Olá Andres!<br>
-Olá Tomero!<br>
-Olá Rutini!<br>
+Olá Fulano!<br>
+Olá Ciclano 1!<br>
+Olá Ciclano 2!<br>
 
 ## Variáveis
 
-As variáveis no PHP são definidas com um cifrão (`$`) seguido pelo nome da variável. Os nomes de variável são case-sensitive. Isto significa que `$nome` e `$Nome` são variáveis diferentes, pois ele diferencia maiúsculas e minúsculas.
+As variáveis no PHP são definidas com um cifrão (`$`) seguido pelo nome da variável. Os nomes de variável são `case-sensitive`. Isto significa que `$nome` e `$Nome` são variáveis diferentes, pois diferencia maiúsculas e minúsculas.
 
-Um ponto importante em PHP é que a mesma variáveis pode assumir diferentes tipos de dados ao longo de seu tempo de vida. Inicialmente pode ser um número inteiro, depois passar para float, ser uma string e depois virar uma objeto. No entanto, recomenda-se não usar a mesma variável para armazenar varios dados ao longo do programa, pois pode confundir o programador no uso da variável.
+Um ponto importante em PHP é que a mesma variável pode assumir diferentes tipos de dados ao longo de seu tempo de vida. Inicialmente pode ser um número inteiro, `integer`, depois passar a ser um número real (ponto flutuante) `float`, ser uma string e depois virar um objeto. No entanto, recomenda-se não usar a mesma variável para armazenar varios dados ao longo do programa, pois pode confundir o programador no uso da variável.
 
 ```php
 <?php // variaveis_tipo_dinamico.php
 
+/**
+ * Esta função mostra o tipo de uma variável
+*/
 function msg_tipo_variavel($var_name){
     echo 'O tipo da variável é ' . gettype($var_name) . '<br>';
 }
@@ -390,7 +359,7 @@ echo "Meu nome é $nome \n";
 ?>
 ```
 
-Observe as duas formas de mostrar conteúdo de uma variável. Usando aspas simples temos que concatenar as strings com `.`. Já utilizando aspas duplas podemos colocar o nome da variável dentro e essa variável será resolvida antes e assim será apresentado o resultado ao usuário.
+Observe as duas formas de mostrar conteúdo de uma variável. Usando aspas simples temos que concatenar as strings com `.`. Ao utilizar aspas duplas podemos colocar o nome da variável dentro e essa variável será resolvida antes e assim será apresentado o resultado ao usuário.
 
 O resultado será:
 > O tipo da variável é integer<br>
@@ -400,7 +369,10 @@ O tipo da variável é array<br>
 Meu nome é Andrés<br>
 Meu nome é Andrés<br>
 
-Também existe variáveis de fontes externas. As mais comuns são `$_POST` e `$_GET` que provém de formulários em HTML. Para testar cada uma delas vamos construir dois formulários simples em uma página HTML, um que envie os dados via GET e outro via POST para uma página PHP.
+
+### Variáveis especiais: \$_GET, \$_POST, \$_SERVER
+
+Existem algumas variáveis especiais em PHP, que iniciam com *underline*, \$_. As mais comuns são `$_POST` e `$_GET` que provém de formulários em HTML. Para testar cada uma delas vamos construir dois formulários simples em uma página HTML, um que envie os dados via GET e outro via POST para uma página PHP.
 
 ```html
 <!-- variaveis_externas_formulario.html -->
@@ -906,7 +878,7 @@ O código HTML gerado será o mesmo do que utilizando `echo`.
 Outra estrutura de repetição também bastante utilizada é o `while` e `do-while`, as quais são chamadas de estruturas de repetição condicional. Nessas estrututras um bloco de comandos será executado enquanto uma condição seja satisfeita. No momento em que essa condição parar de ser satisfeita (ou seja, a condição retorna false) o bloco de comandos para de ser executado. A sintaxe dessa estrutura é apresentada a seguir:
 
 ```php
-while (expression)
+while (expression){
     statements
 }
 ```
@@ -964,7 +936,7 @@ $passwd = "aluno";
 $dbname   = "dbcep";
 $port = "3306";
 // Abre a conexão com mysql
-$conn = $conn = mysqli_connect($host, $username, $passwd, $dbname, $port);
+$conn = mysqli_connect($host, $username, $passwd, $dbname, $port);
 $conn->set_charset("utf8");
 
 $sql = 'SELECT cep, logradouro, bairro 
